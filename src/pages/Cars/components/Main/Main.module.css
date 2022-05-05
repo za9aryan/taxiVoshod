@@ -1,0 +1,17 @@
+.Main {
+    width: 100%;
+    background-color: #FFF;
+    border-radius: 20px;
+    box-shadow: 10px 0 50px 10px rgba(0, 0, 0, 0.05);
+    overflow: hidden;
+    padding-bottom: 84px;
+
+    margin-bottom: 30px;
+}
+
+@media only screen and (max-width: 480px) {
+    .Main {
+        padding-bottom: 21px;
+        margin-bottom: 15px;
+    }
+}

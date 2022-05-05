@@ -1,0 +1,52 @@
+.Description {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 15px;
+    padding-inline: 5px;
+    margin-bottom: 80px;
+}
+
+.DescriptionItem {
+    flex: 1 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.TextContainer {
+    flex: 1 0 auto;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 9px;
+
+    padding-inline: 5px;
+}
+
+.Circle {
+    width: 7px;
+    height: 7px;
+    border-radius: 100%;
+    background-color: var(--Second);
+}
+
+.Circle.IsDamage {
+    background-color: var(--Primary);
+}
+
+.Text {
+    font-size: clamp(11px, 768px, min(1.5vw, 18px));
+    line-height: 16px;
+    color: #000000;
+}
+
+@media only screen and (max-width: 768px){
+    .Description{
+        flex-wrap: wrap;
+        margin-bottom: 20px;
+        gap: 5px;
+    }
+}

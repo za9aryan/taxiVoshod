@@ -1,0 +1,47 @@
+.Heading {
+    width: 100%;
+    background-color: var(--Second);
+    border-radius: 20px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+
+    margin-bottom: 13px;
+}
+
+.HeadingItem {
+    flex: 1 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.Box {
+    font-size: clamp(12px, 768px, min(2vw, 18px));
+    line-height: 22px;
+    border-radius: 20px;
+    color: #FFF;
+    flex: 1 0 auto;
+    padding: 22px 22px 26px;
+}
+
+.Box.Active {
+    background-color: var(--Primary);
+}
+
+@media only screen and (max-width: 968px){
+    .Box {
+        padding: 12px 9px 13px;
+    }
+}
+
+@media only screen and (max-width: 480px){
+    .Heading{
+        flex-wrap: wrap;
+    }
+    .Box {
+        padding: 6px 9px 7px;
+    }
+}

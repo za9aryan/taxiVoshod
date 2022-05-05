@@ -1,0 +1,39 @@
+.CustomNextArrow {
+    width: 40px;
+    height: 40px;
+    border-radius: 100%;
+    background-color: var(--Second);
+    transition: .3s linear;
+    z-index: 2;
+    right: 15px !important;
+}
+
+.CustomNextArrow:before {
+    content: "";
+}
+
+.CustomNextArrow img {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 9px;
+    height: 12px;
+}
+
+.CustomNextArrow:hover, .CustomNextArrow:focus {
+    background-color: var(--SecondTap);
+}
+
+@media only screen and (max-width: 480px) {
+    .CustomNextArrow {
+        width: 20px;
+        height: 20px;
+        right: 10px !important;
+    }
+
+    .CustomNextArrow img {
+        width: 7px;
+        height: 9px;
+    }
+}

@@ -1,0 +1,39 @@
+.CustomPrevArrow {
+    width: 40px;
+    height: 40px;
+    border-radius: 100%;
+    background-color: var(--Second);
+    transition: .3s linear;
+    z-index: 2;
+    left: 15px !important;
+}
+
+.CustomPrevArrow:before {
+    content: "";
+}
+
+.CustomPrevArrow img {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 9px;
+    height: 12px;
+}
+
+.CustomPrevArrow:hover, .CustomPrevArrow:focus {
+    background-color: var(--SecondTap);
+}
+
+@media only screen and (max-width: 480px) {
+    .CustomPrevArrow {
+        width: 20px;
+        height: 20px;
+        left: 10px !important;
+    }
+
+    .CustomPrevArrow img {
+        width: 7px;
+        height: 9px;
+    }
+}

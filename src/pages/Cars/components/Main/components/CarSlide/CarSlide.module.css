@@ -1,0 +1,23 @@
+.CarSlideContainer {
+    width: 100%;
+}
+
+.CarSlideContainer img {
+    height: 233px;
+}
+
+.CarSlide {
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+}
+
+.CarSlideContainer .slick-slide {
+    outline: none !important
+}
+
+@media only screen and (max-width: 480px){
+    .CarSlideContainer img {
+        height: 170px;
+    }
+}
