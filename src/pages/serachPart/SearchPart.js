@@ -62,6 +62,7 @@ const SearchPart = () => {
     }
 
     const handleNextButton = () => {
+        if (!selected) return
         navigate('/damage')
     }
 
