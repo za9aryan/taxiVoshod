@@ -3,7 +3,7 @@
 }
 
 .CarSlideContainer img {
-    height: 233px;
+    height: 320px;
 }
 
 .CarSlide {
@@ -14,6 +14,12 @@
 
 .CarSlideContainer .slick-slide {
     outline: none !important
+}
+
+@media only screen and (max-width: 1024px){
+    .CarSlideContainer img {
+        height: 233px;
+    }
 }
 
 @media only screen and (max-width: 480px){

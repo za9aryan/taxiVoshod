@@ -1,11 +1,9 @@
 .MainContainer {
     width: 100%;
-    max-width: 1024px;
-    margin-inline: auto;
     height: 100%;
     min-height: 100vh;
     background-color: #EDF2FF;
-    padding: 36px 30px 30px;
+    padding: 36px 30px 30px 110px;
 }
 
 .H3 {
@@ -14,6 +12,6 @@
 
 @media only screen and (max-width: 480px){
     .MainContainer {
-        padding: 18px 15px 15px;
+        padding: 18px 15px 15px 95px;
     }
 }

@@ -19,7 +19,7 @@
 }
 
 .Box {
-    font-size: clamp(12px, 768px, min(2vw, 18px));
+    font-size: clamp(12px, 768px, min(2vw, 22px));
     line-height: 22px;
     border-radius: 20px;
     color: #FFF;
@@ -33,15 +33,15 @@
 
 @media only screen and (max-width: 968px){
     .Box {
-        padding: 12px 9px 13px;
+        padding: 12px 10px 13px;
     }
 }
 
-@media only screen and (max-width: 480px){
+@media only screen and (max-width: 560px){
     .Heading{
         flex-wrap: wrap;
     }
     .Box {
-        padding: 6px 9px 7px;
+        padding: 6px 10px 7px;
     }
 }
