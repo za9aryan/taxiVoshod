@@ -113,7 +113,7 @@
     }
 }
 
-@media (max-width: 300px) {
+@media (max-width: 400px) {
     .menuWithBar_list_wrapper {
         border-radius: 0;
     }

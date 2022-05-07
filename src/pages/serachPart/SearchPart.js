@@ -35,7 +35,6 @@ const SearchPart = () => {
             }
         })
         setSearchData([...newArr])
-        console.log("useEffect");
         if (searchData.length) {
             setOpen(true)
         }
@@ -54,7 +53,7 @@ const SearchPart = () => {
 
     const renderList = ({ name }) => {
         return (
-            <div onClick={() => handleSelect(name)} className="searchPart_input_list_item">
+            <div key={name} onClick={() => handleSelect(name)} className="searchPart_input_list_item">
                 <img src={selected === name ? selectedellipse : ellipse} />
                 <h4>{name}</h4>
             </div>
