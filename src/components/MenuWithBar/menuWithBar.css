@@ -1,0 +1,120 @@
+.menuWithBar_main {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    width: 0;
+}
+
+.menuWithBar_burger {
+    position: absolute;
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    top: 15px;
+    left: 20px;
+    cursor: pointer;
+}
+
+.menuWithBar_list_wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    width: 300px;
+    height: 100vh;
+    background: white;
+    border-radius: 0 20px 20px 0;
+    transform: translateX(0%);
+    transition: 0.2s;
+    box-shadow: 5px 5px 15px 5px rgba(0,0,0,0.33);
+}
+
+
+.menuWithBar_list {
+    text-decoration: none;
+    color: gray;
+    border-bottom: 1px solid;
+    width: 100%;
+    margin: 0;
+    box-sizing: border-box;
+    height: 8%;
+    min-height: 50px;
+    display: flex;
+    align-items: center;
+    padding-left: 20px;
+    font-family: 'Lato', sans-serif;
+    font-weight: 400;
+    font-size: 18px;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+.menuWithBar_list_exit {
+    text-decoration: none;
+    color: gray;
+    width: 100%;
+    margin: 0;
+    box-sizing: border-box;
+    height: 8%;
+    min-height: 50px;
+    display: flex;
+    align-items: center;
+    padding-left: 20px;
+    position: absolute;
+    bottom: 0;
+    height: 120px;
+    border-top: 1px solid;
+    border-radius: 0 0 20px;
+    font-family: 'Lato', sans-serif;
+    font-weight: 400;
+    font-size: 18px;
+}
+
+.menuWithBar_list_exit:hover {
+    background-color: #F5C257;
+    color: white;
+}
+
+.menuWithBar_list:hover {
+    background-color: #F5C257;
+    color: white;
+}
+
+.menuWithBar_burger_icon {
+    height: 30px;
+    width: 30px;
+}
+
+.menuWithBar_burger_icon_part {
+    width: 100%;
+    height: 20%;
+    background: gray;
+    margin-bottom: 7px;
+}
+
+.menuWithBar_burger_icon_part_text {
+    margin-left: 10px;
+    color: gray;
+    font-family: 'Lato', sans-serif;
+    font-weight: 400;
+    font-size: 18px;
+}
+
+@media (max-width: 460px) {
+    .menuWithBar_burger_icon_part_text {
+       display: none;
+    }
+}
+
+@media (max-width: 384px) {
+    .menuWithBar_burger {
+       left: 5px;
+    }
+}
+
+@media (max-width: 300px) {
+    .menuWithBar_list_wrapper {
+        border-radius: 0;
+    }
+}

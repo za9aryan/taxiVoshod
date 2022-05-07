@@ -3,6 +3,7 @@ import c from "./Cars.module.css"
 import Breadcrumbs from "./components/Breadcrumbs/Breadcrumbs";
 import Main from "./components/Main/Main";
 import Button from "./components/Buttons/Button";
+import MenuWithBar from "../../components/MenuWithBar/MenuWithBar";
 
 const Cars = () => {
 
@@ -11,12 +12,17 @@ const Cars = () => {
     }
 
     return (
-        <div className={c.MainContainer}>
-            <Breadcrumbs onClick={handlerBreadcrumbsClick}/>
-            <h3 className={c.H3}>ВНЕШНИЙ ОСМОТР АВТОМОБИЛЯ</h3>
-            <Main />
-            <Button />
-        </div>
+        <>
+            <MenuWithBar />
+            <div className={c.MainContainer}>
+
+                <Breadcrumbs onClick={handlerBreadcrumbsClick} />
+                <h3 className={c.H3}>ВНЕШНИЙ ОСМОТР АВТОМОБИЛЯ</h3>
+                <Main />
+                <Button />
+            </div>
+        </>
+
     );
 };
 
