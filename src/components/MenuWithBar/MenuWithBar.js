@@ -45,9 +45,9 @@ const MenuWithBar = (props) => {
                     {open && "Меню"}
                 </div>
             </div>
-            <div style={{ width: !open && "80px", borderRadius: !open && "0px" }} className="menuWithBar_list_wrapper">
+            <div style={{ width: !open && "88px", borderRadius: !open && "0px" }} className="menuWithBar_list_wrapper">
                 {data?.map(renderLists)}
-                <Link onClick={toggleOpen} to={`/`} className={`${open && ""} menuWithBar_list_exit`}>
+                <Link style={{ borderRadius: !open && "0px" }} onClick={toggleOpen} to={`/`} className={`${open && ""} menuWithBar_list_exit`}>
                     <img style={{ marginRight: "5px" }} src={exit} alt="exit" /> {open && "Выход"}
                 </Link >
             </div>
