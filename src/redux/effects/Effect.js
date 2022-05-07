@@ -6,7 +6,7 @@ export const getMenuDataEffect = () => {
             const res = await services.getMenuData()
             dispatch(getMenuDataAction(res.data))
         } catch (e) {
-            console.log(e.message())
+            console.log(e.message)
         }
     }
 }

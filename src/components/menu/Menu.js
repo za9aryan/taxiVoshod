@@ -10,14 +10,6 @@ import {getMenuDataEffect} from "../../redux/effects/Effect";
 
 const Menu = () => {
 
-
-    const {menu} = useSelector(state => state.reducer)
-    console.log(menu)
-
-
-
-
-
     const [open, setOpen] = useState(false)
     const [data, setData] = useState()
 

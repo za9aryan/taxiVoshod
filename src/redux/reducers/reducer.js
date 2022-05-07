@@ -1,8 +1,55 @@
 import ActionTypes from "../action.types";
 
+
+const fakeCarDamageData = {
+    "list": [
+        {
+            "id": 124,
+            "name": "Правое переднее крыло",
+            "descr": "",
+            "side": "right",
+            "part": "fender_front", // fender - крыло, tire - шина, glass - стекло, door - дверь
+            "images": []
+        },
+        {
+            "id": 123,
+            "name": "Левое переднее крыло",
+            "descr": "Описание повреждения",
+            "side": "left",
+            "part": "fender_front", // fender - крыло, tire - шина, glass - стекло, door - дверь
+            "images": [
+                {
+                    "img": "/images/img.jpg"
+                }
+            ]
+        },
+        {
+            "id": 126,
+            "name": "Правое переднее крыло",
+            "descr": "",
+            "side": "rear",
+            "part": "fender_front", // fender - крыло, tire - шина, glass - стекло, door - дверь
+            "images": []
+        },
+        {
+            "id": 125,
+            "name": "Водитеьское сиденье",
+            "descr": "Прожжено от сигареты",
+            "side": "front",
+            "part": "glass",
+            "images": []
+        },
+
+    ]
+}
+
+
 const initialState = {
-    menu: {},
-    carDamage: {}
+    menu: {
+        logout: {},
+        list: []
+    },
+    carDamage: fakeCarDamageData
 }
 
 const reducer = (state = initialState, action) => {

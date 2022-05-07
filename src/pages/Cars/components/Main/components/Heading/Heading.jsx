@@ -5,7 +5,7 @@ const Heading = ({isActive = "right", setIsActive}) => {
     const heading = [
         {label: "right", name: "Правая сторона"},
         {label: "left", name: "Левая сторона"},
-        {label: "back", name: "Задняя часть"},
+        {label: "rear", name: "Задняя часть"},
         {label: "front", name: "Передняя часть"}
     ]
 
