@@ -5,8 +5,19 @@ import { faArrowRight } from '@fortawesome/free-solid-svg-icons'
 import exit from '../../assets/img/exit.png'
 import './menu.css'
 import 'animate.css';
+import {useDispatch, useSelector} from "react-redux";
+import {getMenuDataEffect} from "../../redux/effects/Effect";
 
-const Menu = (props) => {
+const Menu = () => {
+
+
+    const {menu} = useSelector(state => state.reducer)
+    console.log(menu)
+
+
+
+
+
     const [open, setOpen] = useState(false)
     const [data, setData] = useState()
 
@@ -20,7 +31,10 @@ const Menu = (props) => {
         setData(resData.list)
     }
 
+    const dispatch = useDispatch()
+
     useEffect(() => {
+        dispatch(getMenuDataEffect())
         if (data) return
         getData()
     }, [])

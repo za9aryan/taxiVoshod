@@ -2,26 +2,13 @@ import React, { useReducer, useState } from 'react';
 import './start.css'
 import rec from '../../assets/img/Rectangle.png'
 import logo from '../../assets/img/mainLogo.svg'
-import rotateReducer from '../../redux/reducers/rotateReducer'
-import { initialState } from '../../redux/store'
 
 import {Menu} from '../../components/Components';
 import {SearchPart} from '../Pages';
 
-const Start = (props) => {
+const Start = () => {
 
     const [searchOpen, setSearchOpen] = useState(false)
-    const [condition, dispatch] = useReducer(rotateReducer, initialState)
-
-    const click = () => {
-        dispatch({
-            type: "rotate",
-            payload: true
-        })
-        setSearchOpen(!searchOpen)
-    }
-
-    console.log(condition);
 
     return (
         <div className="start_main">
@@ -35,7 +22,7 @@ const Start = (props) => {
             <div className="start_car_part">
                 {/* <img src={car} alt={"car"} /> */}
             </div>
-            <div onClick={click} className="start_button">
+            <div onClick={() => setSearchOpen(prevState => !prevState)} className="start_button">
                 ОСМОТР АВТОМОБИЛЯ
             </div>
             {searchOpen && <SearchPart />}
