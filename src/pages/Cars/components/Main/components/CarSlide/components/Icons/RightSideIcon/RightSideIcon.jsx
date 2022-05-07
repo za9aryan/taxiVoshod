@@ -5,7 +5,7 @@ import {rightDamage} from "../damages";
 
 const RightSideIcon = ({part}) => {
     return (
-        <svg width="714" height="233" viewBox="0 0 714 233" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <svg width="100%" height="100%" viewBox="0 0 714 233" fill="none" xmlns="http://www.w3.org/2000/svg">
             <g clipPath="url(#clip0_1_593)">
                 <CarIcon />
                 {Object.entries(rightDamage).map(([key, value], index) => (

@@ -2,11 +2,10 @@
     width: 100%;
 }
 
-.CarSlideContainer img {
-    height: 320px;
-}
-
 .CarSlide {
+    width: 80% !important;
+    height: 320px;
+    margin-inline: auto;
     display: flex !important;
     align-items: center;
     justify-content: center;
@@ -17,13 +16,13 @@
 }
 
 @media only screen and (max-width: 1024px){
-    .CarSlideContainer img {
+    .CarSlide {
         height: 233px;
     }
 }
 
 @media only screen and (max-width: 480px){
-    .CarSlideContainer img {
+    .CarSlide {
         height: 170px;
     }
 }
