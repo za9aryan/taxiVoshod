@@ -8,7 +8,7 @@ const LeftSideIcon = ({part}) => {
         <svg width="714" height="232" viewBox="0 0 714 232" fill="none" xmlns="http://www.w3.org/2000/svg">
             <CarIcon/>
             {Object.entries(leftDamage).map(([key, value], index) => (
-                <Ellipse key={key + index} {...value} isDamage={key === part}/>
+                <Ellipse key={key + index} {...value} isDamage={part.includes(key)}/>
             ))}
         </svg>
     );

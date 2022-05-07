@@ -8,7 +8,7 @@ const fakeCarDamageData = {
             "name": "Правое переднее крыло",
             "descr": "",
             "side": "right",
-            "part": "fender_front", // fender - крыло, tire - шина, glass - стекло, door - дверь
+            "part": ["fender_front", "fender_rear"], // fender - крыло, tire - шина, glass - стекло, door - дверь
             "images": []
         },
         {
@@ -16,7 +16,7 @@ const fakeCarDamageData = {
             "name": "Левое переднее крыло",
             "descr": "Описание повреждения",
             "side": "left",
-            "part": "fender_front", // fender - крыло, tire - шина, glass - стекло, door - дверь
+            "part": ["glass_front", "glass_rear"], // fender - крыло, tire - шина, glass - стекло, door - дверь
             "images": [
                 {
                     "img": "/images/img.jpg"
@@ -28,7 +28,7 @@ const fakeCarDamageData = {
             "name": "Правое переднее крыло",
             "descr": "",
             "side": "rear",
-            "part": "fender_front", // fender - крыло, tire - шина, glass - стекло, door - дверь
+            "part": ["headlight_left", "headlight_right"], // fender - крыло, tire - шина, glass - стекло, door - дверь
             "images": []
         },
         {
@@ -36,7 +36,7 @@ const fakeCarDamageData = {
             "name": "Водитеьское сиденье",
             "descr": "Прожжено от сигареты",
             "side": "front",
-            "part": "glass",
+            "part": ["bumper", "bonnet"],
             "images": []
         },
 

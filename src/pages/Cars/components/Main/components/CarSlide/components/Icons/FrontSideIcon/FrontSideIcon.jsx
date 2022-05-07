@@ -9,7 +9,7 @@ const FrontSideIcon = ({part}) => {
             <g clipPath="url(#clip0_1_1253)">
                 <CarIcon/>
                 {Object.entries(frontDamage).map(([key, value], index) => (
-                    <Ellipse key={key + index} {...value} isDamage={key === part}/>
+                    <Ellipse key={key + index} {...value} isDamage={part.includes(key)}/>
                 ))}
             </g>
             <defs>
