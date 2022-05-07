@@ -1,3 +1,5 @@
+import {useEffect, useRef} from "react";
+import {useSelector} from "react-redux";
 import Slider from "react-slick";
 
 import "slick-carousel/slick/slick.css";
@@ -5,12 +7,8 @@ import "slick-carousel/slick/slick-theme.css";
 
 import c from "./CarSlide.module.css"
 
-
 import CustomNextArrow from "./components/CustomNextArrow/CustomNextArrow";
 import CustomPrevArrow from "./components/CustomPrevArrow/CustomPrevArrow";
-import {useEffect, useMemo, useRef} from "react";
-import RightSideIcon from "./components/Icons/RightSideIcon/RightSideIcon";
-import {useSelector} from "react-redux";
 import Icons from "./components/Icons/Icons";
 
 const CarSlide = ({isActive = "right", setIsActive}) => {
@@ -33,12 +31,10 @@ const CarSlide = ({isActive = "right", setIsActive}) => {
         infinite: true,
         speed: 200,
         swipeToSlide: false,
-        // swipe: false,
         slidesToShow: 1,
         slidesToScroll: 1,
         nextArrow: <CustomNextArrow />,
         prevArrow: <CustomPrevArrow />,
-        // afterChange: (index) => handlerSlideChange(index),
         beforeChange: (current, next) => handlerSlideChange(next)
     };
 
