@@ -38,14 +38,15 @@ const CarSlide = ({isActive = "right", setIsActive}) => {
     const settings = {
         dots: false,
         infinite: true,
-        speed: 1000,
+        speed: 200,
         swipeToSlide: false,
         // swipe: false,
         slidesToShow: 1,
         slidesToScroll: 1,
         nextArrow: <CustomNextArrow />,
         prevArrow: <CustomPrevArrow />,
-        afterChange: (index) => handlerSlideChange(index)
+        // afterChange: (index) => handlerSlideChange(index),
+        beforeChange: (current, next) => handlerSlideChange(next)
     };
 
 
