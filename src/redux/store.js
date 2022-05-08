@@ -1,14 +1,15 @@
-import { createStore } from "redux";
-import rotateReducer from "./reducers/rotateReducer";
+import {configureStore} from "@reduxjs/toolkit";
+import reducer from "./reducers/reducer";
+import ApiServices from "./services/ApiServices";
 
-export const initialState = {
-    rotating: false,
-    some: "some text"
-}
+const store = configureStore({
+    reducer: {reducer},
+    middleware: getDefaultMiddleware =>
+        getDefaultMiddleware({
+            thunk: {
+                extraArgument: ApiServices
+            }
+        })
+})
 
-
-function configureStore(state = initialState) {
-    return createStore(rotateReducer, state);
-}
-
-export default configureStore;
+export default store;
