@@ -28,7 +28,7 @@ const fakeCarDamageData = {
             "name": "Правое переднее крыло",
             "descr": "",
             "side": "rear",
-            "part": ["headlight_left", "headlight_right"], // fender - крыло, tire - шина, glass - стекло, door - дверь
+            "part": "", // fender - крыло, tire - шина, glass - стекло, door - дверь
             "images": []
         },
         {
