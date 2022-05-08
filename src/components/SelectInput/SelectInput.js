@@ -34,7 +34,7 @@ const SelectInput = ({ data, getSelected = () => { }, type = "" }) => {
             }
         })
         setSearchData([...newArr])
-        if (searchData.length) {
+        if (searchData.length && input) {
             setOpen(true)
         }
     }, [input])

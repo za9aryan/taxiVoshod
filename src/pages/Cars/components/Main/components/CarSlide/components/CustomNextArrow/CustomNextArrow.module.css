@@ -37,3 +37,16 @@
         height: 9px;
     }
 }
+
+@media only screen and (max-width: 420px) {
+    .CustomNextArrow {
+        width: 20px;
+        height: 20px;
+        right: 3px !important;
+    }
+
+    .CustomNextArrow img {
+        width: 7px;
+        height: 9px;
+    }
+}

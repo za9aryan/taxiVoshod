@@ -9,6 +9,7 @@ import block3 from '../../assets/img/block3.png'
 import block4 from '../../assets/img/block4.png'
 import carFront from '../../assets/img/carFront.png'
 import carBack from '../../assets/img/carBack.png'
+import snow from '../../assets/img/snow.png'
 
 import ellipse from '../../assets/img/Ellipse.png';
 import selectedellipse from '../../assets/img/selected.png'
@@ -55,10 +56,10 @@ function CarDetails(props) {
                                 </div>
                                 <div className="carDetails_fuel_range_part_min_max">
                                     <div>
-                                        min
+                                        1
                                 </div>
                                     <div>
-                                        max
+                                        60
                                 </div>
                                 </div>
 
@@ -87,7 +88,7 @@ function CarDetails(props) {
                                 <p>Чистота кузова</p>
                             </div>
                             <div>
-                                <SelectInput data={[{ name: "asd" }, { name: "adaweqw" }]} getSelected={getSelected} />
+                                <SelectInput data={[{ name: "Грязный" }, { name: "Чистый" }]} getSelected={getSelected} />
                             </div>
                         </div>
                         <div className="carDetails_block">
@@ -96,7 +97,7 @@ function CarDetails(props) {
                                 <p>Чистота салона</p>
                             </div>
                             <div>
-                                <SelectInput data={[{ name: "asdawdawd" }, { name: "987" }]} getSelected={getSelected} />
+                                <SelectInput data={[{ name: "Грязный" }, { name: "Чистый" }]} getSelected={getSelected} />
                             </div>
                         </div>
                     </div>
@@ -120,10 +121,17 @@ function CarDetails(props) {
                             <p>Передние шины</p>
                         </div>
                         <div className="carDetails_right_front_wheel_search_part">
-                            <SelectInput type="search" data={[{ name: "asdawdawd" }, { name: "987" }]} getSelected={getSelected} />
+                            <SelectInput type="search" data={[{ name: "Грязный" }, { name: "Чистый" }]} getSelected={getSelected} />
+                            <div className="carDetails_right_front_wheel_search_part_selected">
+                                <img src={snow} />
+                                <p>245/50 r20 nokian
+                                hakkapeliitta r3 suv
+                                106r xl </p>
+                            </div>
                         </div>
                         <div className="carDetails_right_front_wheel_input_part">
-
+                            <p>Уровень протектора мм</p>
+                            <input />
                         </div>
                     </div>
                     <div className="carDetails_right_back_wheel">
@@ -132,10 +140,17 @@ function CarDetails(props) {
                             <p>Задние шины</p>
                         </div>
                         <div className="carDetails_right_back_wheel_search_part">
-                            <SelectInput type="search" data={[{ name: "asdawdawd" }, { name: "987" }]} getSelected={getSelected} />
+                            <SelectInput type="search" data={[{ name: "Грязный" }, { name: "Чистый" }]} getSelected={getSelected} />
+                            <div className="carDetails_right_back_wheel_search_part_selected">
+                                <img src={snow} />
+                                <p>245/50 r20 nokian
+                                hakkapeliitta r3 suv
+                                106r xl </p>
+                            </div>
                         </div>
                         <div className="carDetails_right_back_wheel_input_part">
-
+                            <p>Уровень протектора мм</p>
+                            <input />
                         </div>
                     </div>
                 </div>

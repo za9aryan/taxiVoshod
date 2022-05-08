@@ -37,3 +37,16 @@
         height: 9px;
     }
 }
+
+@media only screen and (max-width: 420px) {
+    .CustomPrevArrow {
+        width: 20px;
+        height: 20px;
+        left: 3px !important;
+    }
+
+    .CustomPrevArrow img {
+        width: 7px;
+        height: 9px;
+    }
+}
