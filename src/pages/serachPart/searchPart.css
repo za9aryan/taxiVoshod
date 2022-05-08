@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato&display=swap');
+
 .searchPart_main {
     position: absolute;
     width: 100vw;
@@ -126,9 +128,6 @@
     margin-bottom: 0;
 }
 
-/* .searchPart_input_list::-webkit-scrollbar {
-    width: 0;
-} */
 
 .searchPart_button_part {
     z-index: 11;

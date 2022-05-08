@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato&display=swap');
+
 .menuWithBar_main {
     position: fixed;
     top: 0;
@@ -113,7 +115,7 @@
     }
 }
 
-@media (max-width: 300px) {
+@media (max-width: 400px) {
     .menuWithBar_list_wrapper {
         border-radius: 0;
     }
