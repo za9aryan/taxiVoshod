@@ -54,7 +54,7 @@ const SearchPart = () => {
     const renderList = ({ name }) => {
         return (
             <div key={name} onClick={() => handleSelect(name)} className="searchPart_input_list_item">
-                <img src={selected === name ? selectedellipse : ellipse} />
+                <img src={selected === name ? selectedellipse : ellipse} alt="ellipse" />
                 <h4>{name}</h4>
             </div>
         )
@@ -79,10 +79,10 @@ const SearchPart = () => {
                 {open &&
                     <div style={{ paddingTop: open && "25px", paddingBottom: open && "25px" }} className="searchPart_input_wrapper">
                         <div className="searchPart_input_list">
-                            {searchData.map(renderList)}
+                            {searchData?.map(renderList)}
                             {searchData.length === 0 && (
                                 <div className="searchPart_input_list_item">
-                                    <img style={{ visibility: "hidden" }} src={ellipse} />
+                                    <img style={{ visibility: "hidden" }} src={ellipse} alt="ellipse" />
                                     <h4>Нет машин для показа!</h4>
                                 </div>
                             )}
