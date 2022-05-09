@@ -49,7 +49,7 @@ const initialState = {
         logout: {},
         list: []
     },
-    carDamage: fakeCarDamageData
+    carDamage: []
 }
 
 const reducer = (state = initialState, action) => {
@@ -63,6 +63,11 @@ const reducer = (state = initialState, action) => {
             return {
                 ...state,
                 carDamage: action.carDamage
+            }
+        case ActionTypes.GET_CAR_DETAILS:
+            return {
+                ...state,
+                carDetails: action.carDetails
             }
         default:
             return state;

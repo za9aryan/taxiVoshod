@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import './carDetails.css'
 import { MenuWithBar, RangeSlider, SelectInput } from '../../components/Components';
 import fuel from '../../assets/img/fuel.png'
@@ -14,15 +14,28 @@ import snow from '../../assets/img/snow.png'
 import ellipse from '../../assets/img/Ellipse.png';
 import selectedellipse from '../../assets/img/selected.png'
 
-function CarDetails(props) {
 
+import { useDispatch, useSelector } from "react-redux";
+import { getCarDetailsEffect } from "../../redux/effects/Effect";
+
+function CarDetails(props) {
+    const dispatch = useDispatch()
+    const ourData = useSelector(state => state)
     const handlerBreadcrumbsClick = () => {
         console.log("Click handlerBreadcrumbsClick")
     }
 
+    console.log(ourData);
+
     const getSelected = (name) => {
         console.log(name);
     }
+
+    useEffect(() => {
+        dispatch(getCarDetailsEffect())
+    }, [])
+
+
 
 
     return (
