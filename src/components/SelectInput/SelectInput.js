@@ -5,7 +5,7 @@ import ellipse from '../../assets/img/Ellipse.png';
 import selectedellipse from '../../assets/img/selected.png'
 import './selectInput.css'
 
-const SelectInput = ({ data, getSelected = () => { }, type = "" }) => {
+const SelectInput = ({ data, getSelected = () => { }, type = "", status = null }) => {
 
     const [open, setOpen] = useState(false)
     const [input, setInput] = useState("")
@@ -13,9 +13,12 @@ const SelectInput = ({ data, getSelected = () => { }, type = "" }) => {
     const [searchData, setSearchData] = useState([...data])
     const [selected, setSelected] = useState()
 
+
     const openList = () => {
         setOpen(!open)
     }
+
+
 
     const handleSelect = async (name) => {
         setSelected(name)
@@ -23,6 +26,11 @@ const SelectInput = ({ data, getSelected = () => { }, type = "" }) => {
         setOpen(false)
         getSelected(name)
     }
+
+    useEffect(() => {
+        status === true ? setInput("Чистый") : status === false && setInput("Грязный")
+    }, [status])
+
 
 
     useEffect(() => {
@@ -59,7 +67,7 @@ const SelectInput = ({ data, getSelected = () => { }, type = "" }) => {
                         {searchData.length === 0 && (
                             <div className="selectInput_input_list_item">
                                 <img style={{ visibility: "hidden" }} src={ellipse} alt="ellipse" />
-                                <h4>Нет машин для показа!</h4>
+                                <h4>Ничего не найдено!</h4>
                             </div>
                         )}
                     </div>
