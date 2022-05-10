@@ -3,17 +3,17 @@ import LeftSideIcon from "./LeftSideIcon/LeftSideIcon";
 import FrontSideIcon from "./FrontSideIcon/FrontSideIcon";
 import RearSideIcon from "./RearSideIcon/RearSideIcon";
 
-const Icons = ({side, part}) => {
+const Icons = ({side}) => {
     return (
         <>
             {
                 side === "right" ?
-                    <RightSideIcon part={part}/> :
+                    <RightSideIcon side={side}/> :
                     side === "left" ?
-                        <LeftSideIcon part={part}/> :
+                        <LeftSideIcon side={side}/> :
                         side === "front" ?
-                            <FrontSideIcon part={part}/> :
-                            <RearSideIcon part={part}/>
+                            <FrontSideIcon side={side}/> :
+                            <RearSideIcon side={side}/>
             }
         </>
 
