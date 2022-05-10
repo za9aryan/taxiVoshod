@@ -1,4 +1,5 @@
 import { getMenuDataAction, getCarDamageAction, getCarDetailsAction } from "../actions/Action";
+import fakeData from "./fakeData"
 
 export const getMenuDataEffect = () => {
     return async (dispatch, getState, services) => {
@@ -17,9 +18,13 @@ export const getMenuDataEffect = () => {
 export const getCarDamageEffect = () => {
     return async (dispatch, getState, services) => {
         try {
-            const res = await services.getCarDamage()
-            console.log(res)
+            // Todo Remove The Fake Data And UnComment This Service
+            // const res = await services.getCarDamage()
+
+            const res = fakeData
+
             dispatch(getCarDamageAction(res.data))
+
         } catch (e) {
             console.log("getCarDamageEffect", e.message)
         }

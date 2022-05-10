@@ -1,49 +1,6 @@
 import ActionTypes from "../action.types";
 
 
-const fakeCarDamageData = {
-    "list": [
-        {
-            "id": 124,
-            "name": "Правое переднее крыло",
-            "descr": "",
-            "side": "right",
-            "part": ["fender_front", "fender_rear"], // fender - крыло, tire - шина, glass - стекло, door - дверь
-            "images": []
-        },
-        {
-            "id": 123,
-            "name": "Левое переднее крыло",
-            "descr": "Описание повреждения",
-            "side": "left",
-            "part": ["glass_front", "glass_rear"], // fender - крыло, tire - шина, glass - стекло, door - дверь
-            "images": [
-                {
-                    "img": "/images/img.jpg"
-                }
-            ]
-        },
-        {
-            "id": 126,
-            "name": "Правое переднее крыло",
-            "descr": "",
-            "side": "rear",
-            "part": "", // fender - крыло, tire - шина, glass - стекло, door - дверь
-            "images": []
-        },
-        {
-            "id": 125,
-            "name": "Водитеьское сиденье",
-            "descr": "Прожжено от сигареты",
-            "side": "front",
-            "part": ["bumper", "bonnet"],
-            "images": []
-        },
-
-    ]
-}
-
-
 const initialState = {
     menu: {
         logout: {},

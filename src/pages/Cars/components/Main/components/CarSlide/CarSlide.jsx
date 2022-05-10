@@ -1,6 +1,4 @@
 import { useEffect, useRef } from "react";
-import { useSelector, useDispatch } from "react-redux";
-import { getCarDamageEffect } from '../../../../../../redux/effects/Effect'
 import Slider from "react-slick";
 
 import "slick-carousel/slick/slick.css";
@@ -13,24 +11,20 @@ import CustomPrevArrow from "./components/CustomPrevArrow/CustomPrevArrow";
 import Icons from "./components/Icons/Icons";
 
 const CarSlide = ({ isActive = "right", setIsActive }) => {
-    const dispatch = useDispatch()
-    const { carDamage } = useSelector(state => state.reducer)
+
+    const isHaveDamage = ["right", "left", "rear", "front"]
 
     const SliderRef = useRef()
 
     const handlerSlideChange = (index) => {
-        setIsActive(carDamage.list[index].side)
+        setIsActive(isHaveDamage[index])
     }
 
-    useEffect(() => {
-        dispatch(getCarDamageEffect())
-    }, [])
 
     useEffect(() => {
-        if (!carDamage.list?.length) return
-        const idx = carDamage?.list?.findIndex(({ side }) => side === isActive)
+        const idx = isHaveDamage.findIndex((side) => side === isActive)
         SliderRef.current.slickGoTo(idx)
-    }, [isActive, carDamage.list])
+    }, [isActive, isHaveDamage])
 
     const settings = {
         dots: false,
@@ -48,9 +42,9 @@ const CarSlide = ({ isActive = "right", setIsActive }) => {
     return (
         <div className={c.CarSlideContainer}>
             <Slider ref={SliderRef} {...settings}>
-                {carDamage?.list?.map(({ side, part }, index) => (
-                    <div key={side + part + index} className={c.CarSlide}>
-                        <Icons side={side} part={part} />
+                {isHaveDamage.map((side, index) => (
+                    <div key={side + index} className={c.CarSlide}>
+                        <Icons side={side} />
                     </div>
                 ))}
             </Slider>
