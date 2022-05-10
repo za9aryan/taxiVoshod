@@ -21,7 +21,7 @@ function FuelPart(props) {
     const getValue = (e) => {
         const val = e.target.value
         dispatch(putCarDetailsAction({
-            fuel: fuel_type === "liter" ? val : val*80/500
+            fuel: fuel_type === "liter" ? val : val * 80 / 500
         }))
 
     }
@@ -45,7 +45,7 @@ function FuelPart(props) {
                 </div>
                 <div>
                     <div>
-                        <RangeSlider getValue={getValue} max={fuel_type === "liter" ? fuel_liter_limit : fuel_km_limit} value={fuel_type === "liter" ? fuel : fuel / fuel_liter_limit * fuel_km_limit} />
+                        {fuel_liter_limit && <RangeSlider getValue={getValue} max={fuel_type === "liter" ? Number(fuel_liter_limit) : Number(fuel_km_limit)} value={fuel_type === "liter" ? fuel : fuel / fuel_liter_limit * fuel_km_limit} />}
                     </div>
                     <div className="carDetails_fuel_range_part_min_max">
                         <div>
