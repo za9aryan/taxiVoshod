@@ -1,18 +1,23 @@
 import c from "./Description.module.css"
-import {useSelector} from "react-redux";
-
+import { useSelector, useDispatch } from "react-redux";
+import { getCarDamageEffect } from '../../../../../../redux/effects/Effect'
+import { useEffect } from "react";
 const Description = () => {
+    const dispatch = useDispatch()
+    const { carDamage } = useSelector(state => state.reducer)
 
-    const {carDamage} = useSelector(state => state.reducer)
+    useEffect(() => {
+        dispatch(getCarDamageEffect())
+    }, [])
 
     return (
         <div className={c.Description}>
             <div className={c.DescriptionItem}>
-                {carDamage.list.map(({side, part}, index) => {
-                    if(index < 2){
+                {carDamage?.list?.map(({ side, part }, index) => {
+                    if (index < 2) {
                         return (
                             <div key={side + part + index} className={c.TextContainer}>
-                                <div className={`${c.Circle} ${part.length ? c.IsDamage : ""}`}/>
+                                <div className={`${c.Circle} ${part.length ? c.IsDamage : ""}`} />
                                 <p className={c.Text}>{part.length ? "Есть" : "Нет"} повреждения</p>
                             </div>
                         )
@@ -21,11 +26,11 @@ const Description = () => {
                 })}
             </div>
             <div className={c.DescriptionItem}>
-                {carDamage.list.map(({side, part}, index) => {
-                    if(index > 1){
+                {carDamage?.list?.map(({ side, part }, index) => {
+                    if (index > 1) {
                         return (
                             <div key={side + part + index} className={c.TextContainer}>
-                                <div className={`${c.Circle} ${part.length ? c.IsDamage : ""}`}/>
+                                <div className={`${c.Circle} ${part.length ? c.IsDamage : ""}`} />
                                 <p className={c.Text}>{part.length ? "Есть" : "Нет"} повреждения</p>
                             </div>
                         )

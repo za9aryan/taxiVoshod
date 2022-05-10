@@ -1,0 +1,305 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato&display=swap');
+
+* {
+    font-family: "Lato", sans-serif;
+}
+
+.carDetails_main {
+    padding-left: 30px;
+    padding-top: 36px;
+    padding-right: 30px;
+    margin-left: 88px;
+    display: grid;
+    grid-template-columns: 5fr 2fr;
+    /* min-height: 100vh; */
+    grid-column-gap: 30px;
+    padding-bottom: 30px;
+    background-color: #EDF2FF;
+}
+
+
+.carDetails_h3 {
+        margin-bottom: 23px;
+}
+
+.carDetails_fuel {
+    height: 127px;
+    background-color: white;
+    border-radius: 10px;
+    display: grid;
+    grid-template-columns: 0.5fr 1.3fr 0.7fr;
+    text-align: center;
+    align-items: center;
+    padding: 0 38px;
+}
+
+.carDetails_fuel_range_part_min_max {
+    font-size: 18px;
+    font-weight: 700;
+}
+
+.carDetails_fuel_fuel_part {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    height: 100%;
+    justify-content: space-evenly;
+}
+
+.carDetails_fuel_fuel_part p {
+    font-size: 18px;
+    font-weight: 700;
+}
+
+.carDetails_fuel_fuel_part img {
+    width: 32px;
+}
+
+.carDetails_fuel_range_part_radio_part {
+    display: flex;
+    justify-content: end;
+}
+
+.carDetails_fuel_range_part_radio_part_in_litr {
+    margin-right: 15px;
+    font-size: 18px;
+    font-weight: 400;
+    display: flex;
+    align-items: center;
+}
+
+.carDetails_fuel_range_part_radio_part_in_litr img {
+    margin-right: 5px;
+}
+
+.carDetails_fuel_range_part_radio_part_in_km {
+    font-size: 18px;
+    font-weight: 400;
+    display: flex;
+    align-items: center;
+}
+
+.carDetails_fuel_range_part_radio_part_in_km img {
+    margin-right: 5px;
+}
+
+.carDetails_fuel_range_part_min_max {
+    display: flex;
+    justify-content: space-between;
+}
+
+.css-eg0mwd-MuiSlider-thumb:hover, .css-eg0mwd-MuiSlider-thumb.Mui-focusVisible {
+    box-shadow: 0px 0px 6px 2px rgb(0 0 0 / 19%) !important;
+}
+
+.css-eg0mwd-MuiSlider-thumb {
+    border: 3px solid white;
+    box-shadow: 0px 0px 6px 2px rgb(0 0 0 / 19%);
+}
+
+.css-14pt78w-MuiSlider-rail {
+    color: gray;
+    box-shadow: inset 5px 5px 15px 5px rgba(0,0,0,0.19);
+}
+
+.carDetails_fuel_text_part h3 {
+    font-size: 38px;
+    font-weight: 700;
+}
+
+.carDetails_fuel_text_part h4 {
+    font-size: 22px;
+    font-weight: 400;
+}
+
+.carDetails_block3 {
+    display: flex;
+    justify-content: space-between;
+    margin: 30px 0;
+}
+
+.carDetails_block_probeg_input_part {
+    width: -webkit-fill-available;
+    margin: 0 10px;
+}
+
+.carDetails_block_probeg_input_part input {
+    height: 50px;
+    border-radius: 10px;
+    font-size: 18px;
+    font-weight: 400;
+    width: -webkit-fill-available;
+    padding: 10px;
+    text-align: center;
+ }
+
+.carDetails_block {
+    height: 163px;
+    width: 180px;
+    background-color: white;
+    border-radius: 10px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+
+.carDetails_block p {
+    text-align: center;
+    font-size: 18px;
+    font-weight: 700;
+}
+
+.carDetails_block img {
+    position: absolute;
+    top: -25px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+
+.carDetails_notepad {
+    /* height: 144px; */
+    background-color: white;
+    border-radius: 10px;
+    padding: 10px;
+}
+
+.carDetails_notepad_input textarea{
+    width: -webkit-fill-available;
+    margin: 10px;
+    height: 89px;
+    box-sizing: border-box;
+    border: 1px solid gray;
+    border-radius: 10px;
+    font-size: 18px;
+    padding: 10px;
+}
+
+.carDetails_notepad_title {
+    margin-left: 10px;
+    /* margin-top: 10px; */
+    font-size: 18px;
+    font-weight: 700;
+}
+
+.carDetails_button {
+    height: 80px;
+    border-radius: 10px;
+    background-color: #39456F4D;
+    margin-top: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+    font-weight: 700;
+    color: white;
+    cursor: pointer;
+}
+
+.carDetails_right {
+    width: 100%;
+    background-color: white;
+    border-radius: 10px;
+    position: relative;
+    padding-top: 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+.carDetails_right_front_wheel_head {
+    text-align: center;
+    margin-bottom: 15px;    
+}
+
+.carDetails_right_front_wheel_head p {
+    font-size: 18px;
+    font-weight: 700;
+}
+
+.carDetails_right_back_wheel {
+    margin-top: 25px;
+}
+
+.carDetails_right_back_wheel_head {
+    text-align: center;
+    margin-bottom: 15px;    
+}
+
+.carDetails_right_back_wheel_head p {
+    font-size: 18px;
+    font-weight: 700;
+}
+
+.carDetails_right_head_img {
+    position: absolute;
+    top: -25px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.carDetails_right_back_wheel_input_part input {
+    height: 50px;
+    border-radius: 10px;
+    font-size: 18px;
+    font-weight: 400;
+    width: -webkit-fill-available;
+    padding: 10px;
+    margin: 0 10px;
+    text-align: center;
+}
+
+.carDetails_right_back_wheel_input_part p {
+    font-size: 18px;
+    font-weight: 700;
+    text-align: center;
+}
+
+ .carDetails_right_front_wheel_input_part input {
+    height: 50px;
+    border-radius: 10px;
+    font-size: 18px;
+    font-weight: 400;
+    width: -webkit-fill-available;
+    padding: 10px;
+    margin: 0 10px;
+    text-align: center;
+}
+
+.carDetails_right_front_wheel_input_part p {
+    margin-bottom: 15px;
+    font-size: 18px;
+    font-weight: 700;
+    text-align: center;
+}
+
+
+.carDetails_right_front_wheel_search_part_selected {
+    display: flex;
+    align-items: center;
+    margin: 20px 55px;
+}
+
+.carDetails_right_front_wheel_search_part_selected p {
+    font-size: 16px;
+    font-weight: 700;
+    margin-left: 15px;
+    color: #9EABD8;
+}
+
+.carDetails_right_back_wheel_search_part_selected {
+    display: flex;
+    align-items: center;
+    margin: 20px 55px;
+}
+
+.carDetails_right_back_wheel_search_part_selected p {
+    font-size: 16px;
+    font-weight: 700;
+    margin-left: 15px;
+    color: #9EABD8;
+}
+
+
+
