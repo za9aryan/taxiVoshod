@@ -39,8 +39,8 @@ function FrontWheelBlock(props) {
             <div className="carDetails_right_front_wheel_search_part">
                 <SelectInput type="search" data={tiresData} getSelected={getSelected} />
                 <div className="carDetails_right_front_wheel_search_part_selected">
-                    <img src={tires[`${tire_front}`].is_winter ? snow : sun} />
-                    <p>{tires[`${tire_front}`].name}</p>
+                    <img src={tires?.[`${tire_front}`]?.is_winter ? snow : sun} />
+                    <p>{tires?.[`${tire_front}`]?.name}</p>
                 </div>
             </div>
             <div className="carDetails_right_front_wheel_input_part">

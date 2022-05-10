@@ -5,7 +5,7 @@ import Slider from '@mui/material/Slider';
 function RangeSlider({ max, value, getValue }) {
     return (
         <div>
-            <Slider sx={{ color: "#F5C257" }} defaultValue={0} onChange={getValue} value={value} max={max} aria-label="Default" valueLabelDisplay="auto" />
+            <Slider sx={{ color: "#F5C257" }} defaultValue={0} onChange={getValue} value={Number(value)} max={max} aria-label="Default" valueLabelDisplay="auto" />
         </div>
     );
 }
