@@ -1,6 +1,6 @@
 import {configureStore} from "@reduxjs/toolkit";
 import reducer from "./reducers/reducer";
-import ApiServices from "./services/ApiServices";
+import * as ApiServices from "./services/ApiServices";
 
 const store = configureStore({
     reducer: {reducer},

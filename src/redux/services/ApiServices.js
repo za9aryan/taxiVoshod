@@ -1,27 +1,15 @@
 import axios from "axios"
 
-const getMenuData = async () => {
+export const getMenuData = async () => {
     return await axios.get("https://mechanic.taxivoshod.ru/api/?page=menu")
 }
 
 
-const getCarDamage = async () => {
+export const getCarDamage = async () => {
     return await axios.get("https://mechanic.taxivoshod.ru/api/?page=damage")
 }
 
 
-const getCarDetails = async () => {
+export const getCarDetails = async () => {
     return await axios.get("https://mechanic.taxivoshod.ru/api/?page=details")
 }
-
-
-
-
-
-const ApiServices = {
-    getMenuData,
-    getCarDamage,
-    getCarDetails
-}
-
-export default ApiServices
