@@ -10,13 +10,18 @@ const getCarDamage = async () => {
 }
 
 
+const getCarDetails = async () => {
+    return await axios.get("https://mechanic.taxivoshod.ru/api/?page=details")
+}
+
 
 
 
 
 const ApiServices = {
     getMenuData,
-    getCarDamage
+    getCarDamage,
+    getCarDetails
 }
 
 export default ApiServices

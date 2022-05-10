@@ -1,29 +1,41 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import './carDetails.css'
 import { MenuWithBar, RangeSlider, SelectInput } from '../../components/Components';
-import fuel from '../../assets/img/fuel.png'
-import Breadcrumbs from './Breadcrumbs/Breadcrumbs'
-import block1 from '../../assets/img/block1.png'
-import block2 from '../../assets/img/block2.png'
-import block3 from '../../assets/img/block3.png'
+import { FuelPart, Blocks, ExtraNote, FrontWheelBlock, BackWheelBlock } from './components/CarDetailsComponents'
 import block4 from '../../assets/img/block4.png'
+import Breadcrumbs from './Breadcrumbs/Breadcrumbs'
+import { useDispatch, useSelector } from "react-redux";
+import { getCarDetailsEffect } from "../../redux/effects/Effect";
+
+
+import block2 from '../../assets/img/block2.png'
+import block1 from '../../assets/img/block1.png'
+import block3 from '../../assets/img/block3.png'
 import carFront from '../../assets/img/carFront.png'
 import carBack from '../../assets/img/carBack.png'
 import snow from '../../assets/img/snow.png'
-
+import fuel from '../../assets/img/fuel.png'
 import ellipse from '../../assets/img/Ellipse.png';
 import selectedellipse from '../../assets/img/selected.png'
 
+
 function CarDetails(props) {
+    const dispatch = useDispatch()
+    const ourData = useSelector(state => state.reducer.carDetails)
 
     const handlerBreadcrumbsClick = () => {
         console.log("Click handlerBreadcrumbsClick")
     }
 
+    console.log(ourData);
+
     const getSelected = (name) => {
         console.log(name);
     }
 
+    useEffect(() => {
+        dispatch(getCarDetailsEffect())
+    }, [])
 
     return (
         <div style={{ minHeight: "100vh", backgroundColor: "#EDF2FF" }}>
@@ -34,7 +46,8 @@ function CarDetails(props) {
                         <Breadcrumbs onClick={handlerBreadcrumbsClick} />
                         <h3 className={"carDetails_h3"}>ХАРАКТЕРИСТИКИ АВТОМОБИЛЯ</h3>
                     </div>
-                    <div className="carDetails_fuel">
+                    <FuelPart />
+                    {/* <div className="carDetails_fuel">
                         <div className="carDetails_fuel_fuel_part">
                             <p>Топливо</p>
                             <img src={fuel} alt="fuel" />
@@ -71,8 +84,9 @@ function CarDetails(props) {
                             <h4>ЛИТРОВ</h4>
                         </div>
 
-                    </div>
-                    <div className="carDetails_block3">
+                    </div> */}
+                    <Blocks />
+                    {/* <div className="carDetails_block3">
                         <div className="carDetails_block">
                             <img src={block1} alt="block1" />
                             <div>
@@ -100,22 +114,24 @@ function CarDetails(props) {
                                 <SelectInput data={[{ name: "Грязный" }, { name: "Чистый" }]} getSelected={getSelected} />
                             </div>
                         </div>
-                    </div>
-                    <div className="carDetails_notepad">
+                    </div> */}
+                    <ExtraNote text={ourData.comments} />
+                    {/* <div className="carDetails_notepad">
                         <div className="carDetails_notepad_title">
                             Дополнительные замечания:
                         </div>
                         <div className="carDetails_notepad_input">
                             <textarea rows="5" type="text" />
                         </div>
-                    </div>
+                    </div> */}
                     <div className="carDetails_button">
                         Далее
                     </div>
                 </div>
                 <div className="carDetails_right">
                     <img className="carDetails_right_head_img" src={block4} alt="block4" />
-                    <div className="carDetails_right_front_wheel">
+                    <FrontWheelBlock />
+                    {/* <div className="carDetails_right_front_wheel">
                         <div className="carDetails_right_front_wheel_head">
                             <img src={carFront} alt="carFront" />
                             <p>Передние шины</p>
@@ -133,8 +149,9 @@ function CarDetails(props) {
                             <p>Уровень протектора мм</p>
                             <input />
                         </div>
-                    </div>
-                    <div className="carDetails_right_back_wheel">
+                    </div> */}
+                    <BackWheelBlock />
+                    {/* <div className="carDetails_right_back_wheel">
                         <div className="carDetails_right_back_wheel_head">
                             <img src={carBack} alt="carBack" />
                             <p>Задние шины</p>
@@ -152,7 +169,10 @@ function CarDetails(props) {
                             <p>Уровень протектора мм</p>
                             <input />
                         </div>
-                    </div>
+                    </div> */}
+                </div>
+                <div className="hiddenButton">
+                    Далее
                 </div>
             </div>
         </div>
