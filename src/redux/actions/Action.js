@@ -15,3 +15,9 @@ export const getCarDetailsAction = (carDetails) => ({
     type: ActionTypes.GET_CAR_DETAILS,
     carDetails
 }) 
+
+
+export const putCarDetailsAction = (carDetails) => ({
+    type: ActionTypes.PUT_CAR_DETAILS,
+    carDetails
+})
