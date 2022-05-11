@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import './carDetails.css'
 import { MenuWithBar, RangeSlider, SelectInput } from '../../components/Components';
-import { FuelPart, Blocks, ExtraNote, FrontWheelBlock, BackWheelBlock } from './components/CarDetailsComponents'
+import { FuelPart, Blocks, ExtraNote, FrontWheelBlock, BackWheelBlock, TransitionModal } from './components/CarDetailsComponents'
 import block4 from '../../assets/img/block4.png'
 import Breadcrumbs from './Breadcrumbs/Breadcrumbs'
 import { useDispatch, useSelector } from "react-redux";
@@ -34,12 +34,17 @@ function CarDetails(props) {
         console.log(name);
     }
 
+    const handleNextClick = () => {
+
+    }
+
     useEffect(() => {
         dispatch(getCarDetailsEffect())
     }, [])
 
     return (
         <div style={{ minHeight: "100vh", backgroundColor: "#EDF2FF" }}>
+            <TransitionModal />
             <MenuWithBar />
             <div className="carDetails_main">
                 <div className="carDetails_left">
@@ -125,7 +130,7 @@ function CarDetails(props) {
                             <textarea rows="5" type="text" />
                         </div>
                     </div> */}
-                    <div className="carDetails_button">
+                    <div onClick={handleNextClick} className="carDetails_button">
                         Далее
                     </div>
                 </div>

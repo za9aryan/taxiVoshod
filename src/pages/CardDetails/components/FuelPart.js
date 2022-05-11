@@ -34,12 +34,12 @@ function FuelPart(props) {
             </div>
             <div className="carDetails_fuel_range_part">
                 <div className="carDetails_fuel_range_part_radio_part">
-                    <div className="carDetails_fuel_range_part_radio_part_in_litr">
-                        <img onClick={handleIconClick} src={fuel_type === "liter" ? selectedEllipse : ellipse} data="liter" alt="ellipse" />
+                    <div onClick={handleIconClick} data="liter" className="carDetails_fuel_range_part_radio_part_in_litr">
+                        <img src={fuel_type === "liter" ? selectedEllipse : ellipse} alt="ellipse" />
                                     В литрах
                                 </div>
-                    <div className="carDetails_fuel_range_part_radio_part_in_km">
-                        <img onClick={handleIconClick} src={fuel_type === "km" ? selectedEllipse : ellipse} data="km" alt="ellipse" />
+                    <div onClick={handleIconClick} data="km" className="carDetails_fuel_range_part_radio_part_in_km">
+                        <img src={fuel_type === "km" ? selectedEllipse : ellipse} alt="ellipse" />
                                     На км
                                 </div>
                 </div>
