@@ -45,7 +45,7 @@ function FuelPart(props) {
                 </div>
                 <div>
                     <div>
-                        {fuel_liter_limit && <RangeSlider getValue={getValue} max={fuel_type === "liter" ? Number(fuel_liter_limit) : Number(fuel_km_limit)} value={fuel_type === "liter" ? fuel : fuel / fuel_liter_limit * fuel_km_limit} />}
+                        {fuel_liter_limit && <RangeSlider getValue={getValue} max={fuel_type === "liter" ? Number(fuel_liter_limit) : Number(fuel_km_limit)} value={fuel_type === "liter" ? fuel.toFixed(0) : (fuel / fuel_liter_limit * fuel_km_limit).toFixed(0)} />}
                     </div>
                     <div className="carDetails_fuel_range_part_min_max">
                         <div>
@@ -60,7 +60,7 @@ function FuelPart(props) {
 
             </div>
             <div className="carDetails_fuel_text_part">
-                <h3>{fuel_type === "liter" ? fuel : (fuel / fuel_liter_limit * fuel_km_limit).toFixed(0)}</h3>
+                <h3>{fuel_type === "liter" ? fuel.toFixed(0) : (fuel / fuel_liter_limit * fuel_km_limit).toFixed(0)}</h3>
                 <h4> {fuel_type === "liter" ? "ЛИТРОВ" : "KM"}</h4>
             </div>
 

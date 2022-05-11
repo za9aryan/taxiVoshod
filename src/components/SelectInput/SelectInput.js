@@ -3,6 +3,8 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faAngleDown, faAngleUp } from '@fortawesome/free-solid-svg-icons'
 import ellipse from '../../assets/img/Ellipse.png';
 import selectedellipse from '../../assets/img/selected.png'
+import snow from '../../assets/img/snow.png'
+import sun from '../../assets/img/sun.png'
 import './selectInput.css'
 
 const SelectInput = ({ data, getSelected = () => { }, type = "", status = null }) => {
@@ -17,6 +19,10 @@ const SelectInput = ({ data, getSelected = () => { }, type = "", status = null }
     const openList = () => {
         setOpen(!open)
     }
+
+    useEffect(() => {
+        setSearchData([...data])
+    }, [])
 
 
 
@@ -45,12 +51,13 @@ const SelectInput = ({ data, getSelected = () => { }, type = "", status = null }
         if (searchData.length && input) {
             setOpen(true)
         }
+
     }, [input])
 
-    const renderList = ({ name }) => {
+    const renderList = ({ name, is_winter }) => {
         return (
             <div key={name} onClick={() => handleSelect(name)} className="selectInput_input_list_item">
-                {/* <img src={selected === name ? selectedellipse : ellipse} /> */}
+                {type === "search" && <img src={is_winter ? snow : sun} />}
                 <h4>{name}</h4>
             </div>
         )
@@ -58,7 +65,9 @@ const SelectInput = ({ data, getSelected = () => { }, type = "", status = null }
 
     return (
         <div className="selectInput_input_part">
-            <input disabled={type !== "search"} onChange={(e) => { setInput(e.target.value) }} value={input} placeholder="Выбрать" className="selectInput_input" />
+            <span onClick={openList}>
+                <input disabled={type !== "search"} onChange={(e) => { setInput(e.target.value) }} value={input} placeholder="Выбрать" className="selectInput_input" />
+            </span>
             <FontAwesomeIcon className="selectInput_arrow" onClick={openList} color={"white"} icon={!open ? faAngleDown : faAngleUp} />
             {open &&
                 <div style={{ paddingTop: open && "25px", paddingBottom: open && "25px" }} className="selectInput_input_wrapper">

@@ -37,7 +37,7 @@ function BackWheelBlock(props) {
                 <p>Задние шины</p>
             </div>
             <div className="carDetails_right_back_wheel_search_part">
-                <SelectInput type="search" data={tiresData} getSelected={getSelected} />
+                {tiresData.length > 0 && <SelectInput type="search" data={tiresData} getSelected={getSelected} />}
                 <div className="carDetails_right_back_wheel_search_part_selected">
                     <img src={tires?.[`${tire_rear}`]?.is_winter ? snow : sun} />
                     <p>{tires?.[`${tire_rear}`]?.name}</p>

@@ -17,14 +17,15 @@ import snow from '../../assets/img/snow.png'
 import fuel from '../../assets/img/fuel.png'
 import ellipse from '../../assets/img/Ellipse.png';
 import selectedellipse from '../../assets/img/selected.png'
-
+import { useNavigate } from "react-router-dom";
 
 function CarDetails(props) {
+    const navigate = useNavigate()
     const dispatch = useDispatch()
     const ourData = useSelector(state => state.reducer.carDetails)
 
     const handlerBreadcrumbsClick = () => {
-        console.log("Click handlerBreadcrumbsClick")
+        navigate(-1)
     }
 
     console.log(ourData);
