@@ -9,7 +9,7 @@ const RearSideIcon = ({side}) => {
     const {carDamage} = useSelector(state => state.reducer)
 
     const isHaveDamage = (key) => {
-        return carDamage.list.some((c) => c.side === side && key === c.part)
+        return carDamage.list.some((c) => (key === c.part && c.side === side) && !!(c.descr.length || c.images.length))
     }
 
     return (
