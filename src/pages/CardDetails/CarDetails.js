@@ -1,41 +1,34 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import './carDetails.css'
-import { MenuWithBar, RangeSlider, SelectInput } from '../../components/Components';
+import { MenuWithBar } from '../../components/Components';
 import { FuelPart, Blocks, ExtraNote, FrontWheelBlock, BackWheelBlock, TransitionModal } from './components/CarDetailsComponents'
-import block4 from '../../assets/img/block4.png'
-import Breadcrumbs from './Breadcrumbs/Breadcrumbs'
+import block4 from '../../assets/img/block4.png';
+import Breadcrumbs from './Breadcrumbs/Breadcrumbs';
 import { useDispatch, useSelector } from "react-redux";
 import { getCarDetailsEffect } from "../../redux/effects/Effect";
-
-
-import block2 from '../../assets/img/block2.png'
-import block1 from '../../assets/img/block1.png'
-import block3 from '../../assets/img/block3.png'
-import carFront from '../../assets/img/carFront.png'
-import carBack from '../../assets/img/carBack.png'
-import snow from '../../assets/img/snow.png'
-import fuel from '../../assets/img/fuel.png'
-import ellipse from '../../assets/img/Ellipse.png';
-import selectedellipse from '../../assets/img/selected.png'
+import { postCarDetails } from '../../redux/services/ApiServices'
 import { useNavigate } from "react-router-dom";
 
 function CarDetails(props) {
     const navigate = useNavigate()
     const dispatch = useDispatch()
+    const [showModal, setShowModal] = useState({ open: false, text: "" })
     const ourData = useSelector(state => state.reducer.carDetails)
 
     const handlerBreadcrumbsClick = () => {
         navigate(-1)
     }
 
-    console.log(ourData);
 
-    const getSelected = (name) => {
-        console.log(name);
-    }
+    // const getSelected = (name) => {
+    //     console.log(name);
+    // }
 
     const handleNextClick = () => {
-
+        const newObj = { ...ourData }
+        delete newObj.tires
+        postCarDetails(newObj).then(({ data }) => console.log(data))
+            .catch((e) => setShowModal({ open: true, text: e.message }))
     }
 
     useEffect(() => {
@@ -44,7 +37,7 @@ function CarDetails(props) {
 
     return (
         <div style={{ minHeight: "100vh", backgroundColor: "#EDF2FF" }}>
-            <TransitionModal />
+            <TransitionModal modal={showModal} />
             <MenuWithBar />
             <div className="carDetails_main">
                 <div className="carDetails_left">
@@ -177,7 +170,7 @@ function CarDetails(props) {
                         </div>
                     </div> */}
                 </div>
-                <div className="hiddenButton">
+                <div onClick={handleNextClick} className="hiddenButton">
                     Далее
                 </div>
             </div>
