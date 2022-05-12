@@ -29,6 +29,7 @@ function CarDetails(props) {
         delete newObj.tires
         postCarDetails(newObj).then(({ data }) => console.log(data))
             .catch((e) => setShowModal({ open: true, text: e.message }))
+        navigate('/driver-search')
     }
 
     useEffect(() => {
