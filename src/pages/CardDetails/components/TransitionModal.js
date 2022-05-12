@@ -32,8 +32,8 @@ const inputErrTextStyle = {
     marginTop: 0
 }
 
-const TransitionModal = () => {
-    const [open, setOpen] = React.useState(true);
+const TransitionModal = ({ modal }) => {
+    const [open, setOpen] = React.useState(modal.open);
     const handleOpen = () => setOpen(true);
     const handleClose = () => setOpen(false);
 
@@ -57,7 +57,7 @@ const TransitionModal = () => {
                             Ошибка
                         </Typography>
                         <Typography sx={inputErrTextStyle} id="transition-modal-description">
-                            текст ошибки
+                            {modal.text}
                         </Typography>
                         <div onClick={handleClose} className="modal_button">
                             закрыть
