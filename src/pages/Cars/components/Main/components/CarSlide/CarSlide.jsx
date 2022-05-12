@@ -1,4 +1,4 @@
-import { useEffect, useRef } from "react";
+import {useEffect, useRef} from "react";
 import Slider from "react-slick";
 
 import "slick-carousel/slick/slick.css";
@@ -8,21 +8,40 @@ import c from "./CarSlide.module.css"
 
 import CustomNextArrow from "./components/CustomNextArrow/CustomNextArrow";
 import CustomPrevArrow from "./components/CustomPrevArrow/CustomPrevArrow";
-import Icons from "./components/Icons/Icons";
+import RightSideIcon from "./components/Icons/RightSideIcon/RightSideIcon";
+import LeftSideIcon from "./components/Icons/LeftSideIcon/LeftSideIcon";
+import RearSideIcon from "./components/Icons/RearSideIcon/RearSideIcon";
+import FrontSideIcon from "./components/Icons/FrontSideIcon/FrontSideIcon";
 
-const CarSlide = ({ isActive = "right", setIsActive }) => {
+const CarSlide = ({isActive = "right", setIsActive}) => {
 
-    const isHaveDamage = ["right", "left", "rear", "front"]
+    const isHaveDamage = [
+        {
+            side: "right",
+            Component: RightSideIcon
+        },
+        {
+            side: "left",
+            Component: LeftSideIcon
+        },
+        {
+            side: "rear",
+            Component: RearSideIcon
+        },
+        {
+            side: "front",
+            Component: FrontSideIcon
+        }]
 
     const SliderRef = useRef()
 
     const handlerSlideChange = (index) => {
-        setIsActive(isHaveDamage[index])
+        setIsActive(isHaveDamage[index].side)
     }
 
 
     useEffect(() => {
-        const idx = isHaveDamage.findIndex((side) => side === isActive)
+        const idx = isHaveDamage.findIndex(({side}) => side === isActive)
         SliderRef.current.slickGoTo(idx)
     }, [isActive, isHaveDamage])
 
@@ -33,8 +52,8 @@ const CarSlide = ({ isActive = "right", setIsActive }) => {
         swipeToSlide: false,
         slidesToShow: 1,
         slidesToScroll: 1,
-        nextArrow: <CustomNextArrow />,
-        prevArrow: <CustomPrevArrow />,
+        nextArrow: <CustomNextArrow/>,
+        prevArrow: <CustomPrevArrow/>,
         beforeChange: (current, next) => handlerSlideChange(next)
     };
 
@@ -42,9 +61,9 @@ const CarSlide = ({ isActive = "right", setIsActive }) => {
     return (
         <div className={c.CarSlideContainer}>
             <Slider ref={SliderRef} {...settings}>
-                {isHaveDamage.map((side, index) => (
+                {isHaveDamage.map(({side, Component}, index) => (
                     <div key={side + index} className={c.CarSlide}>
-                        <Icons side={side} />
+                        <Component side={side}/>
                     </div>
                 ))}
             </Slider>
