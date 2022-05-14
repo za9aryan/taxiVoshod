@@ -5,30 +5,22 @@ import { faArrowRight } from '@fortawesome/free-solid-svg-icons'
 import exit from '../../assets/img/exit.png'
 import './menu.css'
 import 'animate.css';
-import {useDispatch, useSelector} from "react-redux";
-import {getMenuDataEffect} from "../../redux/effects/Effect";
+import { useDispatch, useSelector } from "react-redux";
+import { getMenuDataEffect } from "../../redux/effects/Effect";
 
 const Menu = () => {
-
+    const state = useSelector(state => state.reducer.menu)
+    const dispatch = useDispatch()
     const [open, setOpen] = useState(false)
-    const [data, setData] = useState()
+    // const [data, setData] = useState()
 
     const toggleOpen = () => {
         setOpen(!open)
     }
-
-    const getData = async () => {
-        const res = await fetch("https://mechanic.taxivoshod.ru/api/?page=menu")
-        const resData = await res.json()
-        setData(resData.list)
-    }
-
-    const dispatch = useDispatch()
-
     useEffect(() => {
+        if (state.list.length) return
+        console.log(state);
         dispatch(getMenuDataEffect())
-        if (data) return
-        getData()
     }, [])
 
     const renderLists = ({ title, url }) => {
@@ -52,7 +44,7 @@ const Menu = () => {
                 </div>
             </div>
             <div style={{ transform: open && "translateX(0%)" }} className="menu_list_wrapper">
-                {data?.map(renderLists)}
+                {state?.list?.map(renderLists)}
                 <Link onClick={toggleOpen} to={`/`} className={`${open && "animate__animated animate__fadeInUp"} list_exit`}>
                     <img style={{ marginRight: "5px" }} src={exit} alt="exit" /> Выход
                 </Link >

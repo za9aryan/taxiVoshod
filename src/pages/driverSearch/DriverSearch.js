@@ -19,10 +19,10 @@ function DriverSearch(props) {
 
 
     const getData = async () => {
-        // const res = await fetch("https://mechanic.taxivoshod.ru/api/?page=cars")
-        // const resData = await res.json()
-        // setData(resData.list)
-        // setSearchData(resData.list)
+        const res = await fetch("https://mechanic.taxivoshod.ru/api/?page=drivers")
+        const resData = await res.json()
+        setData(resData.list)
+        setSearchData(resData.list)
     }
 
     useEffect(() => {
@@ -83,7 +83,7 @@ function DriverSearch(props) {
                 Выберите водителя из списка
         </div>
             <div className="driverSearch_input_part">
-                <input onChange={(e) => { setInput(e.target.value) }} value={input} placeholder="Поиск" className="driverSearch_input" />
+                <input onClick={openList} onChange={(e) => { setInput(e.target.value) }} value={input} placeholder="Поиск" className="driverSearch_input" />
                 <FontAwesomeIcon className="driverSearch_arrow" onClick={openList} color={"white"} icon={!open ? faAngleDown : faAngleUp} />
                 {open &&
                     <div style={{ paddingTop: open && "25px", paddingBottom: open && "25px" }} className="driverSearch_input_wrapper">

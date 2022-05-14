@@ -12,12 +12,13 @@ const SearchPart = () => {
     const [input, setInput] = useState("")
     const [data, setData] = useState([])
     const [searchData, setSearchData] = useState([])
-    const [selected, setSelected] = useState()
+    const [selected, setSelected] = useState({})
 
 
     const getData = async () => {
         const res = await fetch("https://mechanic.taxivoshod.ru/api/?page=cars")
         const resData = await res.json()
+        console.log(resData);
         setData(resData.list)
         setSearchData(resData.list)
     }
@@ -44,24 +45,34 @@ const SearchPart = () => {
         setOpen(!open)
     }
 
-    const handleSelect = async (name) => {
-        setSelected(name)
+    const handleSelect = async (name, id) => {
+        setSelected({
+            name: name,
+            id: id
+        })
 
         await setInput(name)
         setOpen(false)
     }
 
-    const renderList = ({ name }) => {
+    const renderList = ({ name, id }) => {
         return (
-            <div key={name} onClick={() => handleSelect(name)} className="searchPart_input_list_item">
+            <div key={name} onClick={() => handleSelect(name, id)} className="searchPart_input_list_item">
                 <img src={selected === name ? selectedellipse : ellipse} alt="ellipse" />
                 <h4>{name}</h4>
             </div>
         )
     }
 
-    const handleNextButton = () => {
+    const handleNextButton = async () => {
         if (!selected) return
+        let formData = new FormData();
+        formData.append('car_id', selected.id);
+        const res = await fetch("https://taxivoshod.ru/api/?page=cars", {
+            method: "POST",
+            body: formData
+        })
+        const resData = await res.json()
         navigate('/damage')
     }
 
@@ -74,7 +85,7 @@ const SearchPart = () => {
                 Выберите автомобиль из списка
             </div>
             <div className="searchPart_input_part">
-                <input onChange={(e) => { setInput(e.target.value) }} value={input} placeholder="Поиск" className="searchPart_input" />
+                <input onClick={openList} onChange={(e) => { setInput(e.target.value) }} value={input} placeholder="Поиск" className="searchPart_input" />
                 <FontAwesomeIcon className="searchPart_arrow" onClick={openList} color={"white"} icon={!open ? faAngleDown : faAngleUp} />
                 {open &&
                     <div style={{ paddingTop: open && "25px", paddingBottom: open && "25px" }} className="searchPart_input_wrapper">
@@ -90,9 +101,9 @@ const SearchPart = () => {
                     </div>
                 }
             </div>
-            {selected && !open && <div className="searchPart_SelectedItem_part">
+            {selected?.name && !open && <div className="searchPart_SelectedItem_part">
                 <h5>Выбран автомобиль</h5>
-                <h3>{selected}</h3>
+                <h3>{selected.name}</h3>
             </div>}
             <div className="searchPart_button_part">
                 <div onClick={handleNextButton} style={{ backgroundColor: selected && "#F5C257" }} className="searchPart_button">

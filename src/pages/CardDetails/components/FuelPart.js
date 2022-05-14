@@ -13,6 +13,7 @@ function FuelPart(props) {
 
 
     const handleIconClick = (e) => {
+        if (e.target.getAttribute("data") === fuel_type) return
         dispatch(putCarDetailsAction({
             fuel_type: e.target.getAttribute("data")
         }))
@@ -21,9 +22,8 @@ function FuelPart(props) {
     const getValue = (e) => {
         const val = e.target.value
         dispatch(putCarDetailsAction({
-            fuel: fuel_type === "liter" ? val : val * 80 / 500
+            fuel: fuel_type === "liter" ? val : (val * 80 / 500)
         }))
-
     }
 
     return (
@@ -35,11 +35,11 @@ function FuelPart(props) {
             <div className="carDetails_fuel_range_part">
                 <div className="carDetails_fuel_range_part_radio_part">
                     <div onClick={handleIconClick} data="liter" className="carDetails_fuel_range_part_radio_part_in_litr">
-                        <img src={fuel_type === "liter" ? selectedEllipse : ellipse} alt="ellipse" />
+                        <img data="liter" src={fuel_type === "liter" ? selectedEllipse : ellipse} alt="ellipse" />
                                     В литрах
                                 </div>
                     <div onClick={handleIconClick} data="km" className="carDetails_fuel_range_part_radio_part_in_km">
-                        <img src={fuel_type === "km" ? selectedEllipse : ellipse} alt="ellipse" />
+                        <img data="km" src={fuel_type === "km" ? selectedEllipse : ellipse} alt="ellipse" />
                                     На км
                                 </div>
                 </div>

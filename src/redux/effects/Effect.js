@@ -5,10 +5,10 @@ export const getMenuDataEffect = () => {
     return async (dispatch, getState, services) => {
         try {
             const res = await services.getMenuData()
-            console.log(res.data, "inefffect");
             dispatch(getMenuDataAction(res.data))
         } catch (e) {
-            console.log(e.message)
+            const res = await services.getMenuData()
+            dispatch(getMenuDataAction(res.data))
         }
     }
 }

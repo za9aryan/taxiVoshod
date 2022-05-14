@@ -5,8 +5,12 @@ import { faArrowRight, faCircle } from '@fortawesome/free-solid-svg-icons'
 import exit from '../../assets/img/exit.png'
 import './menuWithBar.css'
 import 'animate.css';
+import { useDispatch, useSelector } from 'react-redux';
+import { getMenuDataEffect } from '../../redux/effects/Effect';
 
 const MenuWithBar = (props) => {
+    const state = useSelector(state => state.reducer.menu)
+    const dispatch = useDispatch()
     const [open, setOpen] = useState(false)
     const [data, setData] = useState()
 
@@ -14,15 +18,10 @@ const MenuWithBar = (props) => {
         setOpen(!open)
     }
 
-    const getData = async () => {
-        const res = await fetch("https://mechanic.taxivoshod.ru/api/?page=menu")
-        const resData = await res.json()
-        setData(resData.list)
-    }
 
     useEffect(() => {
-        if (data) return
-        getData()
+        if (state.list.length) return
+        dispatch(getMenuDataEffect())
     }, [])
 
     const renderLists = ({ title, url }) => {
@@ -46,8 +45,8 @@ const MenuWithBar = (props) => {
                 </div>
             </div>
             <div style={{ width: !open && "88px", borderRadius: !open && "0px" }} className="menuWithBar_list_wrapper">
-                {data?.map(renderLists)}
-                <Link style={{ borderRadius: !open && "0px" }} onClick={toggleOpen} to={`/`} className={`${open && ""} menuWithBar_list_exit`}>
+                {state?.list?.map(renderLists)}
+                <Link style={{ borderRadius: !open && "0px" }} onClick={toggleOpen} to={`${state.list.Logout || '/'}`} className={`${open && ""} menuWithBar_list_exit`}>
                     <img style={{ marginRight: "5px" }} src={exit} alt="exit" /> {open && "Выход"}
                 </Link >
             </div>
