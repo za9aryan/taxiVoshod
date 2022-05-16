@@ -74,8 +74,12 @@ const SearchPart = () => {
                 body: formData
             })
             const resData = await res.json()
-            console.log(resData);
-            navigate('/damage')
+            if (resData.success) {
+                navigate('/damage')
+            } else {
+                setShowModal({ open: true, text: resData.message })
+            }
+
         } catch (e) {
             setShowModal({ open: true, text: e.message })
         }
