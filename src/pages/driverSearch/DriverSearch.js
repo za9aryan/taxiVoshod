@@ -82,7 +82,7 @@ function DriverSearch(props) {
             const resData = await res.json()
             console.log(resData);
             if (resData.success) {
-                navigate('/damage')
+                navigate('/cooperation-type')
             } else {
                 setShowModal({ open: true, text: resData.message })
             }

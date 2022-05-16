@@ -4,7 +4,8 @@ import {
     SearchPart,
     Cars,
     CarDetails,
-    DriverSearch
+    DriverSearch,
+    CooperationType
 } from '../pages/Pages'
 
 const createRoutes = () => {
@@ -15,6 +16,7 @@ const createRoutes = () => {
             <Route path='/damage' element={<Cars />} />
             <Route path='/car-details' element={<CarDetails />} />
             <Route path='/driver-search' element={<DriverSearch />} />
+            <Route path='/cooperation-type' element={<CooperationType />} />
         </Routes>
     )
 }

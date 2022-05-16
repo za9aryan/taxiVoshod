@@ -22,7 +22,6 @@ export const getCarDamageEffect = () => {
             // const res = await services.getCarDamage()
 
             const res = fakeData
-
             dispatch(getCarDamageAction(res.data))
 
         } catch (e) {
