@@ -29,13 +29,17 @@ const inputErrTextStyle = {
     top: "50%",
     left: "50%",
     transform: "translate(-50%, -50%)",
-    marginTop: 0
+    marginTop: 0,
+    textAlign: "center"
 }
 
-const TransitionModal = ({ modal }) => {
+const TransitionModal = ({ modal, setClose }) => {
     const [open, setOpen] = React.useState(modal.open);
     const handleOpen = () => setOpen(true);
-    const handleClose = () => setOpen(false);
+    const handleClose = () => {
+        setOpen(false)
+        setClose()
+    };
 
     return (
         <div>
