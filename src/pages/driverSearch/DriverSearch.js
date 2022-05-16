@@ -4,9 +4,12 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faAngleDown, faAngleUp } from '@fortawesome/free-solid-svg-icons'
 import ellipse from '../../assets/img/Ellipse.png';
 import selectedellipse from '../../assets/img/selected.png'
-import './searchPart.css'
+import './driverSearch.css'
+import { MenuWithBar } from '../../components/Components';
+import Breadcrumbs from './Breadcrumbs/Breadcrumbs'
 
-const SearchPart = () => {
+function DriverSearch(props) {
+
     const navigate = useNavigate()
     const [open, setOpen] = useState(false)
     const [input, setInput] = useState("")
@@ -17,7 +20,7 @@ const SearchPart = () => {
 
 
     const getData = async () => {
-        const res = await fetch("https://mechanic.taxivoshod.ru/api/?page=cars")
+        const res = await fetch("https://mechanic.taxivoshod.ru/api/?page=drivers")
         const resData = await res.json()
         setData(resData.list)
         setSearchData(resData.list)
@@ -40,6 +43,8 @@ const SearchPart = () => {
             setOpen(true)
         }
     }, [input])
+
+
 
     const openList = () => {
         setOpen(!open)
@@ -69,54 +74,61 @@ const SearchPart = () => {
         try {
             let formData = new FormData();
             formData.append('driver_id', selected.id);
-            const res = await fetch("https://taxivoshod.ru/api/?page=cars", {
+            const res = await fetch("https://taxivoshod.ru/api/?page=drivers", {
                 method: "POST",
                 body: formData
             })
             const resData = await res.json()
             console.log(resData);
             navigate('/damage')
-        } catch (e) {
+        } catch(e) {
             setShowModal({ open: true, text: e.message })
         }
+        
+    }
+
+    const handlerBreadcrumbsClick = () => {
+        navigate(-1)
     }
 
     return (
-        <div className="searchPart_main">
-            <div className="searchPart_blur">
+        <div className="driverSearch_main">
+            <MenuWithBar />
+            <Breadcrumbs onClick={handlerBreadcrumbsClick} />
+            <div className="driverSearch_blur">
 
             </div>
-            <div className="searchPart_title">
-                Выберите автомобиль из списка
-            </div>
-            <div className="searchPart_input_part">
-                <input onClick={openList} onChange={(e) => { setInput(e.target.value) }} value={input} placeholder="Поиск" className="searchPart_input" />
-                <FontAwesomeIcon className="searchPart_arrow" onClick={openList} color={"white"} icon={!open ? faAngleDown : faAngleUp} />
+            <div className="driverSearch_title">
+                Выберите водителя из списка
+        </div>
+            <div className="driverSearch_input_part">
+                <input onClick={openList} onChange={(e) => { setInput(e.target.value) }} value={input} placeholder="Поиск" className="driverSearch_input" />
+                <FontAwesomeIcon className="driverSearch_arrow" onClick={openList} color={"white"} icon={!open ? faAngleDown : faAngleUp} />
                 {open &&
-                    <div style={{ paddingTop: open && "25px", paddingBottom: open && "25px" }} className="searchPart_input_wrapper">
-                        <div className="searchPart_input_list">
+                    <div style={{ paddingTop: open && "25px", paddingBottom: open && "25px" }} className="driverSearch_input_wrapper">
+                        <div className="driverSearch_input_list">
                             {searchData?.map(renderList)}
                             {searchData.length === 0 && (
-                                <div className="searchPart_input_list_item">
+                                <div className="driverSearch_input_list_item">
                                     <img style={{ visibility: "hidden" }} src={ellipse} alt="ellipse" />
-                                    <h4>Нет машин для показа!</h4>
+                                    <h4>Ничего не найдено!</h4>
                                 </div>
                             )}
                         </div>
                     </div>
                 }
             </div>
-            {selected?.name && !open && <div className="searchPart_SelectedItem_part">
-                <h5>Выбран автомобиль</h5>
+            {selected?.name && !open && <div className="driverSearch_SelectedItem_part">
+                <h5>Выбран водитель</h5>
                 <h3>{selected.name}</h3>
             </div>}
-            <div className="searchPart_button_part">
-                <div onClick={handleNextButton} style={{ backgroundColor: selected.name && "#F5C257" }} className="searchPart_button">
+            <div className="driverSearch_button_part">
+                <div onClick={handleNextButton} style={{ backgroundColor: selected.name && "#F5C257" }} className="driverSearch_button">
                     Далее
-                </div>
+            </div>
             </div>
         </div>
     );
-};
+}
 
-export default SearchPart;
+export default DriverSearch;

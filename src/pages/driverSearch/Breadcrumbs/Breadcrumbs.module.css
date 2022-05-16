@@ -1,0 +1,23 @@
+.Breadcrumbs {
+    width: 100%;
+}
+
+.Breadcrumbs div {
+    width: fit-content;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 19px;
+    margin-bottom: 23px;
+    position: absolute;
+    top: 20px;
+    left: 110px;
+    z-index: 10;
+    cursor: pointer;
+}
+
+.Breadcrumbs p {
+    font-size: 20px;
+    color: white;
+    line-height: 24px;
+}

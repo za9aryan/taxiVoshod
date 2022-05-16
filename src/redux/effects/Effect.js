@@ -5,10 +5,10 @@ export const getMenuDataEffect = () => {
     return async (dispatch, getState, services) => {
         try {
             const res = await services.getMenuData()
-            console.log(res.data, "inefffect");
             dispatch(getMenuDataAction(res.data))
         } catch (e) {
-            console.log(e.message)
+            const res = await services.getMenuData()
+            dispatch(getMenuDataAction(res.data))
         }
     }
 }
@@ -35,7 +35,6 @@ export const getCarDetailsEffect = () => {
     return async (dispatch, getState, services) => {
         try {
             const res = await services.getCarDetails()
-            console.log(res.data);
             dispatch(getCarDetailsAction(res.data))
         } catch (e) {
             console.log(e, "getCarDetailsEffect");
