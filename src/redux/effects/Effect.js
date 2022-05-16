@@ -1,5 +1,4 @@
 import { getMenuDataAction, getCarDamageAction, getCarDetailsAction } from "../actions/Action";
-import fakeData from "./fakeData"
 
 export const getMenuDataEffect = () => {
     return async (dispatch, getState, services) => {
