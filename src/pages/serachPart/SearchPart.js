@@ -13,12 +13,12 @@ const SearchPart = () => {
     const [data, setData] = useState([])
     const [searchData, setSearchData] = useState([])
     const [selected, setSelected] = useState({})
+    const [showModal, setShowModal] = useState({ open: false, text: "" })
 
 
     const getData = async () => {
         const res = await fetch("https://mechanic.taxivoshod.ru/api/?page=cars")
         const resData = await res.json()
-        console.log(resData);
         setData(resData.list)
         setSearchData(resData.list)
     }
@@ -65,15 +65,20 @@ const SearchPart = () => {
     }
 
     const handleNextButton = async () => {
-        if (!selected) return
-        let formData = new FormData();
-        formData.append('car_id', selected.id);
-        const res = await fetch("https://taxivoshod.ru/api/?page=cars", {
-            method: "POST",
-            body: formData
-        })
-        const resData = await res.json()
-        navigate('/damage')
+        if (!selected.name) return
+        try {
+            let formData = new FormData();
+            formData.append('driver_id', selected.id);
+            const res = await fetch("https://taxivoshod.ru/api/?page=cars", {
+                method: "POST",
+                body: formData
+            })
+            const resData = await res.json()
+            console.log(resData);
+            navigate('/damage')
+        } catch (e) {
+            setShowModal({ open: true, text: e.message })
+        }
     }
 
     return (
@@ -106,7 +111,7 @@ const SearchPart = () => {
                 <h3>{selected.name}</h3>
             </div>}
             <div className="searchPart_button_part">
-                <div onClick={handleNextButton} style={{ backgroundColor: selected && "#F5C257" }} className="searchPart_button">
+                <div onClick={handleNextButton} style={{ backgroundColor: selected.name && "#F5C257" }} className="searchPart_button">
                     Далее
                 </div>
             </div>

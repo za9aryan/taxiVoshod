@@ -15,7 +15,8 @@ function DriverSearch(props) {
     const [input, setInput] = useState("")
     const [data, setData] = useState([])
     const [searchData, setSearchData] = useState([])
-    const [selected, setSelected] = useState()
+    const [selected, setSelected] = useState({})
+    const [showModal, setShowModal] = useState({ open: false, text: "" })
 
 
     const getData = async () => {
@@ -43,29 +44,47 @@ function DriverSearch(props) {
         }
     }, [input])
 
+
+
     const openList = () => {
         setOpen(!open)
     }
 
-    const handleSelect = async (name) => {
-        setSelected(name)
+    const handleSelect = async (name, id) => {
+        setSelected({
+            name: name,
+            id: id
+        })
 
         await setInput(name)
         setOpen(false)
     }
 
-    const renderList = ({ name }) => {
+    const renderList = ({ name, id }) => {
         return (
-            <div key={name} onClick={() => handleSelect(name)} className="driverSearch_input_list_item">
+            <div key={name} onClick={() => handleSelect(name, id)} className="searchPart_input_list_item">
                 <img src={selected === name ? selectedellipse : ellipse} alt="ellipse" />
                 <h4>{name}</h4>
             </div>
         )
     }
 
-    const handleNextButton = () => {
-        if (!selected) return
-        navigate('/damage')
+    const handleNextButton = async () => {
+        if (!selected.name) return
+        try {
+            let formData = new FormData();
+            formData.append('driver_id', selected.id);
+            const res = await fetch("https://taxivoshod.ru/api/?page=drivers", {
+                method: "POST",
+                body: formData
+            })
+            const resData = await res.json()
+            console.log(resData);
+            navigate('/damage')
+        } catch(e) {
+            setShowModal({ open: true, text: e.message })
+        }
+        
     }
 
     const handlerBreadcrumbsClick = () => {
@@ -99,12 +118,12 @@ function DriverSearch(props) {
                     </div>
                 }
             </div>
-            {selected && !open && <div className="driverSearch_SelectedItem_part">
+            {selected?.name && !open && <div className="driverSearch_SelectedItem_part">
                 <h5>Выбран водитель</h5>
-                <h3>{selected}</h3>
+                <h3>{selected.name}</h3>
             </div>}
             <div className="driverSearch_button_part">
-                <div onClick={handleNextButton} style={{ backgroundColor: selected && "#F5C257" }} className="driverSearch_button">
+                <div onClick={handleNextButton} style={{ backgroundColor: selected.name && "#F5C257" }} className="driverSearch_button">
                     Далее
             </div>
             </div>

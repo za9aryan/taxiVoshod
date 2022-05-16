@@ -14,15 +14,27 @@ function FuelPart(props) {
 
     const handleIconClick = (e) => {
         if (e.target.getAttribute("data") === fuel_type) return
-        dispatch(putCarDetailsAction({
-            fuel_type: e.target.getAttribute("data")
-        }))
+        if(e.target.getAttribute("data") === "liter") {
+            return dispatch(putCarDetailsAction({
+                fuel: ((fuel * fuel_liter_limit) / fuel_km_limit),
+                fuel_type: e.target.getAttribute("data")
+            }))
+        }
+        if(e.target.getAttribute("data") === "km") {
+            return dispatch(putCarDetailsAction({
+                fuel: ((fuel * fuel_km_limit) / fuel_liter_limit),
+                fuel_type: e.target.getAttribute("data") 
+            }))
+        }
+        // dispatch(putCarDetailsAction({
+        //     fuel_type: e.target.getAttribute("data")
+        // }))
     }
 
     const getValue = (e) => {
         const val = e.target.value
         dispatch(putCarDetailsAction({
-            fuel: fuel_type === "liter" ? val : (val * 80 / 500)
+            fuel: val
         }))
     }
 
@@ -45,7 +57,7 @@ function FuelPart(props) {
                 </div>
                 <div>
                     <div>
-                        {fuel_liter_limit && <RangeSlider getValue={getValue} max={fuel_type === "liter" ? Number(fuel_liter_limit) : Number(fuel_km_limit)} value={fuel_type === "liter" ? fuel.toFixed(0) : (fuel / fuel_liter_limit * fuel_km_limit).toFixed(0)} />}
+                        {fuel_liter_limit && <RangeSlider getValue={getValue} max={fuel_type === "liter" ? Number(fuel_liter_limit) : Number(fuel_km_limit)} value={fuel.toFixed(0)} />}
                     </div>
                     <div className="carDetails_fuel_range_part_min_max">
                         <div>
@@ -60,7 +72,7 @@ function FuelPart(props) {
 
             </div>
             <div className="carDetails_fuel_text_part">
-                <h3>{fuel_type === "liter" ? fuel.toFixed(0) : (fuel / fuel_liter_limit * fuel_km_limit).toFixed(0)}</h3>
+                <h3>{fuel.toFixed(0)}</h3>
                 <h4> {fuel_type === "liter" ? "ЛИТРОВ" : "KM"}</h4>
             </div>
 

@@ -35,7 +35,6 @@ export const getCarDetailsEffect = () => {
     return async (dispatch, getState, services) => {
         try {
             const res = await services.getCarDetails()
-            console.log(res.data);
             dispatch(getCarDetailsAction(res.data))
         } catch (e) {
             console.log(e, "getCarDetailsEffect");
