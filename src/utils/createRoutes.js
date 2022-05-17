@@ -3,7 +3,8 @@ import {
     Start,
     SearchPart,
     Cars,
-    CarDetails
+    CarDetails,
+    DamageDetails
 } from '../pages/Pages'
 
 const createRoutes = () => {
@@ -12,6 +13,7 @@ const createRoutes = () => {
             <Route path='/' element={<Start />} />
             <Route path='/search' element={<SearchPart />} />
             <Route path='/damage' element={<Cars />} />
+            <Route path='/damage-details' element={<DamageDetails />} />
             <Route path='/car-details' element={<CarDetails />} />
         </Routes>
     )

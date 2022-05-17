@@ -1,0 +1,9 @@
+.carousel .control-dots .dot {
+    box-shadow: none;
+    background: #c4c4c4;
+    opacity: 1;
+}
+
+.carousel .control-dots .dot.selected, .carousel .control-dots .dot:hover {
+    background: #F5C257;
+}

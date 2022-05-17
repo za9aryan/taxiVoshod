@@ -1,0 +1,16 @@
+.sliderTitleWrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center
+}
+
+.sliderTitle {
+    font-size: 13px;
+    color: #2B334F;
+}
+
+.sliderCount {
+    color: #2B334F;
+    font-size: 20px;
+    margin-top: 2px;
+}
