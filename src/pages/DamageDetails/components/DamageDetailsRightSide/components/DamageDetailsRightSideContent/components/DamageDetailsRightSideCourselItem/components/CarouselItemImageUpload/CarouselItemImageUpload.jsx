@@ -4,7 +4,7 @@ import {Stack} from "@mui/material";
 import ImageUpload from "./components/ImageUpload/ImageUpload";
 import ImagesShow from "./components/ImagesShow/ImagesShow";
 
-const CarouselItemImageUpload = ({active, fileUpload, images}) => {
+const CarouselItemImageUpload = ({active, fileUpload, images, setImages}) => {
     return (
         <Stack
             style={{marginTop: '20px', marginBottom: '20px'}}
@@ -14,7 +14,7 @@ const CarouselItemImageUpload = ({active, fileUpload, images}) => {
         >
             <ImageUpload fileUpload={fileUpload} />
 
-            <ImagesShow images={images} active={active} />
+            <ImagesShow images={images} active={active} setImages={setImages} />
         </Stack>
     );
 };

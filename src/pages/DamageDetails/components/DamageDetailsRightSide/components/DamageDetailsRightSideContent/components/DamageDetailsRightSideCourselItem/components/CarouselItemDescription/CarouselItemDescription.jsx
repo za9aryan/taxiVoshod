@@ -1,10 +1,10 @@
 import React from 'react';
 import style from "../../DamageDetailsRightSideCarouselItem.module.css";
 
-const CarouselItemDescription = () => {
+const CarouselItemDescription = ({rows, placeholder}) => {
     return (
         <div>
-            <textarea rows={25} className={style.description} placeholder='Описание повреждения'></textarea>
+            <textarea rows={rows} className={style.description} placeholder={placeholder}></textarea>
         </div>
     );
 };

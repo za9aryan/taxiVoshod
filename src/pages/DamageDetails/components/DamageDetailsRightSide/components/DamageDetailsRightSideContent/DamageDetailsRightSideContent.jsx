@@ -75,7 +75,7 @@ const DamageDetailsRightSideContent = ({active, onclick}) => {
         <div className={style.sliderWrapper}>
             <Carousel showArrows={false} showStatus={false} selectedItem={active - 1} onChange={onclick}>
                 {DamageDetailsData.map((item, index) => {
-                    return <DamageDetailsRightSideCarouselItem key={active} active={active} item={item} fileUpload={fileUpload} images={images}/>
+                    return <DamageDetailsRightSideCarouselItem key={active} active={active} item={item} fileUpload={fileUpload} images={images} setImages={setImages}/>
                 })}
             </Carousel>
 

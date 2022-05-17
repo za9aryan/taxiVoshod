@@ -9,7 +9,13 @@
     overflow: auto;
 }
 
-.item {
+.backDrop {
+    background-color: rgba(43, 51, 79, 0.86) !important;
+    opacity: 0.86 !important;
+}
+
+.item,
+.btnItem {
     width: 100%;
     height: 70px;
 
@@ -56,4 +62,45 @@
     height: 19px;
     background: #F5C257;
     border-radius: 4px;
+}
+
+.closeIcon {
+    position: absolute;
+    right: -40px;
+    top: -12px;
+    cursor: pointer;
+}
+
+.prevIcon,
+.nextIcon {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.prevIcon {
+    left: -20px;
+}
+
+.nextIcon {
+    right: -20px;
+}
+
+.trashIcon {
+    position: absolute;
+    top: -20px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.modalInput {
+    border-radius: 10px;
+    border: 1px solid #C4C4C4;
+    outline: none;
+    width: 100%;
+    padding: 15px;
+}
+
+.modalInput.error {
+    border: 1px solid #FF4B4B;
 }
