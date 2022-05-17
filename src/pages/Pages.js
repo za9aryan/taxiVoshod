@@ -4,6 +4,7 @@ import CarDetails from "./CardDetails/CarDetails"
 import SearchPart from "./serachPart/SearchPart"
 import DriverSearch from "./driverSearch/DriverSearch"
 import CooperationType from './CooperationType/CooperationType'
+import Equipment from "./Equipment/Equipment"
 
 
 export {
@@ -12,5 +13,6 @@ export {
     CarDetails,
     SearchPart,
     DriverSearch,
-    CooperationType
+    CooperationType,
+    Equipment
 }

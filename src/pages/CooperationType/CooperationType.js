@@ -13,7 +13,6 @@ function CooperationType(props) {
     const navigate = useNavigate()
 
     const getData = async () => {
-        // https://taxivoshod.ru/api/?page=terms
         const res = await fetch("https://taxivoshod.ru/api/?page=terms")
         const resData = await res.json()
         console.log(resData);
