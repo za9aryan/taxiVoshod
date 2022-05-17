@@ -19,10 +19,8 @@ export const getCarDamageEffect = () => {
     return async (dispatch, getState, services) => {
         try {
             // Todo Remove The Fake Data And UnComment This Service
-            // const res = await services.getCarDamage()
-
-            const res = fakeData
-
+            const res = await services.getCarDamage()
+            if(typeof res.data === "string") return
             dispatch(getCarDamageAction(res.data))
 
         } catch (e) {

@@ -1,0 +1,12 @@
+.Box{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    font-size: 18px;
+    line-height: 22px;
+    font-weight: 700;
+    background-color: #FFF;
+    border-radius: 20px;
+    box-shadow: 10px 0 50px 10px rgba(0, 0, 0, 0.05);
+}

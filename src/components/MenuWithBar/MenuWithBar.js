@@ -20,7 +20,7 @@ const MenuWithBar = (props) => {
 
 
     useEffect(() => {
-        if (state.list.length) return
+        if (state?.list?.length) return
         dispatch(getMenuDataEffect())
     }, [])
 
@@ -36,9 +36,9 @@ const MenuWithBar = (props) => {
         <div className="menuWithBar_main">
             <div onClick={toggleOpen} className="menuWithBar_burger">
                 <div className="menuWithBar_burger_icon">
-                    <div className="menuWithBar_burger_icon_part"></div>
-                    <div className="menuWithBar_burger_icon_part"></div>
-                    <div className="menuWithBar_burger_icon_part"></div>
+                    <div className="menuWithBar_burger_icon_part" />
+                    <div className="menuWithBar_burger_icon_part" />
+                    <div className="menuWithBar_burger_icon_part" />
                 </div>
                 <div className="menuWithBar_burger_icon_part_text">
                     {open && "Меню"}
@@ -46,7 +46,7 @@ const MenuWithBar = (props) => {
             </div>
             <div style={{ width: !open && "88px", borderRadius: !open && "0px" }} className="menuWithBar_list_wrapper">
                 {state?.list?.map(renderLists)}
-                <Link style={{ borderRadius: !open && "0px" }} onClick={toggleOpen} to={`${state.list.Logout || '/'}`} className={`${open && ""} menuWithBar_list_exit`}>
+                <Link style={{ borderRadius: !open && "0px" }} onClick={toggleOpen} to={`${state.list?.Logout || '/'}`} className={`${open && ""} menuWithBar_list_exit`}>
                     <img style={{ marginRight: "5px" }} src={exit} alt="exit" /> {open && "Выход"}
                 </Link >
             </div>

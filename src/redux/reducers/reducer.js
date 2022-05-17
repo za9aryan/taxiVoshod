@@ -6,7 +6,9 @@ const initialState = {
         logout: {},
         list: []
     },
-    carDamage: [],
+    carDamage: {
+        list: []
+    },
     carDetails: []
 }
 

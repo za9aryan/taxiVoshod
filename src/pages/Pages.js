@@ -1,14 +1,6 @@
-import Start from "./Start/Start"
-import Cars from "./Cars/Cars"
-import CarDetails from "./CardDetails/CarDetails"
-import SearchPart from "./serachPart/SearchPart"
-import DriverSearch from "./driverSearch/DriverSearch"
-
-
-export {
-    Start,
-    Cars,
-    CarDetails,
-    SearchPart,
-    DriverSearch
-}
+export {default as Start} from "./Start/Start"
+export {default as Cars} from "./Cars/Cars"
+export {default as CarDetails} from "./CardDetails/CarDetails"
+export {default as SearchPart} from "./serachPart/SearchPart"
+export {default as DriverSearch} from "./driverSearch/DriverSearch"
+export {default as Information} from "./Information/Information"
