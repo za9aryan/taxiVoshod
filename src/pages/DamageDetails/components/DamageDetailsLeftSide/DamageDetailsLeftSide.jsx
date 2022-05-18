@@ -5,7 +5,7 @@ import DamageDetailsLeftSideList from "./components/DamageDetailsLeftSideList/Da
 import DamageDetailsLeftSideButton from "./components/DamageDetailsLeftSideList/components/DamageDetailsLeftSideButton";
 import DamageDetailsLeftSideModal from "./components/DamageDetailsLeftSideModal/DamageDetailsLeftSideModal";
 
-const DamageDetailsLeftSide = ({active, setActive}) => {
+const DamageDetailsLeftSide = ({active, setActive, carDamage}) => {
 
     const [open, setOpen] = React.useState(false);
     const handleOpen = () => setOpen(true);
@@ -13,7 +13,7 @@ const DamageDetailsLeftSide = ({active, setActive}) => {
 
     return (
         <div className={style.wrapper}>
-            <DamageDetailsLeftSideList active={active} setActive={setActive}/>
+            <DamageDetailsLeftSideList active={active} setActive={setActive} carDamage={carDamage}/>
 
             <DamageDetailsLeftSideButton handleOpen={handleOpen}/>
 

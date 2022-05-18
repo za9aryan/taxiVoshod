@@ -6,11 +6,11 @@ import prevArrow from "../../../../../../assets/img/car/prevArrow.svg";
 import DamageDetailsRightSideSliderTitle from "../DamageDetailsRightSideSliderTitle/DamageDetailsRightSideSliderTitle";
 import nextArrow from "../../../../../../assets/img/car/nextArrow.svg";
 
-const DamageDetailsRightSideHeader = ({previous, active, next, DamageDetailsData}) => {
+const DamageDetailsRightSideHeader = ({previous, active, next, carDamage}) => {
     return (
         <div className={style.sliderBtn}>
             <DamageDetailsRightSideSliderButtons onClick={previous} icon={prevArrow} iconTitle={'prev'}/>
-            <DamageDetailsRightSideSliderTitle active={active} DamageDetailsData={DamageDetailsData}/>
+            <DamageDetailsRightSideSliderTitle active={active} carDamage={carDamage}/>
             <DamageDetailsRightSideSliderButtons onClick={next} icon={nextArrow} iconTitle={'next'}/>
         </div>
     );

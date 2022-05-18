@@ -1,10 +1,9 @@
 import React from 'react';
-import style from "../../DamageDetailsRightSideCarouselItem.module.css";
 import {Stack} from "@mui/material";
 import ImageUpload from "./components/ImageUpload/ImageUpload";
 import ImagesShow from "./components/ImagesShow/ImagesShow";
 
-const CarouselItemImageUpload = ({active, fileUpload, images, setImages}) => {
+const CarouselItemImageUpload = ({form, setForm, fileUpload, item}) => {
     return (
         <Stack
             style={{marginTop: '20px', marginBottom: '20px'}}
@@ -12,9 +11,9 @@ const CarouselItemImageUpload = ({active, fileUpload, images, setImages}) => {
             alignItems="center"
             spacing={2}
         >
-            <ImageUpload fileUpload={fileUpload} />
+            <ImageUpload fileUpload={fileUpload} item={item} />
 
-            <ImagesShow images={images} active={active} setImages={setImages} />
+            <ImagesShow form={form} setForm={setForm} item={item}  />
         </Stack>
     );
 };

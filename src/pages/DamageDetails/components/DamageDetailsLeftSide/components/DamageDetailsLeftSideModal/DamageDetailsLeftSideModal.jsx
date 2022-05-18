@@ -26,8 +26,6 @@ const styles = {
     textAlign: 'center'
 };
 
-
-
 const imageTypeRegex = /image\/(png|jpg|jpeg)/gm;
 
 const DamageDetailsLeftSideModal = ({open, handleClose}) => {

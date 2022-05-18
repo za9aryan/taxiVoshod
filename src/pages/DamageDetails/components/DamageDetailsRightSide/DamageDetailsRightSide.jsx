@@ -6,18 +6,18 @@ import "react-responsive-carousel/lib/styles/carousel.min.css";
 import './carousel.css'
 import DamageDetailsRightSideContent from "./components/DamageDetailsRightSideContent/DamageDetailsRightSideContent";
 
-const DamageDetailsRightSide = ({active, setActive}) => {
+const DamageDetailsRightSide = ({active, setActive, carDamage}) => {
 
     const previous = () => {
         if (active < 2) {
-            setActive(DamageDetailsData.length);
+            setActive(carDamage.length);
         } else {
             setActive(active - 1);
         }
     }
 
     const next = () => {
-        if (active > DamageDetailsData.length - 1) {
+        if (active > carDamage.length - 1) {
             setActive(1)
         } else {
             setActive(active + 1);
@@ -30,7 +30,7 @@ const DamageDetailsRightSide = ({active, setActive}) => {
 
     return (active && <div className={style.container}>
         <DamageDetailsRightSideHeader
-            DamageDetailsData={DamageDetailsData}
+            carDamage={carDamage}
             active={active}
             previous={previous}
             next={next}
@@ -39,6 +39,7 @@ const DamageDetailsRightSide = ({active, setActive}) => {
         <DamageDetailsRightSideContent
             active={active}
             onclick={onclick}
+            carDamage={carDamage}
         />
     </div>);
 };

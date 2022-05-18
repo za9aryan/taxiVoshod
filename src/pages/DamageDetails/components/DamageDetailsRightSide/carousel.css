@@ -7,3 +7,9 @@
 .carousel .control-dots .dot.selected, .carousel .control-dots .dot:hover {
     background: #F5C257;
 }
+.carousel .control-dots{
+    width: 70%;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+}

@@ -1,13 +1,12 @@
 import React from 'react';
 import style from "../../DamageDetailsLeftSide.module.css";
-import {DamageDetailsData} from "../../../../../../utils/DamageDetailsData";
 import DamageDetailsLeftSideListItem from "./components/DamageDetailsLeftSideListItem";
 
-const DamageDetailsLeftSideList = ({active, setActive}) => {
+const DamageDetailsLeftSideList = ({active, setActive, carDamage}) => {
     return (
         <ul className={style.list}>
             {
-                DamageDetailsData.map(item => (
+                carDamage.map(item => (
                     <DamageDetailsLeftSideListItem key={item.id} item={item} active={active} setActive={setActive} />
                 ))
             }
