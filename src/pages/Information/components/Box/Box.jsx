@@ -5,7 +5,8 @@ const Box = ({style, children, className, p, bg}) => {
     return (
         <div className={`${c.Box} ${className}`} style={{
             padding: p,
-            backgroundColor: bg
+            backgroundColor: bg,
+            ...style
         }}>
             {children}
         </div>

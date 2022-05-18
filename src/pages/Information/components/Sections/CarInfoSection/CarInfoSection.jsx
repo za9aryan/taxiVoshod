@@ -1,22 +1,57 @@
 import React from 'react';
+
+import c from "./CarInfoSection.module.css"
+
 import Box from "../../Box/Box";
-import Container from "../../Container/Container";
+import Line from "../../Line/Line";
+import Edit from "../../Edit/Edit";
 
 import car from "../../../../../assets/img/information/car.svg"
 import profile from "../../../../../assets/img/information/profile.svg"
 import check from "../../../../../assets/img/information/check.svg"
-import Line from "../../Line/Line";
 
 const CarInfoSection = () => {
 
-
     return (
         <Box>
-            <Container imageSrc={car} property={"Автомобиль:"} value={"Hyundai Sonata ВМ 1753 СР"} />
-            <Line />
-            <Container imageSrc={profile} property={"Водитель:"} value={"Петров Иван Иванович 1161"} />
-            <Line />
-            <Container imageSrc={check} property={"Условия работы:"} value={"Аренда посуточная 1300р/день"} />
+            <div className={c.Container}>
+                <div className={c.Inner}>
+                    <div className={c.Image}>
+                        <img src={car} alt={"Car"}/>
+                    </div>
+                    <div className={c.Text}>
+                        <p className={c.Property}>Автомобиль:</p>
+                        <p className={c.Value}>Hyundai Sonata ВМ 1753 СР</p>
+                    </div>
+                </div>
+                <Edit/>
+            </div>
+            <Line/>
+            <div className={c.Container}>
+                <div className={c.Inner}>
+                    <div className={c.Image}>
+                        <img src={profile} alt={"profile"}/>
+                    </div>
+                    <div className={c.Text}>
+                        <p className={c.Property}>Водитель:</p>
+                        <p className={c.Value}>Петров Иван Иванович 1161</p>
+                    </div>
+                </div>
+                <Edit/>
+            </div>
+            <Line/>
+            <div className={c.Container}>
+                <div className={c.Inner}>
+                    <div className={c.Image}>
+                        <img src={check} alt={"check"}/>
+                    </div>
+                    <div className={c.Text}>
+                        <p className={c.Property}>Условия работы:</p>
+                        <p className={c.Value}>Аренда посуточная 1300р/день</p>
+                    </div>
+                </div>
+                <Edit/>
+            </div>
         </Box>
     );
 };

@@ -2,7 +2,7 @@ import React from 'react';
 import c from "./DamageSection.module.css"
 
 import Box from "../../Box/Box";
-import Container from "../../Container/Container";
+import Title from "./components/Title/Title";
 import Line from "../../Line/Line";
 import damage from "../../../../../assets/img/information/damage.svg"
 
@@ -24,11 +24,11 @@ const DamageSection = () => {
 
     return (
         <Box>
-            <Container imageSrc={damage} property={"ПОВРЕЖДЕНИЯ".toUpperCase()} edit={false}/>
+            <Title />
             <Line/>
             <DamageShow images={image} property={"Левое крыло:"} value={"Царапина"}/>
             <Line/>
-            <DamageShow images={image} property={"Капот:"} value={"Вмятина справа"}/>
+            <DamageShow images={image2} property={"Капот:"} value={"Вмятина справа"}/>
         </Box>
     );
 };

@@ -5,6 +5,7 @@ import {MenuWithBar} from "../../components/Components";
 import * as Sections from "./components/Sections/Sections"
 
 import c from "./Information.module.css"
+import Button from "./components/Buttons/Button";
 
 const Information = () => {
     return (
@@ -19,6 +20,10 @@ const Information = () => {
                     <Sections.PriceSection />
                     <Sections.DamageSection />
                     <Sections.CharacteristicSection />
+                    <Sections.AdvancedSection />
+                    <Sections.TableSection />
+                    <Sections.ViolationSection />
+                    <Button />
                 </section>
             </div>
         </>

@@ -9,12 +9,11 @@
     justify-content: space-between;
 }
 
-.Inner {
+.Inner{
     display: flex;
     align-items: center;
-    justify-content: flex-start;
-    flex-wrap: wrap;
-    margin-right: 5px;
+    justify-content: center;
+    gap: 17px;
 }
 
 .Image{
@@ -23,7 +22,6 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-right: 17px;
 }
 
 .Image img{
@@ -31,11 +29,19 @@
     max-height: 100%;
 }
 
+.Text{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    transition: .3s linear;
+}
+
 .Property{
     font-size: clamp(14px, 768px, min(2vw, 18px));
     line-height: 22px;
     min-width: 160px;
-    margin-right: 20px;
+    transition: .5s linear;
 }
 
 .Value{
@@ -43,14 +49,22 @@
     line-height: 24px;
 }
 
-@media screen and (max-width: 768px){
-    .Inner{
-        flex-direction: column;
-        align-items: flex-start;
+@media screen and (max-width: 768px) {
+    .Text{
+        justify-content: flex-start;
+        flex-wrap: wrap;
         gap: 5px;
     }
 
     .Property{
-        min-width: auto;
+        min-width: 130px;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .Inner{
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 5px;
     }
 }

@@ -21,26 +21,49 @@
     display: flex;
     align-items: flex-start;
     gap: 57px;
+    transition: .3s linear;
 }
 
 .Title p:first-child{
+    font-size: clamp(14px, 768px, min(2vw, 18px));
     width: 150px;
 }
 
 .Title p:last-child{
-    font-size: 20px;
+    font-size: clamp(16px, 768px, min(2vw, 20px));
     line-height: 24px;
 }
 
-.Images{
+.ImagesContainer{
     display: flex;
     align-items: center;
     justify-content: flex-start;
+    flex-wrap: wrap;
     gap: 30px;
 }
 
-.Images img{
-    width: 60px;
-    height: 60px;
+.Image{
+    width: clamp(40px, 480px, min(6vw, 60px));
+    height: clamp(40px, 480px, min(6vw, 60px));
+}
+
+.Image img{
+    max-width: 100%;
+    max-height: 100%;
     object-fit: cover;
+}
+
+@media screen and (max-width: 768px){
+    .Title{
+        gap: 5px;
+    }
+    .Title p:first-child{
+        width: 110px;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .Title{
+        flex-direction: column;
+    }
 }

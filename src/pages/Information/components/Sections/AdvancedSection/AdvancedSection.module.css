@@ -1,0 +1,15 @@
+.Container{
+    padding: clamp(14px, 480px, min(2vw, 19px))
+    clamp(21px, 480px, min(2vw, 41px))
+    clamp(14px, 480px, min(2vw, 19px))
+    clamp(20px, 480px, min(2vw, 30px));
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.Text{
+    font-size: clamp(16px, 768px, min(2vw, 20px));
+    line-height: 24px;
+}

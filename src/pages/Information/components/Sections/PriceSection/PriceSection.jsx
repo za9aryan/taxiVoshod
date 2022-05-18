@@ -1,8 +1,10 @@
 import React from 'react';
 
+import c from "./PriceSection.module.css";
+
 import Box from "../../Box/Box";
-import Container from "../../Container/Container";
 import Line from "../../Line/Line";
+import Edit from "../../Edit/Edit";
 
 import calendar from "../../../../../assets/img/information/calendar.svg";
 import price from "../../../../../assets/img/information/price.svg";
@@ -10,9 +12,31 @@ import price from "../../../../../assets/img/information/price.svg";
 const PriceSection = () => {
     return (
         <Box>
-            <Container imageSrc={calendar} property={"Срок аренды:"} value={"17 дней"} />
+            <div className={c.Container}>
+                <div className={c.Inner}>
+                    <div className={c.Image}>
+                        <img src={calendar} alt={"calendar"}/>
+                    </div>
+                    <div className={c.Text}>
+                        <p className={c.Property}>Срок аренды:</p>
+                        <p className={c.Value}>17 дней</p>
+                    </div>
+                </div>
+                <Edit/>
+            </div>
             <Line />
-            <Container imageSrc={price} property={"Стоимость:"} value={"22 100 р."} />
+            <div className={c.Container}>
+                <div className={c.Inner}>
+                    <div className={c.Image}>
+                        <img src={price} alt={"price"}/>
+                    </div>
+                    <div className={c.Text}>
+                        <p className={c.Property}>Стоимость:</p>
+                        <p className={c.Value}>22 100 р.</p>
+                    </div>
+                </div>
+                <Edit/>
+            </div>
         </Box>
     );
 };

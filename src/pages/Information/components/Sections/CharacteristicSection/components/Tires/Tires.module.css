@@ -1,0 +1,105 @@
+.Container{
+    padding: clamp(14px, 480px, min(2vw, 19px))
+    clamp(21px, 480px, min(2vw, 41px))
+    clamp(14px, 480px, min(2vw, 19px))
+    clamp(20px, 480px, min(2vw, 30px));
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 17px;
+}
+
+.Inner{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 17px;
+}
+
+.Image{
+    width: clamp(25px, 480px, min(3vw, 30px));
+    height: clamp(25px, 480px, min(3vw, 30px));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.Image img{
+    min-width: 100%;
+    min-height: 100%;
+}
+
+.Text{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    transition: .3s linear;
+}
+
+.Property{
+    font-size: clamp(14px, 768px, min(2vw, 18px));
+    line-height: 22px;
+    min-width: 160px;
+    transition: .5s linear;
+}
+
+.Value{
+    max-width: 298px;
+    font-size: clamp(16px, 768px, min(2vw, 20px));
+    line-height: 24px;
+}
+
+.Protector{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.Protector p {
+    min-width: 168px;
+    font-size: clamp(16px, 768px, min(2vw, 20px));
+    line-height: 24px;
+    transition: .3s linear;
+}
+
+
+
+@media screen and (max-width: 992px) {
+    .Text{
+        justify-content: flex-start;
+        flex-wrap: wrap;
+        gap: 5px;
+    }
+
+    .Property{
+        min-width: 130px;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .Inner{
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 5px;
+    }
+    .Protector p {
+        min-width: 98px;
+    }
+
+    .Property{
+        min-width: 110px;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .Protector p {
+        min-width: 78px;
+    }
+
+    .Property{
+        min-width: auto;
+    }
+}
+
