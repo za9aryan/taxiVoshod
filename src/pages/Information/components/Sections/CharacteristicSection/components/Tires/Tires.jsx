@@ -12,7 +12,7 @@ import sun from "../../../../../../../assets/img/information/sun.svg"
 
 const Tires = () => {
     return (
-        <div style={{minWidth: "400px"}}>
+        <div style={{minWidth: "320px", width: "100%"}}>
             <Title/>
             <div className={c.Container}>
                 <div className={c.Inner}>
