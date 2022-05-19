@@ -5,6 +5,7 @@ import { faAngleDown, faAngleUp } from '@fortawesome/free-solid-svg-icons'
 import ellipse from '../../assets/img/Ellipse.png';
 import selectedellipse from '../../assets/img/selected.png'
 import './searchPart.css'
+import TransitionModal from '../CardDetails/components/TransitionModal';
 
 const SearchPart = () => {
     const navigate = useNavigate()
@@ -68,14 +69,20 @@ const SearchPart = () => {
         if (!selected.name) return
         try {
             let formData = new FormData();
-            formData.append('driver_id', selected.id);
+            formData.append('car_id', selected.id);
             const res = await fetch("https://taxivoshod.ru/api/?page=cars", {
                 method: "POST",
                 body: formData
             })
             const resData = await res.json()
             console.log(resData);
-            navigate('/damage')
+            if (resData.success) {
+                navigate('/damage')
+            } else {
+                console.log("heree");
+                setShowModal({ open: true, text: resData.message })
+            }
+
         } catch (e) {
             setShowModal({ open: true, text: e.message })
         }
@@ -83,8 +90,9 @@ const SearchPart = () => {
 
     return (
         <div className="searchPart_main">
-            <div className="searchPart_blur">
 
+            {showModal?.open && <TransitionModal modal={showModal} setClose={() => { setShowModal({ open: false, message: "" }) }} />}
+            <div className="searchPart_blur">
             </div>
             <div className="searchPart_title">
                 Выберите автомобиль из списка

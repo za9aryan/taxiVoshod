@@ -7,6 +7,7 @@ import selectedellipse from '../../assets/img/selected.png'
 import './driverSearch.css'
 import { MenuWithBar } from '../../components/Components';
 import Breadcrumbs from './Breadcrumbs/Breadcrumbs'
+import TransitionModal from '../CardDetails/components/TransitionModal';
 
 function DriverSearch(props) {
 
@@ -80,11 +81,15 @@ function DriverSearch(props) {
             })
             const resData = await res.json()
             console.log(resData);
-            navigate('/damage')
-        } catch(e) {
+            if (resData.success) {
+                navigate('/cooperation-type')
+            } else {
+                setShowModal({ open: true, text: resData.message })
+            }
+        } catch (e) {
             setShowModal({ open: true, text: e.message })
         }
-        
+
     }
 
     const handlerBreadcrumbsClick = () => {
@@ -93,10 +98,10 @@ function DriverSearch(props) {
 
     return (
         <div className="driverSearch_main">
+            {showModal?.open && <TransitionModal modal={showModal} setClose={() => { setShowModal({ open: false, message: "" }) }} />}
             <MenuWithBar />
             <Breadcrumbs onClick={handlerBreadcrumbsClick} />
             <div className="driverSearch_blur">
-
             </div>
             <div className="driverSearch_title">
                 Выберите водителя из списка

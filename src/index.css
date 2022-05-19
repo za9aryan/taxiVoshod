@@ -18,6 +18,8 @@
   --SecondTap: #161C32;
   --SecondTapShadow: 0px 4px 0px #131724, inset 0px 4px 0px rgba(255, 255, 255, 0.25);
 
+  
+
   --NoActive: rgba(57, 69, 111, 0.3);
   /* White Design End */
 
@@ -82,6 +84,10 @@ button {
 button.primary {
   background-color: var(--Primary);
   box-shadow: var(--PrimaryShadow);
+}
+
+button.transparent {
+  background-color: var(--NoActive)
 }
 
 button.primary:hover, button.primary:active {

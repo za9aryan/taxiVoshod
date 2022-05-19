@@ -5,6 +5,9 @@ import {
     Cars,
     CarDetails,
     DriverSearch,
+    CooperationType,
+    Equipment,
+    SecondTerms
     Information
 } from '../pages/Pages'
 
@@ -15,7 +18,10 @@ const createRoutes = () => {
             <Route path='/search' element={<SearchPart />} />
             <Route path='/damage' element={<Cars />} />
             <Route path='/car-details' element={<CarDetails />} />
+            <Route path='/equipment' element={<Equipment />} />
             <Route path='/driver-search' element={<DriverSearch />} />
+            <Route path='/cooperation-type' element={<CooperationType />} />
+            <Route path='/second-terms' element={<SecondTerms />} />
             <Route path='/information' element={<Information />} />
         </Routes>
     )

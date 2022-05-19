@@ -27,11 +27,11 @@ function CarDetails(props) {
         newObj.interior_clean = newObj.interior_clean === "Чистый" ? true : false;
         // newObj.fuel = newObj.fuel_type === "liter" ? newObj.fuel : (newObj.fuel / newObj.fuel_liter_limit * newObj.fuel_km_limit).toFixed(0)
         postCarDetails(newObj)
-        .then(({ data }) => {
-            navigate('/driver-search')
-        })
-        .catch((e) => setShowModal({ open: true, text: e.message }))
-        
+            .then(({ data }) => {
+                navigate('/equipment')
+            })
+            .catch((e) => setShowModal({ open: true, text: e.message }))
+
     }
 
     useEffect(() => {
