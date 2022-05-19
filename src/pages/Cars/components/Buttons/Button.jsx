@@ -7,9 +7,13 @@ const Button = ({ children, className, onClick }) => {
         navigate('/car-details')
     }
 
+    const handleDamageDetailsClick = () => {
+        navigate(`/damage-details`)
+    }
+
     return (
         <div className={c.ButtonContainer}>
-            <button className={`${c.Button} primary`}>
+            <button className={`${c.Button} primary`} onClick={handleDamageDetailsClick}>
                 Повреждения
             </button>
             <button onClick={handleButtonCLick} className={`${c.Button} second`}>

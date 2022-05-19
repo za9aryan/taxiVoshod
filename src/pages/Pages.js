@@ -6,6 +6,7 @@ import DriverSearch from "./driverSearch/DriverSearch"
 import CooperationType from './CooperationType/CooperationType'
 import Equipment from "./Equipment/Equipment"
 import SecondTerms from './SecondTerms/SecondTerms'
+import DamageDetails from "./DamageDetails/DamageDetails";
 import Information from "./Information/Information"
 
 
@@ -18,5 +19,6 @@ export {
     CooperationType,
     Equipment,
     SecondTerms,
+    DamageDetails,
     Information
 }

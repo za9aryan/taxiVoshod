@@ -1,0 +1,63 @@
+.sliderItem {
+    width: 100%;
+    padding: 30px;
+    background-color: #fff;
+    border-radius: 20px;
+    box-shadow: 10px 0 50px 10px rgba(0, 0, 0, 0.05)
+}
+
+.title {
+    font-weight: 700;
+    font-size: 20px;
+    color: #000;
+    flex: 70%;
+    text-align: left;
+}
+
+.title input {
+    width: 100%;
+    font-size: 20px;
+    border: none;
+    font-weight: 700;
+    color: #000;
+    outline: none;
+}
+
+.inputfile {
+    display: none;
+}
+
+.previewImg {
+    width: 60px;
+    height: 60px;
+    border-radius: 6px;
+    border: 1px solid #C4C4C4;
+}
+
+.previewImg img {
+    width: 100%;
+    height: 100%;
+    cursor: pointer;
+}
+
+.inputfile + label {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 60px;
+    height: 60px;
+    background: #2B334F;
+    border-radius: 6px;
+    font-size: 10px;
+    color: white;
+    cursor: pointer;
+}
+
+.description {
+    width: 100%;
+    margin-top: 22px;
+    border-radius: 10px;
+    border: 1px solid #c4c4c4;
+    padding: 10px;
+}

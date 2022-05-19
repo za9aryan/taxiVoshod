@@ -75,7 +75,7 @@ function SecondTerms(props) {
             const resData = await res.json()
             console.log(resData);
             if (resData.success) {
-                navigate('/driver-search')
+                navigate('/information')
             } else {
                 setShowModal({ open: true, text: resData.message })
             }
