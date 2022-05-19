@@ -1,0 +1,7 @@
+export {default as CarInfoSection} from "./CarInfoSection/CarInfoSection"
+export {default as PriceSection} from "./PriceSection/PriceSection"
+export {default as DamageSection} from "./DamageSection/DamageSection"
+export {default as CharacteristicSection} from "./CharacteristicSection/CharacteristicSection"
+export {default as AdvancedSection} from "./AdvancedSection/AdvancedSection"
+export {default as TableSection} from "./TableSection/TableSection"
+export {default as ViolationSection} from "./ViolationSection/ViolationSection"

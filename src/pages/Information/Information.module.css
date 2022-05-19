@@ -1,0 +1,32 @@
+.MainContainer {
+    width: 100%;
+    height: 100%;
+    min-height: 100vh;
+    background-color: #EDF2FF;
+    padding: 36px 30px 30px 110px;
+}
+
+.MainContainer h3{
+    margin-bottom: 9px;
+}
+
+.MainContainer h3 + p{
+    font-size: 20px;
+    line-height: 24px;
+    margin-bottom: 59px;
+}
+
+.Sections{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+
+
+@media only screen and (max-width: 480px){
+    .MainContainer {
+        padding: 18px 15px 15px 95px;
+    }
+}

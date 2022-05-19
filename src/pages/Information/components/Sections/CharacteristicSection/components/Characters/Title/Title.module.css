@@ -1,0 +1,29 @@
+.Container{
+    padding: clamp(14px, 480px, min(2vw, 19px))
+    clamp(21px, 480px, min(2vw, 41px))
+    clamp(14px, 480px, min(2vw, 19px))
+    clamp(20px, 480px, min(2vw, 30px));
+    display: flex;
+    align-items: center;
+    gap: 17px;
+}
+
+.Image{
+    width: clamp(25px, 480px, min(3vw, 30px));
+    height: clamp(25px, 480px, min(3vw, 30px));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.Image img{
+    max-width: 100%;
+    max-height: 100%;
+}
+
+.Title{
+    font-size: clamp(14px, 768px, min(2vw, 18px));
+    line-height: 22px;
+    text-transform: uppercase;
+    transition: .5s linear;
+}

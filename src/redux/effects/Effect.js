@@ -17,7 +17,7 @@ export const getMenuDataEffect = () => {
 export const getCarDamageEffect = () => {
     return async (dispatch, getState, services) => {
         try {
-            
+
             const result = await services.getCarDamage()
             dispatch(getCarDamageAction(result.data))
 

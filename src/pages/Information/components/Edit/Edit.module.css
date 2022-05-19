@@ -1,0 +1,22 @@
+.Edit{
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: 20ms linear;
+    color: inherit;
+}
+
+.Edit:active{
+    outline: none;
+    transform: translateY(2px);
+}
+
+@media screen and (max-width: 768px){
+    .Edit svg{
+        width: 20px !important;
+        height: 20px !important;
+    }
+}

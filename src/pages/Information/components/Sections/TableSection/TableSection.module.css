@@ -1,0 +1,87 @@
+.Container{
+    width: 100%;
+    overflow: auto;
+}
+
+.Table {
+    border-spacing: 0;
+    min-width: 550px;
+    width: 100%;
+}
+
+.Table tr {
+    display: flex;
+    height: 100%;
+    background-color: #FFF;
+    box-shadow: 10px 0 50px 10px rgba(0, 0, 0, 0.05);
+    font-size: clamp(12px, 768px, min(1.2vw, 16px));
+    line-height: 19px;
+    margin-bottom: 15px;
+}
+
+.Table tr:first-child {
+    background-color: #7C8AA5;
+    color: #FFF;
+    font-size: clamp(12px, 768px, min(1.5vw, 18px));
+    line-height: 22px;
+}
+
+.Table tr:last-child {
+    margin-bottom: 0;
+}
+
+.Table td {
+    height: 70px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-left: 31px;
+    padding-right: 36px;
+    transition: .3s linear;
+}
+
+.Col1 {
+    flex: 1 2 291px;
+}
+
+.Col2 {
+    flex: 1 1 150px;
+}
+
+.Col2{
+    border-left: 1px solid #EDF2FF;
+    border-right: 1px solid #EDF2FF;
+}
+
+.Col3 {
+    flex: 1 1 299px;
+}
+
+.Col4 {
+    flex: 1 1 120px;
+}
+
+.Table tr:first-child .Col1 {
+    background-color: #7C8AA5;
+}
+
+.Table tr:first-child .Col2 {
+    border: none;
+    background-color: #656F87;
+}
+
+.Table tr:first-child .Col3 {
+    background-color: #333C51;
+    border-top-right-radius: 20px;
+}
+
+.Table tr:first-child .Col4 {
+    background-color: #7C8AA5;
+}
+
+@media screen and (max-width: 768px){
+    .Table td {
+        padding-left: 11px;
+        padding-right: 16px;
+    }
+}
