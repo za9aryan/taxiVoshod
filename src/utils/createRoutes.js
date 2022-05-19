@@ -7,7 +7,7 @@ import {
     DriverSearch,
     CooperationType,
     Equipment,
-    SecondTerms
+    SecondTerms,
     Information
 } from '../pages/Pages'
 
