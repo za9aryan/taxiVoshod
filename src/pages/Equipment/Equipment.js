@@ -8,7 +8,6 @@ import Button from './Buttons/Button'
 import left from '../../assets/img/vectorLeft.png'
 import right from '../../assets/img/vectorRight.png'
 import recycle from '../../assets/img/recycle.png'
-import AddModal from './AddModal'
 
 function Equipment(props) {
 
@@ -17,7 +16,6 @@ function Equipment(props) {
 
     ])
     const [showModal, setShowModal] = useState({ open: false, text: "" })
-    const [openAddModal, setOpenAddModal] = useState(false)
 
     const getData = async () => {
         const res = await fetch("https://taxivoshod.ru/api/?page=equipment")
@@ -57,7 +55,7 @@ function Equipment(props) {
         let index;
         const newData = JSON.parse(JSON.stringify(data))
         newData.forEach((el, i) => el.id === id ? (index = i) : false)
-        delete newData[index]
+        newData[index].count = 0
         setData(newData)
     }
 
@@ -84,7 +82,6 @@ function Equipment(props) {
 
 
     const handleNextButton = async () => {
-        // if (!selected) return
         try {
             let formData = new FormData();
             data.forEach(el => formData.append(`equipment[${el.id}]`, el.count));
@@ -111,14 +108,10 @@ function Equipment(props) {
         <div className="equipment_main">
 
             {showModal?.open && <TransitionModal modal={showModal} setClose={() => { setShowModal({ open: false, message: "" }) }} />}
-            {openAddModal && <AddModal modal={openAddModal} setClose={() => { setOpenAddModal(false) }} />}
             <MenuWithBar />
             <div className="equipment_breadcrumbs">
                 <Breadcrumbs onClick={handlerBreadcrumbsClick} />
                 <h3 className={"carDetails_h3"}>КОМПЛЕКТАЦИЯ</h3>
-            </div>
-            <div onClick={() => setOpenAddModal(true)} className="equipment_main_add_button">
-                <Button title="Добавить" color={"second"} />
             </div>
             <div className="equipment_content">
                 <div style={{ overflowX: "scroll", minWidth: "600px" }}>

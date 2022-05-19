@@ -6,7 +6,8 @@ import {
     CarDetails,
     DriverSearch,
     CooperationType,
-    Equipment
+    Equipment,
+    SecondTerms
 } from '../pages/Pages'
 
 const createRoutes = () => {
@@ -19,6 +20,7 @@ const createRoutes = () => {
             <Route path='/equipment' element={<Equipment />} />
             <Route path='/driver-search' element={<DriverSearch />} />
             <Route path='/cooperation-type' element={<CooperationType />} />
+            <Route path='/second-terms' element={<SecondTerms />} />
         </Routes>
     )
 }

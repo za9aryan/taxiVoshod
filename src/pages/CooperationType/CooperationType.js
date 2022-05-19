@@ -45,7 +45,7 @@ function CooperationType(props) {
             const resData = await res.json()
             console.log(resData);
             if (resData.success) {
-                navigate('/')
+                navigate('/second-terms')
             } else {
                 setShowModal({ open: true, text: resData.message })
             }
