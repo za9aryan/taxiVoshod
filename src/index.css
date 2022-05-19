@@ -53,6 +53,14 @@ code {
     monospace;
 }
 
+input,
+textarea,
+button,
+select,
+a {
+  -webkit-tap-highlight-color: rgba(0,0,0,0);
+}
+
 button {
   display: flex;
   align-items: center;
@@ -114,4 +122,8 @@ h1, h2, h3, h4, h5, h6 {
   font-size: 22px;
   font-weight: 700;
   line-height: 26px;
+}
+
+.customText{
+  color: #2B334F;
 }
