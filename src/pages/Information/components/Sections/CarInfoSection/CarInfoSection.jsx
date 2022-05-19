@@ -21,7 +21,7 @@ const CarInfoSection = () => {
                     </div>
                     <div className={c.Text}>
                         <p className={c.Property}>Автомобиль:</p>
-                        <p className={c.Value}>Hyundai Sonata ВМ 1753 СР</p>
+                        <p className={`${c.Value} customText`}>Hyundai Sonata ВМ 1753 СР</p>
                     </div>
                 </div>
                 <Edit/>
@@ -34,7 +34,7 @@ const CarInfoSection = () => {
                     </div>
                     <div className={c.Text}>
                         <p className={c.Property}>Водитель:</p>
-                        <p className={c.Value}>Петров Иван Иванович 1161</p>
+                        <p className={`${c.Value} customText`}>Петров Иван Иванович 1161</p>
                     </div>
                 </div>
                 <Edit/>
@@ -47,7 +47,7 @@ const CarInfoSection = () => {
                     </div>
                     <div className={c.Text}>
                         <p className={c.Property}>Условия работы:</p>
-                        <p className={c.Value}>Аренда посуточная 1300р/день</p>
+                        <p className={`${c.Value} customText`}>Аренда посуточная 1300р/день</p>
                     </div>
                 </div>
                 <Edit/>

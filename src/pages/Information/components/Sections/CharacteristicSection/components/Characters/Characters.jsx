@@ -20,8 +20,8 @@ const Characters = () => {
                         <img src={fuel} alt={"fuel"}/>
                     </div>
                     <div className={c.Text}>
-                        <p className={c.Property}>Автомобиль:</p>
-                        <p className={c.Value}>Hyundai Sonata ВМ 1753 СР</p>
+                        <p className={c.Property}>Топливо:</p>
+                        <p className={`${c.Value} customText`}>8 литров</p>
                     </div>
                 </div>
                 <Edit/>
@@ -33,8 +33,8 @@ const Characters = () => {
                         <img src={run} alt={"run"}/>
                     </div>
                     <div className={c.Text}>
-                        <p className={c.Property}>Автомобиль:</p>
-                        <p className={c.Value}>Hyundai Sonata ВМ 1753 СР</p>
+                        <p className={c.Property}>Пробег:</p>
+                        <p className={`${c.Value} customText`}>158 000 км</p>
                     </div>
                 </div>
                 <Edit/>
@@ -46,8 +46,8 @@ const Characters = () => {
                         <img src={cleanliness} alt={"cleanliness"}/>
                     </div>
                     <div className={c.Text}>
-                        <p className={c.Property}>Автомобиль:</p>
-                        <p className={c.Value}>Hyundai Sonata ВМ 1753 СР</p>
+                        <p className={c.Property}>Чистота кузова:</p>
+                        <p className={`${c.Value} customText`}>Чистый</p>
                     </div>
                 </div>
                 <Edit/>
@@ -59,8 +59,8 @@ const Characters = () => {
                         <img src={salon} alt={"salon"}/>
                     </div>
                     <div className={c.Text}>
-                        <p className={c.Property}>Автомобиль:</p>
-                        <p className={c.Value}>Hyundai Sonata ВМ 1753 СР</p>
+                        <p className={c.Property}>Чистота салона:</p>
+                        <p className={`${c.Value} customText`}>Грязный</p>
                     </div>
                 </div>
                 <Edit/>

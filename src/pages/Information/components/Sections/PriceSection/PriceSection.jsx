@@ -19,7 +19,7 @@ const PriceSection = () => {
                     </div>
                     <div className={c.Text}>
                         <p className={c.Property}>Срок аренды:</p>
-                        <p className={c.Value}>17 дней</p>
+                        <p className={`${c.Value} customText`}>17 дней</p>
                     </div>
                 </div>
                 <Edit/>
@@ -32,7 +32,7 @@ const PriceSection = () => {
                     </div>
                     <div className={c.Text}>
                         <p className={c.Property}>Стоимость:</p>
-                        <p className={c.Value}>22 100 р.</p>
+                        <p className={`${c.Value} customText`}>22 100 р.</p>
                     </div>
                 </div>
                 <Edit/>

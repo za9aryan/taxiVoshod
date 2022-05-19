@@ -24,11 +24,13 @@ const DamageSection = () => {
 
     return (
         <Box>
-            <Title />
-            <Line/>
-            <DamageShow images={image} property={"Левое крыло:"} value={"Царапина"}/>
-            <Line/>
-            <DamageShow images={image2} property={"Капот:"} value={"Вмятина справа"}/>
+            <div className={c.DamageSection}>
+                <Title />
+                <Line/>
+                <DamageShow images={image} property={"Левое крыло:"} value={"Царапина"}/>
+                <Line/>
+                <DamageShow images={image2} property={"Капот:"} value={"Вмятина справа"}/>
+            </div>
         </Box>
     );
 };

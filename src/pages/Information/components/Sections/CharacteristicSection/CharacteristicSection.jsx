@@ -12,7 +12,9 @@ const CharacteristicSection = () => {
         <Box>
             <Characters />
             <Line h={"10px"}/>
-            <Tires />
+            <div style={{overflow: "auto", width: "100%"}}>
+                <Tires />
+            </div>
         </Box>
     );
 };

@@ -12,7 +12,7 @@ import sun from "../../../../../../../assets/img/information/sun.svg"
 
 const Tires = () => {
     return (
-        <>
+        <div style={{minWidth: "400px"}}>
             <Title/>
             <div className={c.Container}>
                 <div className={c.Inner}>
@@ -25,13 +25,13 @@ const Tires = () => {
                             <div className={c.Image}>
                                 <img src={snow} alt={"snow"}/>
                             </div>
-                            <p className={c.Value}>245/50 r20 nokian hakkapeliitta r3 suv 106r xl </p>
+                            <p className={`${c.Value} customText`}>245/50 r20 nokian hakkapeliitta r3 suv 106r xl </p>
 
                         </div>
                     </div>
                 </div>
                 <div className={c.Protector}>
-                    <p>4мм</p>
+                    <p className={`customText`}>4мм</p>
                     <Edit/>
                 </div>
             </div>
@@ -47,17 +47,17 @@ const Tires = () => {
                             <div className={c.Image}>
                                 <img src={sun} alt={"sun"}/>
                             </div>
-                            <p className={c.Value}>245/50 r20 nokian hakkapeliitta r3 suv 106r xl </p>
+                            <p className={`${c.Value} customText`}>245/50 r20 nokian hakkapeliitta r3 suv 106r xl </p>
 
                         </div>
                     </div>
                 </div>
                 <div className={c.Protector}>
-                    <p>4мм</p>
+                    <p className={`customText`}>4мм</p>
                     <Edit/>
                 </div>
             </div>
-        </>
+        </div>
     );
 };
 

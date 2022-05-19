@@ -10,7 +10,7 @@ const Title = () => {
             <div className={c.Image}>
                 <img src={characters} alt={"damage"}/>
             </div>
-            <p className={c.Title}>ПОВРЕЖДЕНИЯ</p>
+            <p className={c.Title}>ХАРАКТЕРИСТИКИ АВТОМОБИЛЯ</p>
         </div>
     );
 };

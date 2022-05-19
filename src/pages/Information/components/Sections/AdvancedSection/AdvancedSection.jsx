@@ -12,7 +12,7 @@ const AdvancedSection = () => {
             <Title />
             <Line />
             <div className={c.Container}>
-                <p className={c.Text}>Порван чехол на заднем сидении салона</p>
+                <p className={`${c.Value} customText`}>Порван чехол на заднем сидении салона</p>
                 <Edit link={""}/>
             </div>
         </Box>

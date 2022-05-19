@@ -9,7 +9,7 @@
     justify-content: space-between;
 }
 
-.Text{
+.Value{
     font-size: clamp(16px, 768px, min(2vw, 20px));
     line-height: 24px;
 }

@@ -23,6 +23,8 @@
     gap: 30px;
 }
 
+
+
 @media only screen and (max-width: 480px){
     .MainContainer {
         padding: 18px 15px 15px 95px;

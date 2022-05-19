@@ -23,7 +23,7 @@ const ViolationSection = () => {
             </div>
             <Line />
             <div className={c.Container}>
-                <p className={c.Value}>
+                <p className={`${c.Value} customText`}>
                     Отсутствуют: запасное колесо, катализатор, зарядное устройство
                     Повреждён чехол заднего сидения
                     Грязный салон

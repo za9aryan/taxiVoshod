@@ -8,7 +8,7 @@ const DamageShow = ({property, value, images = [], link = ""}) => {
             <div className={c.Inner}>
                 <div className={c.Title}>
                     <p>{property}</p>
-                    <p>{value}</p>
+                    <p className={`customText`}>{value}</p>
                 </div>
                 <div className={c.ImagesContainer}>
                     {images.map((i, idx) => (
