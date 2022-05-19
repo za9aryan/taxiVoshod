@@ -1,0 +1,119 @@
+.equipment_main {
+    padding-left: 88px;
+    min-height: 100vh;
+    background-color: #EDF2FF;
+}
+
+.equipment_main_add_button{
+    padding-left: 15px;
+    width: 40%;
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding-right: 15px;
+    padding-top: 30px;
+    padding-bottom: 15px;
+}
+
+.equipment_breadcrumbs {
+    margin-left: 30px;
+    padding-top: 36px;
+}
+
+.vector {
+    cursor: pointer;
+}
+
+.vector:hover {
+    transform: scale(1.1);
+}
+
+.vector:active {
+    transform: scale(1);
+}
+
+.recycle_part {
+    height: 100%;
+    background-color: #7C8AA5; 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.recycle_part:hover {
+    background-color: #333C51;
+}
+
+
+.equipment_content{
+    min-height: calc(100vh - 251px);
+    /* display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center; */
+    margin-bottom: 28px;
+    padding: 0 15px;
+    overflow: auto;
+}
+
+.equipment_content_table_head {
+    display: grid;
+    grid-template-columns: 1fr 0.7fr 1fr 0.35fr;
+    height: 70px;
+    /* border: 1px solid; */
+    border-radius: 15px 15px 0 0;
+    background-color: #7C8AA5;
+}
+
+.equipment_content_table_head_row {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    font-size: 18px;
+    color: white;
+    font-weight: 400;
+}
+
+.complect {
+    background-color: #7C8AA5;
+    border-radius: 15px 0 0 0 ;
+}
+
+.quantity {
+    background-color: #656F87;
+}
+
+.forfeit {
+    background-color: #333C51;
+    border-radius: 0 15px 0 0;
+}
+
+.equipment_content_table_rows{
+    display: flex;
+    flex-direction: column;
+    overflow: auto;
+    height: calc(100vh - 326px);
+    margin-top: 5px;
+}
+
+.equipment_content_table_row {
+    min-height: 70px;
+    background-color: white;
+    margin: 10px 5px 0px 0;
+    display: grid;
+    grid-template-columns: 1fr 0.7fr 1fr 0.3fr;
+    text-align: center;
+    align-items: center;
+}
+
+
+.equipment_nextButton{
+    /* position: absolute;
+    bottom: 10px; */
+    width: 100%;
+    padding: 0 15px;
+    margin-bottom: 10px;
+    padding-bottom: 10px;
+}

@@ -1,0 +1,23 @@
+.ButtonContainer{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 35px;
+}
+
+.Button {
+    flex: 1 1 auto;
+    width: 100%;
+    /* max-width: 416px; */
+    min-height: 80px;
+}
+
+/* @media only screen and (max-width: 620px){
+    .ButtonContainer{
+        flex-direction: column;
+        gap: 15px;
+    }
+    .Button {
+        min-height: 40px;
+    }
+} */

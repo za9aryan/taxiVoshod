@@ -3,6 +3,9 @@ import Cars from "./Cars/Cars"
 import CarDetails from "./CardDetails/CarDetails"
 import SearchPart from "./serachPart/SearchPart"
 import DriverSearch from "./driverSearch/DriverSearch"
+import CooperationType from './CooperationType/CooperationType'
+import Equipment from "./Equipment/Equipment"
+import SecondTerms from './SecondTerms/SecondTerms'
 
 
 export {
@@ -10,5 +13,8 @@ export {
     Cars,
     CarDetails,
     SearchPart,
-    DriverSearch
+    DriverSearch,
+    CooperationType,
+    Equipment,
+    SecondTerms
 }

@@ -6,6 +6,8 @@ import Fade from '@mui/material/Fade';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 
+import './secondTerms.css'
+
 const style = {
     position: 'absolute',
     top: '50%',
@@ -30,16 +32,26 @@ const inputErrTextStyle = {
     left: "50%",
     transform: "translate(-50%, -50%)",
     marginTop: 0,
-    textAlign: "center"
+    textAlign: "center",
+    width: "100%"
 }
 
-const TransitionModal = ({ modal, setClose }) => {
-    const [open, setOpen] = React.useState(modal.open);
+const AddModal = ({ modal, setClose, type, getData, data }) => {
+    const [open, setOpen] = React.useState(modal);
+    const [value, setValue] = React.useState("")
     const handleOpen = () => setOpen(true);
     const handleClose = () => {
         setOpen(false)
+        getData(type, value)
         setClose()
+
     };
+
+    console.log(data);
+
+    const handleInputChange = (e) => {
+        setValue(e.target.value)
+    }
 
     return (
         <div>
@@ -58,13 +70,14 @@ const TransitionModal = ({ modal, setClose }) => {
                 <Fade in={open}>
                     <Box sx={style}>
                         <Typography sx={errTextStyle} id="transition-modal-title" variant="h6" component="h2">
-                            Ошибка
+                            {type === "price" ? "Стоимость" : "Срок аренды"}
                         </Typography>
                         <Typography sx={inputErrTextStyle} id="transition-modal-description">
-                            {modal.text}
+                            <p className="modal_p">{type === "price" ? "Введите стоимость" : "Введите количество дней"}</p>
+                            <input onChange={handleInputChange} value={value} type="number" className="modal_input" />
                         </Typography>
                         <div onClick={handleClose} className="modal_button">
-                            закрыть
+                            Сохранить
                         </div>
                     </Box>
                 </Fade>
@@ -73,4 +86,4 @@ const TransitionModal = ({ modal, setClose }) => {
     );
 }
 
-export default TransitionModal
+export default AddModal

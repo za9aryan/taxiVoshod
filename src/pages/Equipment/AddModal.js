@@ -33,8 +33,8 @@ const inputErrTextStyle = {
     textAlign: "center"
 }
 
-const TransitionModal = ({ modal, setClose }) => {
-    const [open, setOpen] = React.useState(modal.open);
+const AddModal = ({ modal, setClose }) => {
+    const [open, setOpen] = React.useState(modal);
     const handleOpen = () => setOpen(true);
     const handleClose = () => {
         setOpen(false)
@@ -58,13 +58,15 @@ const TransitionModal = ({ modal, setClose }) => {
                 <Fade in={open}>
                     <Box sx={style}>
                         <Typography sx={errTextStyle} id="transition-modal-title" variant="h6" component="h2">
-                            Ошибка
+                            Добавить
                         </Typography>
                         <Typography sx={inputErrTextStyle} id="transition-modal-description">
-                            {modal.text}
+                            {/* <Typography sx={errTextStyle} id="transition-modal-title" variant="h6" component="h2">
+                                Imya <input />
+                            </Typography> */}
                         </Typography>
                         <div onClick={handleClose} className="modal_button">
-                            закрыть
+                            Добавить
                         </div>
                     </Box>
                 </Fade>
@@ -73,4 +75,4 @@ const TransitionModal = ({ modal, setClose }) => {
     );
 }
 
-export default TransitionModal
+export default AddModal
