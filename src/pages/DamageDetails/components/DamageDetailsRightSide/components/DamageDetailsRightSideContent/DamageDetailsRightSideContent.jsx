@@ -57,6 +57,7 @@ const DamageDetailsRightSideContent = ({active, onclick, carDamage}) => {
     }
 
     useEffect(() => {
+        console.log(id, 'asd')
         const image = form.images[id] ? form.images[id] : [],
             fileReaders = [];
         let isCancel = false;

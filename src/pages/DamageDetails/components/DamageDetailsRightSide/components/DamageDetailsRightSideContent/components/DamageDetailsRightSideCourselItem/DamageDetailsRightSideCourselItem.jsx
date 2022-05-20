@@ -12,7 +12,7 @@ const DamageDetailsRightSideCarouselItem = ({active, item, fileUpload, form, set
 
                <CarouselItemDescription placeholder={'Описание повреждения'} rows={25} item={item} form={form} setForm={setForm}/>
 
-               <CarouselItemImageUpload setForm={setForm} item={item} form={form} fileUpload={fileUpload} />
+               <CarouselItemImageUpload setForm={setForm} item={item} form={form} fileUpload={fileUpload} active={active} />
             </div>
         </div>
     );
