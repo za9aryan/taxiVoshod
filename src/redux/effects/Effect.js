@@ -62,6 +62,9 @@ export const addCarDamageDetailsEffect = (body) => {
     return async (dispatch, getState, services) => {
         try {
             const res = await addCatDamageDetails(body)
+            if(res.data.success) {
+                dispatch(getCarDamageEffectApi());
+            }
             dispatch(addCatDamageDetailsAction(res.data))
         } catch (e) {
             console.log(e, "addCarDamageDetailsEffect");

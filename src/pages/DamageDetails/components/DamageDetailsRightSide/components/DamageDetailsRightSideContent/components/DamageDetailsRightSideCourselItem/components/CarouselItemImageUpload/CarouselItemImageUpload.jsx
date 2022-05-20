@@ -6,7 +6,7 @@ import ImagesShow from "./components/ImagesShow/ImagesShow";
 const CarouselItemImageUpload = ({form, setForm, fileUpload, item, active}) => {
     return (
         <Stack
-            style={{marginTop: '20px', marginBottom: '20px'}}
+            style={{marginTop: '20px', marginBottom: '10px'}}
             direction="row"
             alignItems="center"
             spacing={2}

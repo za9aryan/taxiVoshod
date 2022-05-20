@@ -26,6 +26,8 @@ const DamageDetails = () => {
         }
     }, [carDamage])
 
+    console.log(carDamage, 'aa')
+
     const handleBreadcrumbsClick = () => {
         navigate(-1)
     }

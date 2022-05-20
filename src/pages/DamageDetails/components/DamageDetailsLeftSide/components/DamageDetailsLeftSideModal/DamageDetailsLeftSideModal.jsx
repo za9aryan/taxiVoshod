@@ -8,6 +8,8 @@ import CarouselItemDescription
 import CarouselItemImageUpload
     from "../../../DamageDetailsRightSide/components/DamageDetailsRightSideContent/components/DamageDetailsRightSideCourselItem/components/CarouselItemImageUpload/CarouselItemImageUpload";
 import imageCompression from "browser-image-compression";
+import {addCarDamageDetailsEffect} from "../../../../../../redux/effects/Effect";
+import {useDispatch} from "react-redux";
 
 
 const styles = {
@@ -30,10 +32,16 @@ const imageTypeRegex = /image\/(png|jpg|jpeg)/gm;
 
 const DamageDetailsLeftSideModal = ({open, handleClose}) => {
 
+    const dispatch = useDispatch();
+
     const [imageFiles, setImageFiles] = useState([]);
     const [error, setError] = useState(false);
-    const [name, setName] = useState('');
-    const [images, setImages] = useState({});
+
+    const [form, setForm] = useState({
+        name: {},
+        description: {},
+        images: {}
+    });
 
     const fileUpload = async (e) => {
         const { files } = e.target;
@@ -57,7 +65,7 @@ const DamageDetailsLeftSideModal = ({open, handleClose}) => {
     }
 
     useEffect(() => {
-        const image = images[0] ? images[0].images : [],
+        const image = form.images[0] ? form.images[0] : [],
             fileReaders = [];
         let isCancel = false;
         if (imageFiles.length) {
@@ -70,10 +78,10 @@ const DamageDetailsLeftSideModal = ({open, handleClose}) => {
                         image.push(result);
                     }
                     if (!isCancel) {
-                        setImages(prevState => ({
+                        setForm(prevState => ({
                             ...prevState,
-                            0: {
-                                images: [...image]
+                            images: {
+                               0: [...image]
                             }
                         }));
                     }
@@ -92,9 +100,22 @@ const DamageDetailsLeftSideModal = ({open, handleClose}) => {
     }, [imageFiles]);
 
     const handleError = () => {
-        if (!name.length) {
+        if (!form.name[0].length) {
             setError(true);
+            return;
         }
+
+        const fd = new FormData;
+
+        Object.entries(form.name).forEach(([key, value]) => fd.append(`name[${key}]`, value));
+        Object.entries(form.description).forEach(([key, value]) => fd.append(`descr[${key}]`, value));
+        Object.entries(form.images).forEach(([key, value]) => fd.append(`images[${key}][]`, value));
+
+        for (var pair of fd.entries()) {
+            console.log(pair[0]+ ', ' + pair[1]);
+        }
+
+        dispatch(addCarDamageDetailsEffect(fd));
     }
 
     return (
@@ -122,16 +143,16 @@ const DamageDetailsLeftSideModal = ({open, handleClose}) => {
                     Введите название поврежденной детали
                 </Typography>
 
-                <input type="text" className={`${style.modalInput} ${error && style.error}`} value={name} onChange={(e) => setName(e.target.value)}/>
+                <input type="text" className={`${style.modalInput} ${error && style.error}`} value={form.name[0]} onChange={(e) => setForm({...form, name: {0: e.target.value}})}/>
 
                 <Typography id="modal-modal-description" fontSize='13px' sx={{ mt: '30px', mb: '20px' }}>
                     Введите описание повреждения
                 </Typography>
 
-                <CarouselItemDescription rows={10} placeholder={''} />
+                <CarouselItemDescription rows={10} placeholder={''} form={form} setForm={setForm} item={{name: '', descr: '', id: 0}} />
 
                 <Box mt='30px'>
-                    <CarouselItemImageUpload active={0} images={images} fileUpload={fileUpload} setImages={setImages}/>
+                    <CarouselItemImageUpload item={{name: '', descr: '', id: 0}} form={form} setForm={setForm} active={0} fileUpload={fileUpload} />
                 </Box>
 
                 {error && <Typography mt='20px' mb='15px' fontSize='18px' color='#FF4B4B' fontWeight='bold'>Некорректный ввод данных</Typography>}

@@ -8,8 +8,8 @@
     background: #F5C257;
 }
 .carousel .control-dots{
-    width: 70%;
-    bottom: 20px;
+    width: 50%;
+    bottom: 0;
     left: 50%;
     transform: translateX(-50%);
 }
