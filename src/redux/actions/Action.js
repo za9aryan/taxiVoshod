@@ -37,3 +37,14 @@ export const getCarAllInformationAction = (finish) => ({
     type: ActionTypes.GET_CAR_ALL_INFORMATION,
     finish
 })
+
+export const postCarAllInformationAction = (finish) => ({
+    type: ActionTypes.POST_CAR_ALL_INFORMATION,
+    finish
+})
+
+export const setSuccessCarAllInformationAction = (status) => ({
+    type: ActionTypes.SET_SUCCESS_CAR_ALL_INFORMATION,
+    status
+})
+
