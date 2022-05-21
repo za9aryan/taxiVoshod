@@ -6,9 +6,6 @@ const CarouselItemDescription = ({rows, placeholder, form, setForm, item}) => {
         <div>
             <textarea rows={rows} defaultValue={item ? item.descr : ''} value={form.description[item.id]} onChange={(e) => setForm({
                 ...form,
-                name: {
-                    [item.id]: form.name[item.id] || item.name
-                },
                 description: {
                     [item.id]: e.target.value
                 }

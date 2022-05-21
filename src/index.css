@@ -86,6 +86,12 @@ button.primary {
   box-shadow: var(--PrimaryShadow);
 }
 
+button.disabled {
+  background: rgba(57, 69, 111, 0.3);
+  user-select: none;
+  box-shadow: none;
+}
+
 button.transparent {
   background-color: var(--NoActive)
 }

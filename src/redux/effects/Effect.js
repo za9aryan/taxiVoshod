@@ -3,11 +3,10 @@ import {
     getMenuDataAction,
     getCarDamageAction,
     getCarDetailsAction,
-    getCarDamageActionApi,
     addCatDamageDetailsAction
 } from "../actions/Action";
 // import fakeData from "./fakeData"
-import {addCatDamageDetails, getCarDamage} from "../services/ApiServices";
+import {addCatDamageDetails} from "../services/ApiServices";
 
 export const getMenuDataEffect = () => {
     return async (dispatch, getState, services) => {
@@ -47,23 +46,12 @@ export const getCarDetailsEffect = () => {
     }
 }
 
-export const getCarDamageEffectApi = () => {
-    return async (dispatch, getState, services) => {
-        try {
-            const res = await getCarDamage()
-            dispatch(getCarDamageActionApi(res.data))
-        } catch (e) {
-            console.log(e, "getCarDamageEffectApi");
-        }
-    }
-}
-
 export const addCarDamageDetailsEffect = (body) => {
     return async (dispatch, getState, services) => {
         try {
             const res = await addCatDamageDetails(body)
             if(res.data.success) {
-                dispatch(getCarDamageEffectApi());
+                dispatch(getCarDamageEffect());
             }
             dispatch(addCatDamageDetailsAction(res.data))
         } catch (e) {

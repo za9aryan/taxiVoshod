@@ -34,7 +34,7 @@
     z-index: 1;
 }
 
-.item:hover, .item.active {
+.damage {
     border-left: 13px solid #2B334F;
 }
 

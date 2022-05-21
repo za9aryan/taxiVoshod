@@ -10,8 +10,6 @@ const initialState = {
         list: []
     },
     carDetails: [],
-    carDamage: [],
-    carDetails: [],
     success: false
 }
 
@@ -31,7 +29,7 @@ const reducer = (state = initialState, action) => {
         case ActionTypes.GET_CAR_DAMAGE_API:
             return {
                 ...state,
-                carDamage: action.carDamage.list
+                carDamage: action.carDamage
             }
         case ActionTypes.ADD_CAR_DAMAGE_DETAILS:
             return {

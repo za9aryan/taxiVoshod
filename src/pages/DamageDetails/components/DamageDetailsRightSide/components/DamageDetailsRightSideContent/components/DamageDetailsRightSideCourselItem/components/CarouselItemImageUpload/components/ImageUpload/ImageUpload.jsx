@@ -6,7 +6,7 @@ import DamageDetailsRightSideChooseAFileIcon
 const ImageUpload = ({fileUpload, active}) => {
     return (
         <div>
-            <input type="file" multiple name="file" id="file" className={style.inputfile} accept='image/*' onChange={(e) => fileUpload(e, active)}/>
+            <input type="file" name="file" id="file" className={style.inputfile} accept='image/*' onChange={(e) => fileUpload(e, active)}/>
             <label htmlFor="file">
                 <DamageDetailsRightSideChooseAFileIcon />
                 Загрузить фото

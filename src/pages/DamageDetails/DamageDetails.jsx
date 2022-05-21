@@ -7,29 +7,40 @@ import DamageDetailsLeftSide from "./components/DamageDetailsLeftSide/DamageDeta
 import DamageDetailsRightSide from "./components/DamageDetailsRightSide/DamageDetailsRightSide";
 import {Grid} from "@mui/material";
 import {useDispatch, useSelector} from "react-redux";
-import {getCarDamageEffectApi} from "../../redux/effects/Effect";
+import {getCarDamageEffect} from "../../redux/effects/Effect";
+import TransitionModal from "../CardDetails/components/TransitionModal";
 
 const DamageDetails = () => {
 
     const navigate = useNavigate();
     const dispatch = useDispatch();
-    const {carDamage} = useSelector(state => state.reducer);
+    const {carDamage, success} = useSelector(state => state.reducer);
 
     const [active, setActive] = useState();
     const [loading, setLoading] = useState(true)
+    const [showModal, setShowModal] = useState({open: false, text: 'Успешно добавлено'});
+
 
     useEffect(() => {
-        if (!carDamage.length) {
-            dispatch(getCarDamageEffectApi())
+        if (success) {
+            setShowModal({...showModal, open: true})
+        }
+    }, [success])
+
+    useEffect(() => {
+        if (!carDamage.list.length) {
+            dispatch(getCarDamageEffect())
         } else {
             setLoading(false)
         }
     }, [carDamage])
 
-    console.log(carDamage, 'aa')
-
     const handleBreadcrumbsClick = () => {
         navigate(-1)
+    }
+
+    const closeModal = () => {
+        setShowModal({...showModal, open: false});
     }
 
     return (
@@ -37,15 +48,16 @@ const DamageDetails = () => {
             <MenuWithBar />
             <div className={c.MainContainer}>
                 <Breadcrumbs onClick={handleBreadcrumbsClick}/>
+                <TransitionModal modal={showModal} success={true} setClose={closeModal} />
                 {loading ? (
                     <div className={c.Loading}/>
                 ) : (
                     <Grid container spacing={2}>
                         <Grid item xs={12} md={6}>
-                            <DamageDetailsLeftSide active={active} setActive={setActive} carDamage={carDamage} />
+                            <DamageDetailsLeftSide active={active} setActive={setActive} carDamage={carDamage.list} />
                         </Grid>
                         <Grid item xs={12} md={6}>
-                            <DamageDetailsRightSide active={active} setActive={setActive} carDamage={carDamage} />
+                            <DamageDetailsRightSide active={active} setActive={setActive} carDamage={carDamage.list} />
                         </Grid>
                     </Grid>
                 )}

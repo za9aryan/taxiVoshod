@@ -33,11 +33,8 @@ const inputErrTextStyle = {
     textAlign: "center"
 }
 
-const TransitionModal = ({ modal, setClose }) => {
-    const [open, setOpen] = React.useState(modal.open);
-    const handleOpen = () => setOpen(true);
+const TransitionModal = ({ modal, setClose, success = false }) => {
     const handleClose = () => {
-        setOpen(false)
         setClose()
     };
 
@@ -47,7 +44,7 @@ const TransitionModal = ({ modal, setClose }) => {
             <Modal
                 aria-labelledby="transition-modal-title"
                 aria-describedby="transition-modal-description"
-                open={open}
+                open={modal.open}
                 onClose={handleClose}
                 closeAfterTransition
                 BackdropComponent={Backdrop}
@@ -55,10 +52,10 @@ const TransitionModal = ({ modal, setClose }) => {
                     timeout: 500,
                 }}
             >
-                <Fade in={open}>
+                <Fade in={modal.open}>
                     <Box sx={style}>
                         <Typography sx={errTextStyle} id="transition-modal-title" variant="h6" component="h2">
-                            Ошибка
+                            {!success ? 'Ошибка' : 'Успех'}
                         </Typography>
                         <Typography sx={inputErrTextStyle} id="transition-modal-description">
                             {modal.text}
