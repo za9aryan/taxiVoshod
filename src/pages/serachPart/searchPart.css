@@ -82,7 +82,7 @@
 
 .searchPart_input_list {
     max-height: 40vh;
-    overflow-y: auto;
+    overflow-y: scroll;
     padding-right: 5px;
     margin-right: -15px;
 }
