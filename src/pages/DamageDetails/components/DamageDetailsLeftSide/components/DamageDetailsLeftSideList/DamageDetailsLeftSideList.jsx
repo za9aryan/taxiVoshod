@@ -6,8 +6,8 @@ const DamageDetailsLeftSideList = ({active, setActive, carDamage}) => {
     return (
         <ul className={style.list}>
             {
-                carDamage.map(item => (
-                    <DamageDetailsLeftSideListItem key={item.id} item={item} active={active} setActive={setActive} />
+                carDamage.map((item, idx) => (
+                    <DamageDetailsLeftSideListItem index={idx} key={item.id} item={item} active={active} setActive={setActive} />
                 ))
             }
         </ul>

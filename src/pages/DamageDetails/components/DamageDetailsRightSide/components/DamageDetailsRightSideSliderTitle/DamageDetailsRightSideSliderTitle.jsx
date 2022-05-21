@@ -6,7 +6,7 @@ const DamageDetailsRightSideSliderTitle = ({active, carDamage}) => {
         <div className={style.sliderTitleWrapper}>
             <span className={style.sliderTitle}>Повреждение</span>
             <div className={style.sliderCount}>
-                <span style={{fontWeight: '700'}}>{active}</span>
+                <span style={{fontWeight: '700'}}>{active + 1}</span>
                 /
                 <span style={{fontWeight: '400'}}>{carDamage.length}</span>
             </div>

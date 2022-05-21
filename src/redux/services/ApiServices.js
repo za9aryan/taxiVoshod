@@ -6,11 +6,11 @@ export const getMenuData = async () => {
 
 
 export const getCarDamage = async () => {
-    return await axios.get("https://mechanic.taxivoshod.ru/api/?page=damage")
+    return await axios.get("https://taxivoshod.ru/api/?page=damage")
 }
 
 export const addCatDamageDetails = async (body) => {
-    return await axios.post("https://taxivoshod.ru/api/?page=damage", {...body})
+    return await axios.post("https://taxivoshod.ru/api/?page=damage", body)
 }
 
 

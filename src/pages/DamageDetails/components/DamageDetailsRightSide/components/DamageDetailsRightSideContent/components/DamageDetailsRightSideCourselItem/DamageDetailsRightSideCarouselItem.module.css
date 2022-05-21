@@ -1,6 +1,6 @@
 .sliderItem {
     width: 100%;
-    padding: 30px;
+    padding: 30px 30px 40px;
     background-color: #fff;
     border-radius: 20px;
     box-shadow: 10px 0 50px 10px rgba(0, 0, 0, 0.05)
@@ -32,6 +32,23 @@
     height: 60px;
     border-radius: 6px;
     border: 1px solid #C4C4C4;
+    position: relative;
+}
+
+.previewImgUpload {
+    background: rgba(43, 51, 79, 0.87);
+    border-radius: 6px;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    font-size: 10px;
+    color: white;
+}
+
+.progressbar {
+    padding: 8px 13px 0;
 }
 
 .previewImg img {

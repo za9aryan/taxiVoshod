@@ -5,10 +5,21 @@ import DamageDetailsRightSidePenIcon from "../../../../../DamageDetailsRightSide
 import DamageDetailsRightSideTrashIcon
     from "../../../../../DamageDetailsRightSideIcons/DamageDetailsRightSideTrashIcon";
 import DamageDetailsRightSideXIcon from "../../../../../DamageDetailsRightSideIcons/DamageDetailsRightSideXIcon";
+import {useDispatch} from "react-redux";
+import {addCarDamageDetailsEffect} from "../../../../../../../../../../redux/effects/Effect";
 
 const CarouselItemHeader = ({item, form, setForm}) => {
 
+    const dispatch = useDispatch();
+
     const [edit, setEdit] = useState(false)
+
+    const trashDamageDetails = (id) => {
+        const fd = new FormData();
+        fd.append('delete[]', id);
+
+        dispatch(addCarDamageDetailsEffect(fd));
+    }
 
     return (<Stack
             direction="row"
@@ -26,7 +37,7 @@ const CarouselItemHeader = ({item, form, setForm}) => {
             </p>
             <span>
                 <span style={{marginRight: '20px', cursor: 'pointer'}} onClick={() => setEdit(!edit)}>{edit ? <DamageDetailsRightSideXIcon /> : <DamageDetailsRightSidePenIcon/>}</span>
-                <DamageDetailsRightSideTrashIcon/>
+                <DamageDetailsRightSideTrashIcon onClick={() => trashDamageDetails(item.id)}/>
             </span>
         </Stack>);
 };

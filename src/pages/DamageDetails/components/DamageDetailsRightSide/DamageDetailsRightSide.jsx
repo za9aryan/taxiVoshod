@@ -25,10 +25,13 @@ const DamageDetailsRightSide = ({active, setActive, carDamage}) => {
     }
 
     const onclick = (event) => {
-        setActive(event + 1)
+        setActive(event)
     }
 
-    return (active && <div className={style.container}>
+    console.log(active)
+
+    return (active !== undefined
+        && <div className={style.container}>
         <DamageDetailsRightSideHeader
             carDamage={carDamage}
             active={active}
