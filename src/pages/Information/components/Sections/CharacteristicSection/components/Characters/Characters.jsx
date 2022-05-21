@@ -1,4 +1,5 @@
 import React from 'react';
+import NumberFormat from 'react-number-format'
 import c from "./Characters.module.css"
 
 import Line from "../../../../Line/Line";
@@ -9,8 +10,16 @@ import fuel from "../../../../../../../assets/img/information/fuel.svg";
 import run from "../../../../../../../assets/img/information/run.svg";
 import cleanliness from "../../../../../../../assets/img/information/cleanliness.svg";
 import salon from "../../../../../../../assets/img/information/salon.svg";
+import {useSelector} from "react-redux";
 
 const Characters = () => {
+
+    const {finish} = useSelector(state => state.reducer)
+
+    const {
+        details
+    } = finish
+
     return (
         <>
             <Title />
@@ -21,10 +30,18 @@ const Characters = () => {
                     </div>
                     <div className={c.Text}>
                         <p className={c.Property}>Топливо:</p>
-                        <p className={`${c.Value} customText`}>8 литров</p>
+                        <p className={`${c.Value} customText`}>
+                            {
+                                details ? details.fuel : null
+                            }
+                            &nbsp;
+                            {
+                                details && details?.fuel_type === "liter" ? "литров" : "километров"
+                            }
+                        </p>
                     </div>
                 </div>
-                <Edit/>
+                <Edit link={"/car-details"}/>
             </div>
             <Line/>
             <div className={c.Container}>
@@ -34,10 +51,20 @@ const Characters = () => {
                     </div>
                     <div className={c.Text}>
                         <p className={c.Property}>Пробег:</p>
-                        <p className={`${c.Value} customText`}>158 000 км</p>
+                        <p className={`${c.Value} customText`}>
+                            {
+                                details ?
+                                    <NumberFormat
+                                        value={details.distance}
+                                        displayType={"text"}
+                                        thousandSeparator={" "}
+                                        suffix={" км"}
+                                    /> : null
+                            }
+                        </p>
                     </div>
                 </div>
-                <Edit/>
+                <Edit link={"/car-details"}/>
             </div>
             <Line/>
             <div className={c.Container}>
@@ -47,10 +74,16 @@ const Characters = () => {
                     </div>
                     <div className={c.Text}>
                         <p className={c.Property}>Чистота кузова:</p>
-                        <p className={`${c.Value} customText`}>Чистый</p>
+                        <p className={`${c.Value} customText`}>
+                            {
+                                details ?
+                                    details.body_clean ? "Чистый" : "Грязный"
+                                    : null
+                            }
+                        </p>
                     </div>
                 </div>
-                <Edit/>
+                <Edit link={"/car-details"}/>
             </div>
             <Line/>
             <div className={c.Container}>
@@ -60,10 +93,16 @@ const Characters = () => {
                     </div>
                     <div className={c.Text}>
                         <p className={c.Property}>Чистота салона:</p>
-                        <p className={`${c.Value} customText`}>Грязный</p>
+                        <p className={`${c.Value} customText`}>
+                            {
+                                details ?
+                                    details.interior_clean ? "Чистый" : "Грязный"
+                                    : null
+                            }
+                        </p>
                     </div>
                 </div>
-                <Edit/>
+                <Edit link={"/car-details"}/>
             </div>
         </>
     );
