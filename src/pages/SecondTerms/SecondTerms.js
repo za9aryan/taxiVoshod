@@ -48,6 +48,15 @@ function SecondTerms(props) {
         })
     }
 
+    useEffect(() => {
+        if (openDate) {
+            setData({
+                ...data,
+                days: 0
+            })
+        }
+    }, [openDate])
+
     const handleEditPrice = () => {
         setShowEditModal({
             show: true,
@@ -75,7 +84,7 @@ function SecondTerms(props) {
             const resData = await res.json()
             console.log(resData);
             if (resData.success) {
-                navigate('/driver-search')
+                navigate('/information')
             } else {
                 setShowModal({ open: true, text: resData.message })
             }
@@ -103,10 +112,10 @@ function SecondTerms(props) {
                         <div className="secondTerms_content_item_left_first_part">
                             Срок аренды:
                         </div>
-                        <div style={{ visibility: openDate && "hidden" }} className="secondTerms_content_item_left_second_part">
-                            <span style={{ color: "#F5C257" }}>{data.days}</span> дней
+                        <div className="secondTerms_content_item_left_second_part">
+                            {!openDate ? <span><span style={{ color: "#F5C257" }}>{data.days}</span> дней </span> : <span style={{ fontSize: "30px", color: "#2B334F33" }}>Открытая дата</span>}
 
-                            <img onClick={handleEditDays} style={{ marginLeft: "25px", cursor: "pointer" }} src={pencil} />
+                            <img onClick={handleEditDays} style={{ marginLeft: "25px", cursor: "pointer", display: openDate && "none" }} src={pencil} />
                         </div>
                     </div>
                     <div className="secondTerms_content_item_right">
@@ -134,7 +143,7 @@ function SecondTerms(props) {
                         </div>
                     </div>
                     <div className="secondTerms_content_item_right">
-                        <div className="secondTerms_content_item_right_text" >
+                        <div style={{ color: openDate && "#00000033" }} className="secondTerms_content_item_right_text" >
                             Итого:
                         </div>
                         <div style={{ color: "#F5C257", visibility: openDate && "hidden" }} className="secondTerms_content_item_right_price">

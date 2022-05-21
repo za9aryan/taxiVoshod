@@ -9,6 +9,10 @@ export const getCarDamage = async () => {
     return await axios.get("https://mechanic.taxivoshod.ru/api/?page=damage")
 }
 
+export const addCatDamageDetails = async (body) => {
+    return await axios.post("https://taxivoshod.ru/api/?page=damage", {...body})
+}
+
 
 export const getCarDetails = async () => {
     return await axios.get("https://mechanic.taxivoshod.ru/api/?page=details")
