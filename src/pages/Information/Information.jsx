@@ -1,16 +1,17 @@
-import React, {useEffect} from 'react';
+import React, { useEffect } from 'react';
 import Breadcrumbs from "./components/Breadcrumbs/Breadcrumbs";
-import {MenuWithBar} from "../../components/Components";
+import { MenuWithBar } from "../../components/Components";
 
 import * as Sections from "./components/Sections/Sections"
 
 import c from "./Information.module.css"
 import Button from "./components/Buttons/Button";
-import {useDispatch} from "react-redux";
-import {getCarAllInformationEffect} from "../../redux/effects/Effect";
+import { useDispatch } from "react-redux";
+import { getCarAllInformationEffect } from "../../redux/effects/Effect";
+import { useNavigate } from 'react-router-dom';
 
 const Information = () => {
-
+    const navigate = useNavigate()
     const dispatch = useDispatch()
 
     useEffect(() => {
@@ -22,7 +23,7 @@ const Information = () => {
         <>
             <MenuWithBar />
             <div className={c.MainContainer}>
-                <Breadcrumbs />
+                <Breadcrumbs onClick={() => { navigate(-1) }} />
                 <h3>СВОДНЫЙ ЭКРАН</h3>
                 <p>Проверьте правильность внесенных данных</p>
                 <section className={c.Sections}>

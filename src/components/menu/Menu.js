@@ -35,7 +35,7 @@ const Menu = () => {
     }
 
     return (
-        <div className="menu_main">
+        <div onClick={toggleOpen} className="menu_main">
             <div onClick={toggleOpen} className="menu_burger">
                 <div className="burger_icon">
                     <div style={{ background: open && "black" }} className="burger_icon_part"></div>
@@ -48,9 +48,12 @@ const Menu = () => {
             </div>
             <div style={{ transform: open && "translateX(0%)" }} className="menu_list_wrapper">
                 {state?.list?.map(renderLists)}
-                <Link onClick={toggleOpen} to={`/`} className={`${open && "animate__animated animate__fadeInUp"} list_exit`}>
-                    <img style={{ marginRight: "5px" }} src={exit} alt="exit" /> Выход
-                </Link >
+                {state?.logout && (
+                    <Link onClick={toggleOpen} to={state?.logout?.url} className={`${open && "animate__animated animate__fadeInUp"} list_exit`}>
+                        <img style={{ marginRight: "5px" }} src={exit} alt="exit" /> {state?.logout?.title}
+                    </Link >
+                )}
+
             </div>
         </div>
     );
