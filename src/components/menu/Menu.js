@@ -28,7 +28,7 @@ const Menu = () => {
 
     const renderLists = ({ title, url }) => {
         return (
-            <Link key={title} onClick={toggleOpen} to={`${url}`} className={`${open && "animate__animated animate__fadeInUp"} list`}>
+            <Link key={title} onClick={toggleOpen} to={`${url || "/"}`} className={`${open && "animate__animated animate__fadeInUp"} list`}>
                 <FontAwesomeIcon style={{ marginRight: "5px" }} icon={faArrowRight} /> {title}
             </Link >
         )
@@ -49,7 +49,7 @@ const Menu = () => {
             <div style={{ transform: open && "translateX(0%)" }} className="menu_list_wrapper">
                 {state?.list?.map(renderLists)}
                 {state?.logout && (
-                    <Link onClick={toggleOpen} to={state?.logout?.url} className={`${open && "animate__animated animate__fadeInUp"} list_exit`}>
+                    <Link onClick={toggleOpen} to={state?.logout?.url || "/"} className={`${open && "animate__animated animate__fadeInUp"} list_exit`}>
                         <img style={{ marginRight: "5px" }} src={exit} alt="exit" /> {state?.logout?.title}
                     </Link >
                 )}
