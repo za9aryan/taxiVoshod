@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom'
+import { Link, useLocation, Navigate, useNavigate } from 'react-router-dom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faArrowRight, faCircle } from '@fortawesome/free-solid-svg-icons'
 import exit from '../../assets/img/exit.png'
@@ -10,9 +10,12 @@ import { getMenuDataEffect } from '../../redux/effects/Effect';
 
 const MenuWithBar = (props) => {
     const state = useSelector(state => state.reducer.menu)
+    const location = useLocation()
+    const navigate = useNavigate()
     const dispatch = useDispatch()
     const [open, setOpen] = useState(false)
     const [data, setData] = useState()
+
 
     const toggleOpen = () => {
         setOpen(!open)
@@ -46,9 +49,11 @@ const MenuWithBar = (props) => {
             </div>
             <div style={{ width: !open && "88px", borderRadius: !open && "0px" }} className="menuWithBar_list_wrapper">
                 {state?.list?.map(renderLists)}
-                <Link style={{ borderRadius: !open && "0px" }} onClick={toggleOpen} to={`${state.list?.Logout || '/'}`} className={`${open && ""} menuWithBar_list_exit`}>
-                    <img style={{ marginRight: "5px" }} src={exit} alt="exit" /> {open && "Выход"}
-                </Link >
+                {state?.logout && (
+                    <Link style={{ borderRadius: !open && "0px" }} onClick={toggleOpen} to={open && (`${state.list?.Logout || '/'}`)} className={`${open && ""} menuWithBar_list_exit`}>
+                        <img style={{ marginRight: "5px" }} src={exit} alt="exit" /> {open && state?.logout?.title}
+                    </Link >
+                )}
             </div>
         </div>
     );

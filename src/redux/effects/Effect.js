@@ -1,61 +1,83 @@
-// import { getMenuDataAction, getCarDamageAction, getCarDetailsAction } from "../actions/Action";
 import {
-    getMenuDataAction,
-    getCarDamageAction,
-    getCarDetailsAction,
-    addCatDamageDetailsAction
+  getMenuDataAction,
+  getCarDamageAction,
+  getCarDetailsAction,
+  getCarDamageActionApi,
+  addCatDamageDetailsAction,
+  getCarAllInformationAction,
 } from "../actions/Action";
-// import fakeData from "./fakeData"
-import {addCatDamageDetails} from "../services/ApiServices";
+import { addCatDamageDetails, getCarDamage } from "../services/ApiServices";
 
 export const getMenuDataEffect = () => {
-    return async (dispatch, getState, services) => {
-        try {
-            const res = await services.getMenuData()
-            dispatch(getMenuDataAction(res.data))
-        } catch (e) {
-            const res = await services.getMenuData()
-            dispatch(getMenuDataAction(res.data))
-        }
+  return async (dispatch, getState, services) => {
+    try {
+      const res = await services.getMenuData();
+      dispatch(getMenuDataAction(res.data));
+    } catch (e) {
+      const res = await services.getMenuData();
+      dispatch(getMenuDataAction(res.data));
     }
-}
-
-
+  };
+};
 
 export const getCarDamageEffect = () => {
-    return async (dispatch, getState, services) => {
-        try {
-
-            const result = await services.getCarDamage()
-            dispatch(getCarDamageAction(result.data))
-
-        } catch (e) {
-            console.log("getCarDamageEffect", e.message)
-        }
+  return async (dispatch, getState, services) => {
+    try {
+      const result = await services.getCarDamage();
+      dispatch(getCarDamageAction(result.data));
+    } catch (e) {
+      console.log("getCarDamageEffect", e.message);
     }
-}
+  };
+};
 
 export const getCarDetailsEffect = () => {
-    return async (dispatch, getState, services) => {
-        try {
-            const res = await services.getCarDetails()
-            dispatch(getCarDetailsAction(res.data))
-        } catch (e) {
-            console.log(e, "getCarDetailsEffect");
-        }
+  return async (dispatch, getState, services) => {
+    try {
+      const res = await services.getCarDetails();
+      dispatch(getCarDetailsAction(res.data));
+    } catch (e) {
+      console.log(e, "getCarDetailsEffect");
     }
-}
+  };
+};
 
 export const addCarDamageDetailsEffect = (body) => {
-    return async (dispatch, getState, services) => {
-        try {
-            const res = await addCatDamageDetails(body)
-            if(res.data.success) {
-                dispatch(getCarDamageEffect());
-            }
-            dispatch(addCatDamageDetailsAction(res.data))
-        } catch (e) {
-            console.log(e, "addCarDamageDetailsEffect");
-        }
+  return async (dispatch, getState, services) => {
+    try {
+      const res = await addCatDamageDetails(body);
+      if (res.data.success) {
+        dispatch(getCarDamageEffect());
+      }
+      dispatch(addCatDamageDetailsAction(res.data));
+    } catch (e) {
+      console.log(e, "addCarDamageDetailsEffect");
     }
-}
+  };
+};
+
+export const getCarAllInformationEffect = () => {
+  return async (dispatch, getState, services) => {
+    try {
+      const res = await services.getCarAllInformation();
+
+      dispatch(getCarAllInformationAction(res.data));
+    } catch (e) {
+      console.log("getCarAllInformation", e.message);
+    }
+  };
+};
+
+export const finallyFinishEffect = (button) => {
+  return async (dispatch, getState, services) => {
+    try {
+      const formData = new FormData();
+      formData.append("button", button);
+      const res = await services.finallyFinish(formData);
+
+      console.log(res.data, "aksdkasdbkjabsdjkabdk", button);
+    } catch (e) {
+      console.log("finallyFinishEffect", e.message);
+    }
+  };
+};

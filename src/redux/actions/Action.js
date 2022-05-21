@@ -32,3 +32,8 @@ export const addCatDamageDetailsAction = (carDetails) => ({
     type: ActionTypes.ADD_CAR_DAMAGE_DETAILS,
     carDetails
 })
+
+export const getCarAllInformationAction = (finish) => ({
+    type: ActionTypes.GET_CAR_ALL_INFORMATION,
+    finish
+})

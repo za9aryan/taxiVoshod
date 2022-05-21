@@ -19,14 +19,14 @@
     margin-bottom: 15px;
 }
 
-.Table tr:first-child {
+.Table thead tr:first-child {
     background-color: #7C8AA5;
     color: #FFF;
     font-size: clamp(12px, 768px, min(1.5vw, 18px));
     line-height: 22px;
 }
 
-.Table tr:last-child {
+.Table tbody tr:last-child {
     margin-bottom: 0;
 }
 
@@ -38,6 +38,12 @@
     padding-left: 31px;
     padding-right: 36px;
     transition: .3s linear;
+}
+
+.Table thead td:last-child {
+    padding-left: 31px;
+    padding-right: clamp(21px, 480px, min(2vw, 41px));
+    justify-content: flex-end;
 }
 
 .Col1 {
@@ -61,21 +67,21 @@
     flex: 1 1 120px;
 }
 
-.Table tr:first-child .Col1 {
+.Table thead tr:first-child .Col1 {
     background-color: #7C8AA5;
 }
 
-.Table tr:first-child .Col2 {
+.Table thead tr:first-child .Col2 {
     border: none;
     background-color: #656F87;
 }
 
-.Table tr:first-child .Col3 {
+.Table thead tr:first-child .Col3 {
     background-color: #333C51;
     border-top-right-radius: 20px;
 }
 
-.Table tr:first-child .Col4 {
+.Table thead tr:first-child .Col4 {
     background-color: #7C8AA5;
 }
 

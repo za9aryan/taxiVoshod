@@ -5,8 +5,6 @@ import Line from "../../Line/Line";
 import Characters from "./components/Characters/Characters";
 import Tires from "./components/Tires/Tires";
 
-
-
 const CharacteristicSection = () => {
     return (
         <Box>
