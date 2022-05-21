@@ -40,6 +40,12 @@
     transition: .3s linear;
 }
 
+.Table thead td:last-child {
+    padding-left: 31px;
+    padding-right: clamp(21px, 480px, min(2vw, 41px));
+    justify-content: flex-end;
+}
+
 .Col1 {
     flex: 1 2 291px;
 }
