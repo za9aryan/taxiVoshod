@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom'
+import { Link, useLocation, Navigate, useNavigate } from 'react-router-dom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faArrowRight, faCircle } from '@fortawesome/free-solid-svg-icons'
 import exit from '../../assets/img/exit.png'
@@ -10,9 +10,12 @@ import { getMenuDataEffect } from '../../redux/effects/Effect';
 
 const MenuWithBar = (props) => {
     const state = useSelector(state => state.reducer.menu)
+    const location = useLocation()
+    const navigate = useNavigate()
     const dispatch = useDispatch()
     const [open, setOpen] = useState(false)
     const [data, setData] = useState()
+
 
     const toggleOpen = () => {
         setOpen(!open)

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom'
+import { Link, useLocation, useNavigate } from 'react-router-dom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faArrowRight } from '@fortawesome/free-solid-svg-icons'
 import exit from '../../assets/img/exit.png'
@@ -11,12 +11,15 @@ import { getMenuDataEffect } from "../../redux/effects/Effect";
 const Menu = () => {
     const state = useSelector(state => state.reducer.menu)
     const dispatch = useDispatch()
+    const location = useLocation()
+    const navigate = useNavigate()
     const [open, setOpen] = useState(false)
     // const [data, setData] = useState()
 
     const toggleOpen = () => {
         setOpen(!open)
     }
+
     useEffect(() => {
         if (state.list.length) return
         console.log(state);
