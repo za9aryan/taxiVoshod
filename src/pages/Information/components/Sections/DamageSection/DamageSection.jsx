@@ -1,35 +1,35 @@
 import React from 'react';
+import {v4 as uuid4} from "uuid"
 import c from "./DamageSection.module.css"
+import {useSelector} from "react-redux";
 
 import Box from "../../Box/Box";
 import Title from "./components/Title/Title";
 import Line from "../../Line/Line";
-import damage from "../../../../../assets/img/information/damage.svg"
-
-import damage1 from "../../../../../assets/img/information/damage1.png"
-import damage2 from "../../../../../assets/img/information/damage2.png"
-import damage3 from "../../../../../assets/img/information/damage3.png"
-import damage4 from "../../../../../assets/img/information/damage4.png"
-import damage5 from "../../../../../assets/img/information/damage5.png"
-import damage6 from "../../../../../assets/img/information/damage6.png"
-import damage7 from "../../../../../assets/img/information/damage7.png"
-import damage8 from "../../../../../assets/img/information/damage8.png"
-import Edit from "../../Edit/Edit";
 import DamageShow from "./components/DamageShow/DamageShow";
+
 
 const DamageSection = () => {
 
-    const image = [damage1, damage2, damage3, damage4]
-    const image2 = [damage5, damage6, damage7, damage8]
+    const {finish} = useSelector(state => state.reducer)
+
+    const {
+        damage
+    } = finish
 
     return (
         <Box>
             <div className={c.DamageSection}>
-                <Title />
+                <Title/>
                 <Line/>
-                <DamageShow images={image} property={"Левое крыло:"} value={"Царапина"}/>
-                <Line/>
-                <DamageShow images={image2} property={"Капот:"} value={"Вмятина справа"}/>
+                {
+                    damage ? damage.list.map(({name, descr, images}, index) => (
+                        <React.Fragment key={uuid4()}>
+                            <DamageShow images={images} property={name + ":"} value={descr} link={"/damage-details"}/>
+                            <Line d={index === damage.list.length - 1 ? "none" : "block"}/>
+                        </React.Fragment>
+                    )) : null
+                }
             </div>
         </Box>
     );

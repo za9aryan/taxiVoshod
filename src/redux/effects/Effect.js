@@ -1,12 +1,11 @@
-// import { getMenuDataAction, getCarDamageAction, getCarDetailsAction } from "../actions/Action";
 import {
     getMenuDataAction,
     getCarDamageAction,
     getCarDetailsAction,
     getCarDamageActionApi,
-    addCatDamageDetailsAction
+    addCatDamageDetailsAction,
+    getCarAllInformationAction
 } from "../actions/Action";
-// import fakeData from "./fakeData"
 import {addCatDamageDetails, getCarDamage} from "../services/ApiServices";
 
 export const getMenuDataEffect = () => {
@@ -66,5 +65,35 @@ export const addCarDamageDetailsEffect = (body) => {
         } catch (e) {
             console.log(e, "addCarDamageDetailsEffect");
         }
+    }
+}
+
+export const getCarAllInformationEffect = () => {
+    return async (dispatch, getState, services) => {
+        try {
+            const res = await services.getCarAllInformation()
+
+            dispatch(getCarAllInformationAction(res.data))
+
+        }catch (e) {
+            console.log("getCarAllInformation", e.message)
+        }
+
+    }
+}
+
+export const finallyFinishEffect = (button) => {
+    return async (dispatch, getState, services) => {
+        try {
+            const formData = new FormData()
+            formData.append("button", button)
+            const res = await services.finallyFinish(formData)
+
+            console.log(res.data, "aksdkasdbkjabsdjkabdk", button)
+
+        }catch (e) {
+            console.log("finallyFinishEffect", e.message)
+        }
+
     }
 }

@@ -1,4 +1,5 @@
 import React from 'react';
+import {v4 as uuid4} from "uuid"
 import c from "./DamageShow.module.css";
 import Edit from "../../../../Edit/Edit";
 
@@ -11,9 +12,9 @@ const DamageShow = ({property, value, images = [], link = ""}) => {
                     <p className={`customText`}>{value}</p>
                 </div>
                 <div className={c.ImagesContainer}>
-                    {images.map((i, idx) => (
-                        <div className={c.Image}>
-                            <img key={i + idx} src={i} alt={`damage${idx}`}/>
+                    {images.map(({img}, idx) => (
+                        <div key={uuid4()} className={c.Image}>
+                            <img src={"https://taxivoshod.ru" + img} alt={`damage${idx}`}/>
                         </div>
                     ))}
                 </div>

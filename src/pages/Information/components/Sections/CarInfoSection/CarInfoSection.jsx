@@ -1,4 +1,5 @@
-import React from 'react';
+import React, {useEffect} from 'react';
+import NumberFormat from 'react-number-format'
 
 import c from "./CarInfoSection.module.css"
 
@@ -9,8 +10,19 @@ import Edit from "../../Edit/Edit";
 import car from "../../../../../assets/img/information/car.svg"
 import profile from "../../../../../assets/img/information/profile.svg"
 import check from "../../../../../assets/img/information/check.svg"
+import {useSelector} from "react-redux";
 
 const CarInfoSection = () => {
+
+    const {finish} = useSelector(state => state.reducer)
+
+    const {
+        cars,
+        drivers,
+        terms,
+        terms2
+    } = finish
+
 
     return (
         <Box>
@@ -21,10 +33,10 @@ const CarInfoSection = () => {
                     </div>
                     <div className={c.Text}>
                         <p className={c.Property}>Автомобиль:</p>
-                        <p className={`${c.Value} customText`}>Hyundai Sonata ВМ 1753 СР</p>
+                        <p className={`${c.Value} customText`}>{cars ? cars.name : null}</p>
                     </div>
                 </div>
-                <Edit/>
+                <Edit link={"/"}/>
             </div>
             <Line/>
             <div className={c.Container}>
@@ -34,10 +46,10 @@ const CarInfoSection = () => {
                     </div>
                     <div className={c.Text}>
                         <p className={c.Property}>Водитель:</p>
-                        <p className={`${c.Value} customText`}>Петров Иван Иванович 1161</p>
+                        <p className={`${c.Value} customText`}>{drivers ? drivers.name : null}1</p>
                     </div>
                 </div>
-                <Edit/>
+                <Edit link={"/driver-search"}/>
             </div>
             <Line/>
             <div className={c.Container}>
@@ -47,10 +59,19 @@ const CarInfoSection = () => {
                     </div>
                     <div className={c.Text}>
                         <p className={c.Property}>Условия работы:</p>
-                        <p className={`${c.Value} customText`}>Аренда посуточная 1300р/день</p>
+                        <p className={`${c.Value} customText`}>
+                            {terms ? terms.name : null}
+                            &nbsp;
+                            {terms2 ? "Аренда посуточная" : null}
+                            &nbsp;
+                            {terms2 ?
+                                <NumberFormat value={terms2.price} displayType={'text'} thousandSeparator={" "} suffix={"р/день"}/>
+                                : null
+                            }
+                        </p>
                     </div>
                 </div>
-                <Edit/>
+                <Edit link={"/cooperation-type"}/>
             </div>
         </Box>
     );
