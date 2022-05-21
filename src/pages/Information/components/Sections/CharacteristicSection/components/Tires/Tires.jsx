@@ -9,8 +9,16 @@ import frontWheel from "../../../../../../../assets/img/information/frontWheel.s
 import rearWheel from "../../../../../../../assets/img/information/rearWheel.svg"
 import snow from "../../../../../../../assets/img/information/snow.svg"
 import sun from "../../../../../../../assets/img/information/sun.svg"
+import {useSelector} from "react-redux";
 
 const Tires = () => {
+
+    const {finish} = useSelector(state => state.reducer)
+
+    const {
+        details
+    } = finish
+
     return (
         <div style={{minWidth: "320px", width: "100%"}}>
             <Title/>
@@ -22,17 +30,24 @@ const Tires = () => {
                     <div className={c.Text}>
                         <p className={c.Property}>Передние шины:</p>
                         <div className={c.Inner}>
-                            <div className={c.Image}>
-                                <img src={snow} alt={"snow"}/>
-                            </div>
-                            <p className={`${c.Value} customText`}>245/50 r20 nokian hakkapeliitta r3 suv 106r xl </p>
 
+                            {
+                                details ?
+                                    <>
+                                        <div className={c.Image}>
+                                            <img src={details.tires[details.tire_front].is_winter ? snow : sun}
+                                                 alt={"snow"}/>
+                                        </div>
+                                        <p className={`${c.Value} customText`}>{details.tires[details.tire_front].name}</p>
+                                    </>
+                                    : null
+                            }
                         </div>
                     </div>
                 </div>
                 <div className={c.Protector}>
-                    <p className={`customText`}>4мм</p>
-                    <Edit/>
+                    <p className={`customText`}>{details ? details.tire_front_height : null}мм</p>
+                    <Edit link={"/car-details"}/>
                 </div>
             </div>
             <Line/>
@@ -44,17 +59,23 @@ const Tires = () => {
                     <div className={c.Text}>
                         <p className={c.Property}>Задние шины:</p>
                         <div className={c.Inner}>
-                            <div className={c.Image}>
-                                <img src={sun} alt={"sun"}/>
-                            </div>
-                            <p className={`${c.Value} customText`}>245/50 r20 nokian hakkapeliitta r3 suv 106r xl </p>
-
+                            {
+                                details ?
+                                    <>
+                                        <div className={c.Image}>
+                                            <img src={details.tires[details.tire_rear].is_winter ? snow : sun}
+                                                 alt={"snow"}/>
+                                        </div>
+                                        <p className={`${c.Value} customText`}>{details.tires[details.tire_rear].name}</p>
+                                    </>
+                                    : null
+                            }
                         </div>
                     </div>
                 </div>
                 <div className={c.Protector}>
-                    <p className={`customText`}>4мм</p>
-                    <Edit/>
+                    <p className={`customText`}>{details ? details.tire_rear_height : null}мм</p>
+                    <Edit link={"/car-details"}/>
                 </div>
             </div>
         </div>

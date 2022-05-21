@@ -10,9 +10,8 @@ const initialState = {
         list: []
     },
     carDetails: [],
-    carDamage: [],
-    carDetails: [],
-    success: false
+    success: false,
+    finish: {}
 }
 
 const reducer = (state = initialState, action) => {
@@ -47,6 +46,11 @@ const reducer = (state = initialState, action) => {
             return {
                 ...state,
                 carDetails: {...state.carDetails, ...action.carDetails}
+            }
+        case ActionTypes.GET_CAR_ALL_INFORMATION:
+            return {
+                ...state,
+                finish: action.finish
             }
         default:
             return state;
