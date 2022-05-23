@@ -10,7 +10,7 @@ const DamageDetailsRightSide = ({active, setActive, carDamage}) => {
 
     const previous = () => {
         if (active < 2) {
-            setActive(carDamage.length);
+            setActive(carDamage.length - 1);
         } else {
             setActive(active - 1);
         }
@@ -28,8 +28,6 @@ const DamageDetailsRightSide = ({active, setActive, carDamage}) => {
         setActive(event)
     }
 
-    console.log(active)
-
     return (active !== undefined
         && <div className={style.container}>
         <DamageDetailsRightSideHeader
@@ -43,6 +41,7 @@ const DamageDetailsRightSide = ({active, setActive, carDamage}) => {
             active={active}
             onclick={onclick}
             carDamage={carDamage}
+            previous={previous}
         />
     </div>);
 };

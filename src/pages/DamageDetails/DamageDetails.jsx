@@ -7,14 +7,14 @@ import DamageDetailsLeftSide from "./components/DamageDetailsLeftSide/DamageDeta
 import DamageDetailsRightSide from "./components/DamageDetailsRightSide/DamageDetailsRightSide";
 import {Grid} from "@mui/material";
 import {useDispatch, useSelector} from "react-redux";
-import {getCarDamageEffect} from "../../redux/effects/Effect";
+import {getCarDamageEffect, successFalse} from "../../redux/effects/Effect";
 import TransitionModal from "../CardDetails/components/TransitionModal";
 
 const DamageDetails = () => {
 
     const navigate = useNavigate();
     const dispatch = useDispatch();
-    const {carDamage, success} = useSelector(state => state.reducer);
+    const {carDamage, success, deleteItem} = useSelector(state => state.reducer);
 
     const [active, setActive] = useState();
     const [loading, setLoading] = useState(true)
@@ -22,10 +22,12 @@ const DamageDetails = () => {
 
 
     useEffect(() => {
-        if (success) {
-            setShowModal({...showModal, open: true})
+        if (success && deleteItem) {
+            setShowModal({...showModal, open: true, text: 'Успешно удалено'})
+        } else if (success && !deleteItem) {
+            setShowModal({...showModal, open: true, text: 'Успешно добавлено'})
         }
-    }, [success])
+    }, [success, deleteItem])
 
     useEffect(() => {
         if (!carDamage.list.length) {
@@ -40,6 +42,7 @@ const DamageDetails = () => {
     }
 
     const closeModal = () => {
+        dispatch(successFalse())
         setShowModal({...showModal, open: false});
     }
 
