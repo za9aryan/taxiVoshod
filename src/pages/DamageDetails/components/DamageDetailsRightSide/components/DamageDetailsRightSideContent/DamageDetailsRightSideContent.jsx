@@ -11,7 +11,7 @@ import {useUploadForm} from "../../../../../../utils/useFileUpload";
 const imageTypeRegex = /image\/(png|jpg|jpeg)/gm;
 
 
-const DamageDetailsRightSideContent = ({active, onclick, carDamage}) => {
+const DamageDetailsRightSideContent = ({active, onclick, carDamage, previous}) => {
 
     const {uploadForm, progress, isLoading} = useUploadForm('https://taxivoshod.ru/api/upload.php');
 
@@ -60,8 +60,7 @@ const DamageDetailsRightSideContent = ({active, onclick, carDamage}) => {
     }
 
     useEffect(() => {
-        const image = form.images[id] ? form.images[id] : [],
-            fileReaders = [];
+        const fileReaders = [];
         if (imageFiles.length) {
             imageFiles.forEach((file) => {
                 const fileReader = new FileReader();
@@ -109,10 +108,6 @@ const DamageDetailsRightSideContent = ({active, onclick, carDamage}) => {
         Object.entries(form.description).forEach(([key, value]) => fd.append(`descr[${key}]`, value));
         form.images.forEach(value => fd.append(`images[${id}][]`, value.id));
 
-        for (var pair of fd.entries()) {
-            console.log(pair[0] + ', ' + pair[1]);
-        }
-
         dispatch(addCarDamageDetailsEffect(fd));
     }
 
@@ -140,7 +135,6 @@ const DamageDetailsRightSideContent = ({active, onclick, carDamage}) => {
                               <li
                                   style={indicatorStyles}
                                   onClick={() => {
-                                      // onClickHandler();
                                       onclick(index);
                                   }}
                                   onKeyDown={onClickHandler}
@@ -155,6 +149,8 @@ const DamageDetailsRightSideContent = ({active, onclick, carDamage}) => {
                 {carDamage.map((item) => (
                     <DamageDetailsRightSideCarouselItem isLoading={isLoading} progress={progress} form={form}
                                                         setForm={setForm} key={item.id} item={item}
+                                                        id={"file"}
+                                                        previous={previous}
                                                         fileUpload={fileUpload}/>
                 ))}
             </Carousel>
