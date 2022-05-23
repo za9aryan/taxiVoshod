@@ -15,17 +15,17 @@ const initialState = {
 };
 
 const reducer = (state = initialState, action) => {
-    switch (action.type) {
-        case ActionTypes.GET_MENU_DATA:
-            return {
-                ...state,
-                menu: action.menu,
-            };
-        case ActionTypes.GET_CAR_DAMAGE:
-            return {
-                ...state,
-                carDamage: action.carDamage,
-            };
+  switch (action.type) {
+    case ActionTypes.GET_MENU_DATA:
+      return {
+        ...state,
+        menu: action.menu,
+      };
+    case ActionTypes.GET_CAR_DAMAGE:
+      return {
+        ...state,
+        carDamage: action.carDamage,
+      };
     case ActionTypes.GET_CAR_DAMAGE_API:
       return {
         ...state,
@@ -57,6 +57,11 @@ const reducer = (state = initialState, action) => {
         ...state,
         success: false,
         deleteItem: false
+      }
+    case ActionTypes.POST_CAR_ALL_INFORMATION:
+      return {
+        ...state,
+        finishStatus: action.finish
       }
     default:
       return state;
