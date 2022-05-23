@@ -51,6 +51,11 @@ const reducer = (state = initialState, action) => {
         ...state,
         finish: action.finish,
       };
+    case ActionTypes.SUCCESS_FALSE:
+      return {
+        ...state,
+        success: false
+      }
     default:
       return state;
   }

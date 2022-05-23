@@ -71,6 +71,27 @@
     cursor: pointer;
 }
 
+@media screen and (max-width: 1100px) {
+    .modal {
+        width: 60%;
+        padding: 30px 80px;
+    }
+}
+
+@media screen and (max-width: 700px) {
+    .modal {
+        width: 70%;
+        padding: 30px 60px;
+    }
+}
+
+@media screen and (max-width: 500px) {
+    .modal {
+        width: 80%;
+        padding: 30px;
+    }
+}
+
 .prevIcon,
 .nextIcon {
     position: absolute;

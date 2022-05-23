@@ -4,7 +4,7 @@ import {
   getCarDetailsAction,
   getCarDamageActionApi,
   addCatDamageDetailsAction,
-  getCarAllInformationAction,
+  getCarAllInformationAction, successFalseAction,
 } from "../actions/Action";
 import { addCatDamageDetails, getCarDamage } from "../services/ApiServices";
 
@@ -55,6 +55,12 @@ export const addCarDamageDetailsEffect = (body) => {
     }
   };
 };
+
+export const successFalse = () => {
+  return async dispatch => {
+    dispatch(successFalseAction())
+  };
+}
 
 export const getCarAllInformationEffect = () => {
   return async (dispatch, getState, services) => {

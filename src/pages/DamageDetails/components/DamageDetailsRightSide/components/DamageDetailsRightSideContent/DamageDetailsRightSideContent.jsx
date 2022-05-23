@@ -140,7 +140,6 @@ const DamageDetailsRightSideContent = ({active, onclick, carDamage}) => {
                               <li
                                   style={indicatorStyles}
                                   onClick={() => {
-                                      // onClickHandler();
                                       onclick(index);
                                   }}
                                   onKeyDown={onClickHandler}

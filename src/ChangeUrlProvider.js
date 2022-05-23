@@ -10,7 +10,7 @@ function ChangeUrlProvider({ children }) {
     const urls = {
         cars: "/damage",
         damage: '/car-details',
-        details: '/equipment',
+        details: '/damage-details',
         equipment: '/driver-search',
         drivers: '/cooperation-type',
         terms: '/second-terms',

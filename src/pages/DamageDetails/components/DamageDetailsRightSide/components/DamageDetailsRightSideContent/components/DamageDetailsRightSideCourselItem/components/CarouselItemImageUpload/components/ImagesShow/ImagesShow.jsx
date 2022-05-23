@@ -79,7 +79,6 @@ const ImagesShow = ({ item, form, setForm, progress, isLoading}) => {
                             form.images.map((image, idx) => (
                                 <div onClick={() => showImage(idx)} className={style.previewImg} key={idx}>
                                     <img src={image.img.indexOf('data:image') !== -1 ? image.img : `https://taxivoshod.ru/${image.img}`} alt="" />
-                                    {/*<img src={image} alt="" />*/}
                                     {(idx === form.images.length - 1 && isLoading) && <div className={style.previewImgUpload}>
                                         <CircularProgressbar value={progress}
                                                              styles={buildStyles({

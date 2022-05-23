@@ -12,6 +12,10 @@ export const getCarDamageAction = (carDamage) => ({
     carDamage
 })
 
+export const successFalseAction = () => ({
+    type: ActionTypes.SUCCESS_FALSE
+})
+
 export const getCarDetailsAction = (carDetails) => ({
     type: ActionTypes.GET_CAR_DETAILS,
     carDetails

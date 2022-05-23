@@ -7,7 +7,7 @@ import DamageDetailsLeftSide from "./components/DamageDetailsLeftSide/DamageDeta
 import DamageDetailsRightSide from "./components/DamageDetailsRightSide/DamageDetailsRightSide";
 import {Grid} from "@mui/material";
 import {useDispatch, useSelector} from "react-redux";
-import {getCarDamageEffect} from "../../redux/effects/Effect";
+import {getCarDamageEffect, successFalse} from "../../redux/effects/Effect";
 import TransitionModal from "../CardDetails/components/TransitionModal";
 
 const DamageDetails = () => {
@@ -40,6 +40,7 @@ const DamageDetails = () => {
     }
 
     const closeModal = () => {
+        dispatch(successFalse())
         setShowModal({...showModal, open: false});
     }
 
