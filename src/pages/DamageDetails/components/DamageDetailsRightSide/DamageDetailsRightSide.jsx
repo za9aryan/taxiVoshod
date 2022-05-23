@@ -28,8 +28,6 @@ const DamageDetailsRightSide = ({active, setActive, carDamage}) => {
         setActive(event)
     }
 
-    console.log(active)
-
     return (active !== undefined
         && <div className={style.container}>
         <DamageDetailsRightSideHeader
@@ -43,6 +41,7 @@ const DamageDetailsRightSide = ({active, setActive, carDamage}) => {
             active={active}
             onclick={onclick}
             carDamage={carDamage}
+            previous={previous}
         />
     </div>);
 };

@@ -32,9 +32,10 @@ export const getCarDamageActionApi = (carDamage) => ({
     carDamage
 })
 
-export const addCatDamageDetailsAction = (carDetails) => ({
+export const addCatDamageDetailsAction = (carDetails, deleteItem) => ({
     type: ActionTypes.ADD_CAR_DAMAGE_DETAILS,
-    carDetails
+    carDetails,
+    deleteItem
 })
 
 export const getCarAllInformationAction = (finish) => ({

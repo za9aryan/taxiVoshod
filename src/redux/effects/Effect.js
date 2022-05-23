@@ -42,14 +42,14 @@ export const getCarDetailsEffect = () => {
   };
 };
 
-export const addCarDamageDetailsEffect = (body) => {
+export const addCarDamageDetailsEffect = (body, deleteItem = false) => {
   return async (dispatch, getState, services) => {
     try {
       const res = await addCatDamageDetails(body);
       if (res.data.success) {
         dispatch(getCarDamageEffect());
       }
-      dispatch(addCatDamageDetailsAction(res.data));
+      dispatch(addCatDamageDetailsAction(res.data, deleteItem));
     } catch (e) {
       console.log(e, "addCarDamageDetailsEffect");
     }

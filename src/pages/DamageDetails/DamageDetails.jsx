@@ -14,7 +14,7 @@ const DamageDetails = () => {
 
     const navigate = useNavigate();
     const dispatch = useDispatch();
-    const {carDamage, success} = useSelector(state => state.reducer);
+    const {carDamage, success, deleteItem} = useSelector(state => state.reducer);
 
     const [active, setActive] = useState();
     const [loading, setLoading] = useState(true)
@@ -22,10 +22,12 @@ const DamageDetails = () => {
 
 
     useEffect(() => {
-        if (success) {
-            setShowModal({...showModal, open: true})
+        if (success && deleteItem) {
+            setShowModal({...showModal, open: true, text: 'Успешно удалено'})
+        } else if (success && !deleteItem) {
+            setShowModal({...showModal, open: true, text: 'Успешно добавлено'})
         }
-    }, [success])
+    }, [success, deleteItem])
 
     useEffect(() => {
         if (!carDamage.list.length) {

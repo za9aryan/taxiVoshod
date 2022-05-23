@@ -72,7 +72,6 @@ const DamageDetailsLeftSideModal = ({open, handleClose}) => {
 
     const fileUploadModal = async (e) => {
         const { files } = e.target;
-        console.log(files, 'hjj')
         const validImageFiles = [];
         for (let i = 0; i < files.length; i++) {
             const file = files[i];
@@ -99,8 +98,7 @@ const DamageDetailsLeftSideModal = ({open, handleClose}) => {
     }
 
     useEffect(() => {
-        const image = form.images[0] ? form.images[0] : [],
-            fileReaders = [];
+        const fileReaders = [];
         if (imageFiles.length) {
             imageFiles.forEach((file) => {
                 const fileReader = new FileReader();
@@ -153,10 +151,6 @@ const DamageDetailsLeftSideModal = ({open, handleClose}) => {
         Object.entries(form.description).forEach(([key, value]) => fd.append(`new_descr[${key}]`, value));
         form.images.forEach(value => fd.append(`new_images[1][]`, value.id));
 
-        for (var pair of fd.entries()) {
-            console.log(pair[0]+ ', ' + pair[1]);
-        }
-
         dispatch(addCarDamageDetailsEffect(fd));
     }
 
@@ -197,6 +191,7 @@ const DamageDetailsLeftSideModal = ({open, handleClose}) => {
                     <Box mt='30px'>
                         <CarouselItemImageUpload
                             isLoading={isLoading}
+                            id={'fileModal'}
                             progress={progress}
                             item={{name: '', descr: '', id: 1}}
                             form={form}

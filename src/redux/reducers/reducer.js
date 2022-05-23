@@ -11,6 +11,7 @@ const initialState = {
   carDetails: [],
   success: false,
   finish: {},
+  deleteItem: false
 };
 
 const reducer = (state = initialState, action) => {
@@ -35,6 +36,7 @@ const reducer = (state = initialState, action) => {
       return {
         ...state,
         success: action.carDetails.success,
+        deleteItem: action.deleteItem
       };
     case ActionTypes.GET_CAR_DETAILS:
       return {
@@ -54,7 +56,8 @@ const reducer = (state = initialState, action) => {
     case ActionTypes.SUCCESS_FALSE:
       return {
         ...state,
-        success: false
+        success: false,
+        deleteItem: false
       }
     default:
       return state;

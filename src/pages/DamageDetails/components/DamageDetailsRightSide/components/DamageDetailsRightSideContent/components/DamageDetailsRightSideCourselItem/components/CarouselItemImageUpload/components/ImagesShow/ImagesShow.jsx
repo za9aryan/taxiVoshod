@@ -29,7 +29,7 @@ const styles = {
     backgroundSize: 'cover'
 }
 
-const ImagesShow = ({ item, form, setForm, progress, isLoading}) => {
+const ImagesShow = ({ form, setForm, progress, isLoading}) => {
 
     const [imageModal, setImageModal] = useState(false)
     const [imageIndex, setImageIndex] = useState(null)
