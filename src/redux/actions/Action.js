@@ -1,5 +1,4 @@
 import ActionTypes from "../action.types";
-import carDetails from "../../pages/CardDetails/CarDetails";
 
 export const getMenuDataAction = (menu) => ({
     type: ActionTypes.GET_MENU_DATA,

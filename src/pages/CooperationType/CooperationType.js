@@ -30,7 +30,7 @@ function CooperationType(props) {
     }
 
     const handlerBreadcrumbsClick = () => {
-        navigate(-1)
+        navigate("/driver-search")
     }
 
     const handleNextButton = async () => {
