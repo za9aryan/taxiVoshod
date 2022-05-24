@@ -1,16 +1,17 @@
 import ActionTypes from "../action.types";
 
 const initialState = {
-    menu: {
-        logout: {},
-        list: [],
-    },
-    carDamage: {
-        list: [],
-    },
-    carDetails: [],
-    success: false,
-    finish: {},
+  menu: {
+    logout: {},
+    list: [],
+  },
+  carDamage: {
+    list: [],
+  },
+  carDetails: [],
+  success: false,
+  finish: {},
+  deleteItem: false
 };
 
 const reducer = (state = initialState, action) => {
@@ -25,45 +26,41 @@ const reducer = (state = initialState, action) => {
                 ...state,
                 carDamage: action.carDamage,
             };
-
-        case ActionTypes.GET_CAR_DAMAGE_API:
-            return {
-                ...state,
-                carDamage: action.carDamage,
-            };
-        case ActionTypes.ADD_CAR_DAMAGE_DETAILS:
-            return {
-                ...state,
-                success: action.carDetails.success,
-            };
-        case ActionTypes.GET_CAR_DETAILS:
-            return {
-                ...state,
-                carDetails: action.carDetails,
-            };
-        case ActionTypes.PUT_CAR_DETAILS:
-            return {
-                ...state,
-                carDetails: { ...state.carDetails, ...action.carDetails },
-            };
-        case ActionTypes.GET_CAR_ALL_INFORMATION:
-            return {
-                ...state,
-                finish: action.finish,
-            };
-        case ActionTypes.POST_CAR_ALL_INFORMATION:
-            return {
-                ...state,
-                finishStatus: action.finish
-            }
-        case ActionTypes.SET_SUCCESS_CAR_ALL_INFORMATION:
-            return {
-                ...state,
-                finishStatus: action.status
-            }
-        default:
-            return state;
-    }
+    case ActionTypes.GET_CAR_DAMAGE_API:
+      return {
+        ...state,
+        carDamage: action.carDamage,
+      };
+    case ActionTypes.ADD_CAR_DAMAGE_DETAILS:
+      return {
+        ...state,
+        success: action.carDetails.success,
+        deleteItem: action.deleteItem
+      };
+    case ActionTypes.GET_CAR_DETAILS:
+      return {
+        ...state,
+        carDetails: action.carDetails,
+      };
+    case ActionTypes.PUT_CAR_DETAILS:
+      return {
+        ...state,
+        carDetails: { ...state.carDetails, ...action.carDetails },
+      };
+    case ActionTypes.GET_CAR_ALL_INFORMATION:
+      return {
+        ...state,
+        finish: action.finish,
+      };
+    case ActionTypes.SUCCESS_FALSE:
+      return {
+        ...state,
+        success: false,
+        deleteItem: false
+      }
+    default:
+      return state;
+  }
 };
 
 export default reducer;

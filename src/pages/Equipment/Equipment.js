@@ -29,7 +29,7 @@ function Equipment(props) {
     }, [])
 
     const handlerBreadcrumbsClick = () => {
-        navigate(-1)
+        navigate("/car-details")
     }
 
     const increment = (id) => {

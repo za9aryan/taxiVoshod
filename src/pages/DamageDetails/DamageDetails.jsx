@@ -7,25 +7,27 @@ import DamageDetailsLeftSide from "./components/DamageDetailsLeftSide/DamageDeta
 import DamageDetailsRightSide from "./components/DamageDetailsRightSide/DamageDetailsRightSide";
 import {Grid} from "@mui/material";
 import {useDispatch, useSelector} from "react-redux";
-import {getCarDamageEffect} from "../../redux/effects/Effect";
+import {getCarDamageEffect, successFalse} from "../../redux/effects/Effect";
 import TransitionModal from "../CardDetails/components/TransitionModal";
 
 const DamageDetails = () => {
 
     const navigate = useNavigate();
     const dispatch = useDispatch();
-    const {carDamage, success} = useSelector(state => state.reducer);
+    const {carDamage, success, deleteItem} = useSelector(state => state.reducer);
 
     const [active, setActive] = useState();
     const [loading, setLoading] = useState(true)
-    const [showModal, setShowModal] = useState({open: false, text: 'Успешно добавлено'});
+    // const [showModal, setShowModal] = useState({open: false, text: 'Успешно добавлено'});
 
 
-    useEffect(() => {
-        if (success) {
-            setShowModal({...showModal, open: true})
+/*    useEffect(() => {
+        if (success && deleteItem) {
+            setShowModal({...showModal, open: true, text: 'Успешно удалено'})
+        } else if (success && !deleteItem) {
+            setShowModal({...showModal, open: true, text: 'Успешно добавлено'})
         }
-    }, [success])
+    }, [success, deleteItem])*/
 
     useEffect(() => {
         if (!carDamage.list.length) {
@@ -36,19 +38,20 @@ const DamageDetails = () => {
     }, [carDamage])
 
     const handleBreadcrumbsClick = () => {
-        navigate(-1)
+        navigate('/damage')
     }
 
-    const closeModal = () => {
-        setShowModal({...showModal, open: false});
-    }
+    // const closeModal = () => {
+    //     dispatch(successFalse())
+    //     setShowModal({...showModal, open: false});
+    // }
 
     return (
         <>
             <MenuWithBar />
             <div className={c.MainContainer}>
                 <Breadcrumbs onClick={handleBreadcrumbsClick}/>
-                <TransitionModal modal={showModal} success={true} setClose={closeModal} />
+                {/*<TransitionModal modal={showModal} success={true} setClose={closeModal} />*/}
                 {loading ? (
                     <div className={c.Loading}/>
                 ) : (

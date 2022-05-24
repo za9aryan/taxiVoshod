@@ -4,14 +4,14 @@ import CarouselItemHeader from "./components/CarouselItemHeader/CarouselItemHead
 import CarouselItemDescription from "./components/CarouselItemDescription/CarouselItemDescription";
 import CarouselItemImageUpload from "./components/CarouselItemImageUpload/CarouselItemImageUpload";
 
-const DamageDetailsRightSideCarouselItem = ({active, item, fileUpload, form, setForm, progress, isLoading}) => {
+const DamageDetailsRightSideCarouselItem = ({active, item, fileUpload, form, setForm, progress, isLoading, id, previous}) => {
     return (
         <div className={style.sliderItem}>
-            <CarouselItemHeader item={item} form={form} setForm={setForm} />
+            <CarouselItemHeader item={item} form={form} setForm={setForm} previous={previous}/>
 
             <CarouselItemDescription placeholder={'Описание повреждения'} rows={25} item={item} form={form} setForm={setForm}/>
 
-            <CarouselItemImageUpload setForm={setForm} item={item} isLoading={isLoading} form={form} fileUpload={fileUpload} active={active} progress={progress} />
+            <CarouselItemImageUpload setForm={setForm} isLoading={isLoading} form={form} fileUpload={fileUpload} active={active} progress={progress} id={id} />
         </div>
     );
 };

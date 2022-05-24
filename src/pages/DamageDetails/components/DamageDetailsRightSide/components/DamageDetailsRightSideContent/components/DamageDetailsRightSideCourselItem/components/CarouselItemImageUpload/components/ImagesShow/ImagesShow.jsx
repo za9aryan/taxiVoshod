@@ -1,5 +1,4 @@
 import React, {useEffect, useState} from 'react';
-import {Stack} from "@mui/material";
 import style from "../../../../DamageDetailsRightSideCarouselItem.module.css";
 import Modal from "@mui/material/Modal";
 import modalStyle from '../../../../../../../../../DamageDetailsLeftSide/DamageDetailsLeftSide.module.css'
@@ -11,7 +10,10 @@ import prevArrow from "../../../../../../../../../../../../assets/img/car/prevAr
 import nextArrow from "../../../../../../../../../../../../assets/img/car/nextArrow.svg";
 import trashIcon from "../../../../../../../../../../../../assets/img/car/trash.svg";
 import {buildStyles, CircularProgressbar} from 'react-circular-progressbar';
+import Carousel, { consts } from "react-elastic-carousel";
 import 'react-circular-progressbar/dist/styles.css';
+import {Stack} from "@mui/material";
+
 
 const styles = {
     position: 'absolute',
@@ -29,7 +31,7 @@ const styles = {
     backgroundSize: 'cover'
 }
 
-const ImagesShow = ({ item, form, setForm, progress, isLoading}) => {
+const ImagesShow = ({ form, setForm, progress, isLoading}) => {
 
     const [imageModal, setImageModal] = useState(false)
     const [imageIndex, setImageIndex] = useState(null)
@@ -70,32 +72,67 @@ const ImagesShow = ({ item, form, setForm, progress, isLoading}) => {
             images: [...image]
         }));
     }
+
+    const breakPoints = [
+        { width: 1, itemsToShow: 1 },
+        { width: 120, itemsToShow: 3, itemsToScroll: 3 },
+        { width: 200, itemsToShow: 4, itemsToScroll: 4 },
+        { width: 300, itemsToShow: 4, itemsToScroll: 4 },
+        { width: 400, itemsToShow: 6, itemsToScroll: 6 },
+        { width: 500, itemsToShow: 6, itemsToScroll: 6 },
+        { width: 600, itemsToShow: 8, itemsToScroll: 8 },
+    ];
+
     return (
         <>
             {
                 form.images.length ?
-                    <Stack direction='row' spacing={2}>
-                        {
-                            form.images.map((image, idx) => (
-                                <div onClick={() => showImage(idx)} className={style.previewImg} key={idx}>
-                                    <img src={image.img.indexOf('data:image') !== -1 ? image.img : `https://taxivoshod.ru/${image.img}`} alt="" />
-                                    {/*<img src={image} alt="" />*/}
-                                    {(idx === form.images.length - 1 && isLoading) && <div className={style.previewImgUpload}>
-                                        <CircularProgressbar value={progress}
-                                                             styles={buildStyles({
-                                                                 pathColor: '#fff',
-                                                                 trailColor: '#848DAD',
-                                                                 strokeLinecap: 'round'
-                                                            })}
-                                                            strokeWidth={7}
-                                                            className={style.progressbar}
-                                        />
-                                        Загрузка
-                                    </div>}
-                                </div>
-                            ))
-                        }
-                    </Stack>
+                    <div style={{width: 'calc(100% - 20px)'}}>
+                        <Carousel
+                            breakPoints={breakPoints}
+                            showEmptySlots
+                            isRTL={false}
+                            itemPadding={[0, 5]}
+                            showArrows={false}
+                            itemPosition={consts.START}
+                            renderPagination={({ pages, activePage, onClick }) => {
+                                return (
+                                    <Stack direction="row">
+                                        {pages.map(page => {
+                                            const isActivePage = activePage === page
+                                            return (
+                                                <li
+                                                    className={`${style.dots} ${isActivePage && style.dotsActive}`}
+                                                    key={page}
+                                                    onClick={() => onClick(page)}
+                                                />
+                                            )
+                                        })}
+                                    </Stack>
+                                )
+                            }}
+                         >
+                            {
+                                form.images.map((image, idx) => (
+                                    <div onClick={() => showImage(idx)} className={style.previewImg} key={idx}>
+                                        <img src={image.img.indexOf('data:image') !== -1 ? image.img : `https://taxivoshod.ru/${image.img}`} alt="" />
+                                        {(idx === 0 && isLoading) && <div className={style.previewImgUpload}>
+                                            <CircularProgressbar value={progress}
+                                                                 styles={buildStyles({
+                                                                     pathColor: '#fff',
+                                                                     trailColor: '#848DAD',
+                                                                     strokeLinecap: 'round'
+                                                                 })}
+                                                                 strokeWidth={5}
+                                                                 className={style.progressbar}
+                                            />
+                                            Загрузка
+                                        </div>}
+                                    </div>
+                                ))
+                            }
+                        </Carousel>
+                    </div>
                     : null
             }
 

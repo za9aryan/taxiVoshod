@@ -1,5 +1,4 @@
 import ActionTypes from "../action.types";
-import carDetails from "../../pages/CardDetails/CarDetails";
 
 export const getMenuDataAction = (menu) => ({
     type: ActionTypes.GET_MENU_DATA,
@@ -10,6 +9,10 @@ export const getMenuDataAction = (menu) => ({
 export const getCarDamageAction = (carDamage) => ({
     type: ActionTypes.GET_CAR_DAMAGE,
     carDamage
+})
+
+export const successFalseAction = () => ({
+    type: ActionTypes.SUCCESS_FALSE
 })
 
 export const getCarDetailsAction = (carDetails) => ({
@@ -28,9 +31,10 @@ export const getCarDamageActionApi = (carDamage) => ({
     carDamage
 })
 
-export const addCatDamageDetailsAction = (carDetails) => ({
+export const addCatDamageDetailsAction = (carDetails, deleteItem) => ({
     type: ActionTypes.ADD_CAR_DAMAGE_DETAILS,
-    carDetails
+    carDetails,
+    deleteItem
 })
 
 export const getCarAllInformationAction = (finish) => ({

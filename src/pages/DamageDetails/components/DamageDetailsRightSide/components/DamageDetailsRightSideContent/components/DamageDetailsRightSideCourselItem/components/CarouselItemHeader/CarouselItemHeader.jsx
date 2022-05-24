@@ -8,7 +8,7 @@ import DamageDetailsRightSideXIcon from "../../../../../DamageDetailsRightSideIc
 import {useDispatch} from "react-redux";
 import {addCarDamageDetailsEffect} from "../../../../../../../../../../redux/effects/Effect";
 
-const CarouselItemHeader = ({item, form, setForm}) => {
+const CarouselItemHeader = ({item, form, setForm, previous}) => {
 
     const dispatch = useDispatch();
 
@@ -18,7 +18,8 @@ const CarouselItemHeader = ({item, form, setForm}) => {
         const fd = new FormData();
         fd.append('delete[]', id);
 
-        dispatch(addCarDamageDetailsEffect(fd));
+        dispatch(addCarDamageDetailsEffect(fd, true));
+        previous();
     }
 
     return (<Stack

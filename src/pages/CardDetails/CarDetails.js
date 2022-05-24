@@ -16,7 +16,7 @@ function CarDetails(props) {
     const ourData = useSelector(state => state.reducer.carDetails)
 
     const handlerBreadcrumbsClick = () => {
-        navigate(-1)
+        navigate("/damage")
     }
 
 
