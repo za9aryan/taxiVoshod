@@ -10,12 +10,9 @@ import prevArrow from "../../../../../../../../../../../../assets/img/car/prevAr
 import nextArrow from "../../../../../../../../../../../../assets/img/car/nextArrow.svg";
 import trashIcon from "../../../../../../../../../../../../assets/img/car/trash.svg";
 import {buildStyles, CircularProgressbar} from 'react-circular-progressbar';
+import Carousel, { consts } from "react-elastic-carousel";
 import 'react-circular-progressbar/dist/styles.css';
-import Slider from "react-slick";
-
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
-import './carousel.css'
+import {Stack} from "@mui/material";
 
 
 const styles = {
@@ -76,32 +73,50 @@ const ImagesShow = ({ form, setForm, progress, isLoading}) => {
         }));
     }
 
-    const settings = {
-        customPaging: (i) => {
-            return (
-                <li value={i} key={i} />
-            )
-        },
-        dots: true,
-        dotsClass: "slick-dots",
-        infinite: false,
-        speed: 500,
-        slidesToShow: 8,
-        slidesToScroll: 5,
-        arrows: false,
-    };
+    const breakPoints = [
+        { width: 1, itemsToShow: 1 },
+        { width: 120, itemsToShow: 3, itemsToScroll: 3 },
+        { width: 200, itemsToShow: 4, itemsToScroll: 4 },
+        { width: 300, itemsToShow: 4, itemsToScroll: 4 },
+        { width: 400, itemsToShow: 6, itemsToScroll: 6 },
+        { width: 500, itemsToShow: 6, itemsToScroll: 6 },
+        { width: 600, itemsToShow: 8, itemsToScroll: 8 },
+    ];
 
     return (
         <>
             {
                 form.images.length ?
-                    <div style={{width: 'calc(100% - 20px)', marginLeft: '20px'}}>
-                        <Slider {...settings}>
+                    <div style={{width: 'calc(100% - 20px)'}}>
+                        <Carousel
+                            breakPoints={breakPoints}
+                            showEmptySlots
+                            isRTL={false}
+                            itemPadding={[0, 5]}
+                            showArrows={false}
+                            itemPosition={consts.START}
+                            renderPagination={({ pages, activePage, onClick }) => {
+                                return (
+                                    <Stack direction="row">
+                                        {pages.map(page => {
+                                            const isActivePage = activePage === page
+                                            return (
+                                                <li
+                                                    className={`${style.dots} ${isActivePage && style.dotsActive}`}
+                                                    key={page}
+                                                    onClick={() => onClick(page)}
+                                                />
+                                            )
+                                        })}
+                                    </Stack>
+                                )
+                            }}
+                         >
                             {
                                 form.images.map((image, idx) => (
                                     <div onClick={() => showImage(idx)} className={style.previewImg} key={idx}>
                                         <img src={image.img.indexOf('data:image') !== -1 ? image.img : `https://taxivoshod.ru/${image.img}`} alt="" />
-                                        {(idx === form.images.length - 1 && isLoading) && <div className={style.previewImgUpload}>
+                                        {(idx === 0 && isLoading) && <div className={style.previewImgUpload}>
                                             <CircularProgressbar value={progress}
                                                                  styles={buildStyles({
                                                                      pathColor: '#fff',
@@ -116,7 +131,7 @@ const ImagesShow = ({ form, setForm, progress, isLoading}) => {
                                     </div>
                                 ))
                             }
-                        </Slider>
+                        </Carousel>
                     </div>
                     : null
             }

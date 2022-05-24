@@ -10,11 +10,10 @@ import {
     getMenuDataAction,
     getCarDamageAction,
     getCarDetailsAction,
-    getCarDamageActionApi,
     addCatDamageDetailsAction,
     getCarAllInformationAction, successFalseAction,
 } from "../actions/Action";
-import { addCatDamageDetails, getCarDamage } from "../services/ApiServices";
+import { addCatDamageDetails } from "../services/ApiServices";
 
 export const getMenuDataEffect = () => {
     return async (dispatch, getState, services) => {

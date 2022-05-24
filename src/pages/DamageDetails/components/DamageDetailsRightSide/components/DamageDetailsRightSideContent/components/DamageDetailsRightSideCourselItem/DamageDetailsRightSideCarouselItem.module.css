@@ -48,7 +48,7 @@
 }
 
 .progressbar {
-    padding: 5px 23px 0;
+    padding: 8px 13px 0;
 }
 
 .previewImg img {
@@ -77,4 +77,17 @@
     border-radius: 10px;
     border: 1px solid #c4c4c4;
     padding: 10px;
+}
+
+.dots {
+    background: #C4C4C4;
+    width: 8px;
+    height: 8px;
+    display: inline-block;
+    margin: 20px 8px;
+    border-radius: 100%;
+}
+
+.dotsActive {
+    background: #F5C257;
 }

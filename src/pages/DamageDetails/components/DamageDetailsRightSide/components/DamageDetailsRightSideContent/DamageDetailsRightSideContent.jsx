@@ -70,11 +70,11 @@ const DamageDetailsRightSideContent = ({active, onclick, carDamage, previous}) =
                     if (result) {
                         const tmp = [
                             ...form.images,
-                            {
-                                id: undefined,
-                                img: result
-                            }
                         ];
+                        tmp.unshift({
+                            id: undefined,
+                            img: result
+                        })
 
                         setForm(prevState => ({
                             ...prevState,
