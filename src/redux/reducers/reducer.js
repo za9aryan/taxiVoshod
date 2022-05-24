@@ -63,6 +63,11 @@ const reducer = (state = initialState, action) => {
         ...state,
         finishStatus: action.finish
       }
+    case ActionTypes.SET_SUCCESS_CAR_ALL_INFORMATION:
+      return {
+        ...state,
+        finishStatus: {}
+      }
     default:
       return state;
   }

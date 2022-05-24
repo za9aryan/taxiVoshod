@@ -20,7 +20,11 @@ const Information = () => {
         dispatch(getCarAllInformationEffect())
     }, [])
 
+
+    console.log(finishStatus, "finishStatus");
+
     useEffect(() => {
+        if (finishStatus?.success === undefined) return
         if (finishStatus?.success === true) {
             navigate('/')
             dispatch(setSuccessCarAllInformationEffect())
