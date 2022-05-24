@@ -11,7 +11,7 @@ const Cars = () => {
 
     const handlerBreadcrumbsClick = () => {
         console.log("Click handlerBreadcrumbsClick")
-        navigate(-1)
+        navigate("/")
     }
 
     return (

@@ -35,7 +35,7 @@ function SecondTerms(props) {
     }, [])
 
     const handlerBreadcrumbsClick = () => {
-        navigate(-1)
+        navigate("/cooperation-type")
     }
 
     console.log(data);

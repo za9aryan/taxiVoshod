@@ -34,7 +34,7 @@ const Information = () => {
             <MenuWithBar />
             {showModal?.open && <TransitionModal modal={showModal} setClose={() => { setShowModal({ open: false, message: "" }) }} />}
             <div className={c.MainContainer}>
-                <Breadcrumbs onClick={() => { navigate(-1) }} />
+                <Breadcrumbs onClick={() => { navigate("/second-terms") }} />
                 <h3>СВОДНЫЙ ЭКРАН</h3>
                 <p>Проверьте правильность внесенных данных</p>
                 <section className={c.Sections}>

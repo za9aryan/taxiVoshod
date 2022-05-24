@@ -93,7 +93,7 @@ function DriverSearch(props) {
     }
 
     const handlerBreadcrumbsClick = () => {
-        navigate(-1)
+        navigate("/equipment")
     }
 
     return (
