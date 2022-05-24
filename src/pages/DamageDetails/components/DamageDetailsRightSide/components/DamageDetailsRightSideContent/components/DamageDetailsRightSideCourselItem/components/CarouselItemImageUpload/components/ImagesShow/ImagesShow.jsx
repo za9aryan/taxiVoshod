@@ -1,5 +1,4 @@
 import React, {useEffect, useState} from 'react';
-import {Stack} from "@mui/material";
 import style from "../../../../DamageDetailsRightSideCarouselItem.module.css";
 import Modal from "@mui/material/Modal";
 import modalStyle from '../../../../../../../../../DamageDetailsLeftSide/DamageDetailsLeftSide.module.css'
@@ -12,6 +11,12 @@ import nextArrow from "../../../../../../../../../../../../assets/img/car/nextAr
 import trashIcon from "../../../../../../../../../../../../assets/img/car/trash.svg";
 import {buildStyles, CircularProgressbar} from 'react-circular-progressbar';
 import 'react-circular-progressbar/dist/styles.css';
+import Slider from "react-slick";
+
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
+import './carousel.css'
+
 
 const styles = {
     position: 'absolute',
@@ -70,31 +75,49 @@ const ImagesShow = ({ form, setForm, progress, isLoading}) => {
             images: [...image]
         }));
     }
+
+    const settings = {
+        customPaging: (i) => {
+            return (
+                <li value={i} key={i} />
+            )
+        },
+        dots: true,
+        dotsClass: "slick-dots",
+        infinite: false,
+        speed: 500,
+        slidesToShow: 8,
+        slidesToScroll: 5,
+        arrows: false,
+    };
+
     return (
         <>
             {
                 form.images.length ?
-                    <Stack direction='row' spacing={2}>
-                        {
-                            form.images.map((image, idx) => (
-                                <div onClick={() => showImage(idx)} className={style.previewImg} key={idx}>
-                                    <img src={image.img.indexOf('data:image') !== -1 ? image.img : `https://taxivoshod.ru/${image.img}`} alt="" />
-                                    {(idx === form.images.length - 1 && isLoading) && <div className={style.previewImgUpload}>
-                                        <CircularProgressbar value={progress}
-                                                             styles={buildStyles({
-                                                                 pathColor: '#fff',
-                                                                 trailColor: '#848DAD',
-                                                                 strokeLinecap: 'round'
-                                                            })}
-                                                            strokeWidth={7}
-                                                            className={style.progressbar}
-                                        />
-                                        Загрузка
-                                    </div>}
-                                </div>
-                            ))
-                        }
-                    </Stack>
+                    <div style={{width: 'calc(100% - 20px)', marginLeft: '20px'}}>
+                        <Slider {...settings}>
+                            {
+                                form.images.map((image, idx) => (
+                                    <div onClick={() => showImage(idx)} className={style.previewImg} key={idx}>
+                                        <img src={image.img.indexOf('data:image') !== -1 ? image.img : `https://taxivoshod.ru/${image.img}`} alt="" />
+                                        {(idx === form.images.length - 1 && isLoading) && <div className={style.previewImgUpload}>
+                                            <CircularProgressbar value={progress}
+                                                                 styles={buildStyles({
+                                                                     pathColor: '#fff',
+                                                                     trailColor: '#848DAD',
+                                                                     strokeLinecap: 'round'
+                                                                 })}
+                                                                 strokeWidth={5}
+                                                                 className={style.progressbar}
+                                            />
+                                            Загрузка
+                                        </div>}
+                                    </div>
+                                ))
+                            }
+                        </Slider>
+                    </div>
                     : null
             }
 

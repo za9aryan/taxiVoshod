@@ -1,0 +1,27 @@
+.slick-track {
+    width: 100% !important;
+    margin: 0;
+}
+
+.slick-slide {
+    margin-right: 20px;
+}
+.slick-slide:last-child {
+    margin-right: 0;
+}
+
+.slick-dots {
+    bottom: -40px;
+}
+
+.slick-dots > li {
+    background: #C4C4C4;
+    width: 8px !important;
+    height: 8px !important;
+    display: inline-block !important;
+    border-radius: 100%;
+}
+
+.slick-dots > li.slick-active {
+    background: #F5C257;
+}

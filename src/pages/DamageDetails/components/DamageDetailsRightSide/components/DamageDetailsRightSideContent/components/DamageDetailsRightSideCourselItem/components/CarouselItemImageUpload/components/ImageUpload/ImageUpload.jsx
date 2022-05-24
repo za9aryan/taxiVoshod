@@ -3,7 +3,7 @@ import style from "../../../../DamageDetailsRightSideCarouselItem.module.css";
 import DamageDetailsRightSideChooseAFileIcon
     from "../../../../../../../DamageDetailsRightSideIcons/DamageDetailsRightSideChooseAFileIcon";
 
-const ImageUpload = ({fileUpload, active,id}) => {
+const ImageUpload = ({fileUpload, active, id}) => {
     return (
         <div>
             <input type="file" name="file" id={id} className={style.inputfile} accept='image/*' onChange={(e) => fileUpload(e, active)}/>
