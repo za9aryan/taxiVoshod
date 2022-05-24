@@ -13,7 +13,7 @@ const imageTypeRegex = /image\/(png|jpg|jpeg)/gm;
 
 const DamageDetailsRightSideContent = ({active, onclick, carDamage, previous}) => {
 
-    const {uploadForm, progress, isLoading} = useUploadForm('https://taxivoshod.ru/api/upload.php');
+    const {uploadForm, progress, isLoading} = useUploadForm('https://mechanic.taxivoshod.ru/api/upload.php');
 
     const dispatch = useDispatch();
 
@@ -31,9 +31,9 @@ const DamageDetailsRightSideContent = ({active, onclick, carDamage, previous}) =
         images: carDamage[active].images
     });
 
-    const fileUpload = async (e, id) => {
+    const fileUpload = async (e, index) => {
         const {files} = e.target;
-        setId(id);
+        setId(carDamage[index].id);
         const validImageFiles = [];
         for (let i = 0; i < files.length; i++) {
             const file = files[i];
@@ -111,45 +111,16 @@ const DamageDetailsRightSideContent = ({active, onclick, carDamage, previous}) =
         dispatch(addCarDamageDetailsEffect(fd));
     }
 
-    const indicatorStyles = {
-        background: '#C4C4C4',
-        width: 8,
-        height: 8,
-        display: 'inline-block',
-        margin: '0 8px',
-        borderRadius: '100%'
-    };
-
     return (
         <div className={style.sliderWrapper}>
             <Carousel showArrows={false} showStatus={false} selectedItem={active}
-                      renderIndicator={(onClickHandler, isSelected, index) => {
-                          if (isSelected) {
-                              return (
-                                  <li
-                                      style={{ ...indicatorStyles, background: '#F5C257' }}
-                                  />
-                              );
-                          }
-                          return (
-                              <li
-                                  style={indicatorStyles}
-                                  onClick={() => {
-                                      onclick(index);
-                                  }}
-                                  onKeyDown={onClickHandler}
-                                  value={index}
-                                  key={index}
-                                  role="button"
-                                  tabIndex={0}
-                              />
-                          );
-                      }}
+                      showIndicators={false}
             >
                 {carDamage.map((item) => (
                     <DamageDetailsRightSideCarouselItem isLoading={isLoading} progress={progress} form={form}
                                                         setForm={setForm} key={item.id} item={item}
                                                         id={"file"}
+                                                        active={active}
                                                         previous={previous}
                                                         fileUpload={fileUpload}/>
                 ))}

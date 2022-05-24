@@ -1,20 +1,23 @@
 import React from 'react';
-import {Stack} from "@mui/material";
+import {Grid, Stack} from "@mui/material";
 import ImageUpload from "./components/ImageUpload/ImageUpload";
 import ImagesShow from "./components/ImagesShow/ImagesShow";
 
 const CarouselItemImageUpload = ({form, setForm, isLoading, active, progress, fileUpload, id}) => {
     return (
-        <Stack
+        <Grid
             style={{marginTop: '20px', marginBottom: '10px'}}
-            direction="row"
-            alignItems="center"
+            container
             spacing={2}
         >
-            <ImageUpload fileUpload={fileUpload} active={active} id={id} />
+            <Grid item xs={1}>
+                <ImageUpload fileUpload={fileUpload} active={active} id={id} />
+            </Grid>
 
-            <ImagesShow form={form} setForm={setForm} progress={progress} isLoading={isLoading} />
-        </Stack>
+            <Grid item xs={11}>
+                <ImagesShow form={form} setForm={setForm} progress={progress} isLoading={isLoading} />
+            </Grid>
+        </Grid>
     );
 };
 

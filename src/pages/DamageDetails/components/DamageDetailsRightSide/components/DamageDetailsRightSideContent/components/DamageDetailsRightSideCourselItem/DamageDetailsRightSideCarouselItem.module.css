@@ -1,6 +1,6 @@
 .sliderItem {
     width: 100%;
-    padding: 30px 30px 70px;
+    padding: 30px 30px 40px;
     background-color: #fff;
     border-radius: 20px;
     box-shadow: 10px 0 50px 10px rgba(0, 0, 0, 0.05)
@@ -48,7 +48,7 @@
 }
 
 .progressbar {
-    padding: 8px 13px 0;
+    padding: 5px 23px 0;
 }
 
 .previewImg img {

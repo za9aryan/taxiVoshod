@@ -18,16 +18,16 @@ const DamageDetails = () => {
 
     const [active, setActive] = useState();
     const [loading, setLoading] = useState(true)
-    const [showModal, setShowModal] = useState({open: false, text: 'Успешно добавлено'});
+    // const [showModal, setShowModal] = useState({open: false, text: 'Успешно добавлено'});
 
 
-    useEffect(() => {
+/*    useEffect(() => {
         if (success && deleteItem) {
             setShowModal({...showModal, open: true, text: 'Успешно удалено'})
         } else if (success && !deleteItem) {
             setShowModal({...showModal, open: true, text: 'Успешно добавлено'})
         }
-    }, [success, deleteItem])
+    }, [success, deleteItem])*/
 
     useEffect(() => {
         if (!carDamage.list.length) {
@@ -38,20 +38,20 @@ const DamageDetails = () => {
     }, [carDamage])
 
     const handleBreadcrumbsClick = () => {
-        navigate(-1)
+        navigate('/damage')
     }
 
-    const closeModal = () => {
-        dispatch(successFalse())
-        setShowModal({...showModal, open: false});
-    }
+    // const closeModal = () => {
+    //     dispatch(successFalse())
+    //     setShowModal({...showModal, open: false});
+    // }
 
     return (
         <>
             <MenuWithBar />
             <div className={c.MainContainer}>
                 <Breadcrumbs onClick={handleBreadcrumbsClick}/>
-                <TransitionModal modal={showModal} success={true} setClose={closeModal} />
+                {/*<TransitionModal modal={showModal} success={true} setClose={closeModal} />*/}
                 {loading ? (
                     <div className={c.Loading}/>
                 ) : (
