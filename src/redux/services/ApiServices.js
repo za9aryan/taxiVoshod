@@ -1,35 +1,41 @@
 import axios from "axios"
 
+const apiBaseUrl = process.env.REACT_APP_API_BASE_URL || "https://taxivoshod.ru"
+
+export const Axios = axios.create({
+    baseURL: apiBaseUrl
+});
+
 export const getMenuData = async () => {
-    return await axios.get("https://mechanic.taxivoshod.ru/api/?page=menu")
+    return await Axios.get("/api/?page=menu")
 }
 
 
 export const getCarDamage = async () => {
-    return await axios.get("https://mechanic.taxivoshod.ru/api/?page=damage")
+    return await Axios.get("/api/?page=damage")
 }
 
 export const addCatDamageDetails = async (body) => {
-    return await axios.post("https://mechanic.taxivoshod.ru/api/?page=damage", body)
+    return await Axios.post("/api/?page=damage", body)
 }
 
 
 export const getCarDetails = async () => {
-    return await axios.get("https://mechanic.taxivoshod.ru/api/?page=details")
+    return await Axios.get("/api/?page=details")
 }
 
 export const postCarDetails = async (body) => {
-    return await axios.post("https://mechanic.taxivoshod.ru/api/?page=details", {...body})
+    return await Axios.post("/api/?page=details", {...body})
 }
 
 export const getCarAllInformation = async () => {
-    return await axios.get("https://taxivoshod.ru/api/?page=final")
+    return await Axios.get("/api/?page=final")
 }
 
 export const finallyFinish = async (formData) => {
-    return axios({
+    return Axios({
         method: "post",
-        url: "https://taxivoshod.ru/api/?page=final",
+        url: "/api/?page=final",
         data: formData,
     });
 }

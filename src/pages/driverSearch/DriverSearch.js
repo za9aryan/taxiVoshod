@@ -8,6 +8,7 @@ import './driverSearch.css'
 import { MenuWithBar } from '../../components/Components';
 import Breadcrumbs from './Breadcrumbs/Breadcrumbs'
 import TransitionModal from '../CardDetails/components/TransitionModal';
+import {Axios} from "../../redux/services/ApiServices";
 
 function DriverSearch(props) {
 
@@ -21,10 +22,9 @@ function DriverSearch(props) {
 
 
     const getData = async () => {
-        const res = await fetch("https://mechanic.taxivoshod.ru/api/?page=drivers")
-        const resData = await res.json()
-        setData(resData.list)
-        setSearchData(resData.list)
+        const res = await Axios.get("/api/?page=drivers")
+        setData(res.data.list)
+        setSearchData(res.data.list)
     }
 
     useEffect(() => {

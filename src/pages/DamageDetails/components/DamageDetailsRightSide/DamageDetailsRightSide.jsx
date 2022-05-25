@@ -17,8 +17,8 @@ const DamageDetailsRightSide = ({active, setActive, carDamage}) => {
     }
 
     const next = () => {
-        if (active > carDamage.length - 1) {
-            setActive(1)
+        if (active > carDamage.length - 2) {
+            setActive(0)
         } else {
             setActive(active + 1);
         }

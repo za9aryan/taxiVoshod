@@ -50,13 +50,10 @@ const DamageDetailsRightSideContent = ({ active, onclick, carDamage, previous })
         }
         if (validImageFiles.length) {
             setImageFiles(validImageFiles);
-
             const fd = new FormData();
             fd.append('file', files[0]);
             const a = await uploadForm(fd);
             setImages(a.id);
-
-            return;
         }
     }
 
@@ -73,7 +70,7 @@ const DamageDetailsRightSideContent = ({ active, onclick, carDamage, previous })
                             ...form.images,
                         ];
                         tmp.unshift({
-                            id: undefined,
+                            id: active,
                             img: result
                         })
 
@@ -115,12 +112,20 @@ const DamageDetailsRightSideContent = ({ active, onclick, carDamage, previous })
 
     return (
         <div className={style.sliderWrapper}>
-            <Carousel showArrows={false} showStatus={false} selectedItem={active}
+            <Carousel
+                showArrows={false}
+                showStatus={false}
+                selectedItem={active}
                 showIndicators={false}
             >
                 {carDamage.map((item) => (
-                    <DamageDetailsRightSideCarouselItem isLoading={isLoading} progress={progress} form={form}
-                        setForm={setForm} key={item.id} item={item}
+                    <DamageDetailsRightSideCarouselItem
+                        key={item.id}
+                        item={item}
+                        isLoading={isLoading}
+                        progress={progress}
+                        form={form}
+                        setForm={setForm}
                         id={"file"}
                         active={active}
                         previous={previous}

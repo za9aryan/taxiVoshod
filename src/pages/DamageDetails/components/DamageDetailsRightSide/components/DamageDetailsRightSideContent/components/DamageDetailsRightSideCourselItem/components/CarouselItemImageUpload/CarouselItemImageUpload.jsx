@@ -13,7 +13,7 @@ const CarouselItemImageUpload = ({form, setForm, isLoading, active, progress, fi
         >
             <ImageUpload fileUpload={fileUpload} active={active} id={id} />
 
-            <ImagesShow form={form} setForm={setForm} progress={progress} isLoading={isLoading} />
+            <ImagesShow form={form} setForm={setForm} progress={progress} isLoading={isLoading} active={active} />
         </Stack>
     );
 };
