@@ -123,7 +123,7 @@ const ImagesShow = ({ form, setForm, progress, isLoading, active }) => {
                                 form.images.map((image, idx) => (
                                     image.id === active && <div onClick={() => showImage(idx)} className={style.previewImg} key={idx}>
                                         <img
-                                            src={image.img.indexOf('data:image') !== -1 ? image.img : `https://taxivoshod.ru/${image.img}`}
+                                            src={image.img.indexOf('data:image') !== -1 ? image.img : `https://mechanic.taxivoshod.ru/${image.img}`}
                                             alt=""
                                         />
                                         {
@@ -163,7 +163,7 @@ const ImagesShow = ({ form, setForm, progress, isLoading, active }) => {
                 }}
             >
                 <Box sx={styles}
-                    style={{ backgroundImage: `url(${form.images[imageIndex]?.img.indexOf('data:image') !== -1 ? form.images[imageIndex]?.img : `https://taxivoshod.ru/${form.images[imageIndex]?.img}`})` }}>
+                    style={{ backgroundImage: `url(${form.images[imageIndex]?.img.indexOf('data:image') !== -1 ? form.images[imageIndex]?.img : `https://mechanic.taxivoshod.ru/${form.images[imageIndex]?.img}`})` }}>
                     <Box className={modalStyle.closeIcon} onClick={handleClose}>
                         <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path

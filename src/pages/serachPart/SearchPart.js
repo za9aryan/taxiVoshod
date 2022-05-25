@@ -70,7 +70,7 @@ const SearchPart = () => {
         try {
             let formData = new FormData();
             formData.append('car_id', selected.id);
-            const res = await fetch("https://taxivoshod.ru/api/?page=cars", {
+            const res = await fetch("https://mechanic.taxivoshod.ru/api/?page=cars", {
                 method: "POST",
                 body: formData
             })

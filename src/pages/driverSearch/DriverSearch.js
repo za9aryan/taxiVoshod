@@ -75,7 +75,7 @@ function DriverSearch(props) {
         try {
             let formData = new FormData();
             formData.append('driver_id', selected.id);
-            const res = await fetch("https://taxivoshod.ru/api/?page=drivers", {
+            const res = await fetch("https://mechanic.taxivoshod.ru/api/?page=drivers", {
                 method: "POST",
                 body: formData
             })

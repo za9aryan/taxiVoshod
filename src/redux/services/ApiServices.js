@@ -1,6 +1,6 @@
 import axios from "axios"
 
-const apiBaseUrl = process.env.REACT_APP_API_BASE_URL || "https://taxivoshod.ru"
+const apiBaseUrl = process.env.REACT_APP_API_BASE_URL || "https://mechanic.taxivoshod.ru"
 
 export const Axios = axios.create({
     baseURL: apiBaseUrl
@@ -25,7 +25,7 @@ export const getCarDetails = async () => {
 }
 
 export const postCarDetails = async (body) => {
-    return await Axios.post("/api/?page=details", {...body})
+    return await Axios.post("/api/?page=details", { ...body })
 }
 
 export const getCarAllInformation = async () => {
