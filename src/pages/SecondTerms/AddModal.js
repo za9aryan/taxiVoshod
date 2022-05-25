@@ -73,7 +73,7 @@ const AddModal = ({ modal, setClose, type, getData, data }) => {
                             {type === "price" ? "Стоимость" : "Срок аренды"}
                         </Typography>
                         <Typography sx={inputErrTextStyle} id="transition-modal-description">
-                            <p className="modal_p">{type === "price" ? "Введите стоимость" : "Введите количество дней"}</p>
+                            <span className="modal_p">{type === "price" ? "Введите стоимость" : "Введите количество дней"}</span>
                             <input onChange={handleInputChange} value={value} type="number" className="modal_input" />
                         </Typography>
                         <div onClick={handleClose} className="modal_button">

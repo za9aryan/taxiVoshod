@@ -9,6 +9,7 @@ import task from '../../assets/img/task.png'
 import pencil from '../../assets/img/pencil.png'
 import coin from '../../assets/img/coin.png'
 import AddModal from './AddModal';
+import {Axios} from "../../redux/services/ApiServices";
 
 function SecondTerms(props) {
     const navigate = useNavigate()
@@ -24,21 +25,19 @@ function SecondTerms(props) {
 
 
     const getData = async () => {
-        const res = await fetch("https://taxivoshod.ru/api/?page=terms2")
-        const resData = await res.json()
-        console.log(resData);
-        setData(resData)
+        const res = await Axios.get("/api/?page=terms2")
+        return res.data
     }
 
     useEffect(() => {
         getData()
+            .then(res => setData(res))
+            .catch(e => console.log("SecondTerms", e.message))
     }, [])
 
     const handlerBreadcrumbsClick = () => {
         navigate("/cooperation-type")
     }
-
-    console.log(data);
 
 
     const handleEditDays = () => {
@@ -74,15 +73,8 @@ function SecondTerms(props) {
 
     const handleNextButton = async () => {
         try {
-            let formData = new FormData();
-            Object.keys(data).forEach(el => formData.append(el, data[el]));
-            console.log(formData);
-            const res = await fetch("https://taxivoshod.ru/api/?page=terms2", {
-                method: "POST",
-                body: formData
-            })
-            const resData = await res.json()
-            console.log(resData);
+            const res = await Axios.post("/api/?page=terms2", data)
+            const resData = res.data
             if (resData.success) {
                 navigate('/information')
             } else {

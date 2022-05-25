@@ -1,33 +1,36 @@
-import React, { useEffect, useState } from 'react';
-import { MenuWithBar } from '../../components/Components';
+import React, {useEffect, useState} from 'react';
+import {v4 as uuid4} from "uuid"
+import {MenuWithBar} from '../../components/Components';
 import Breadcrumbs from './Breadcrumbs/Breadcrumbs';
-import { useNavigate } from 'react-router-dom';
+import {useNavigate} from 'react-router-dom';
 import Button from './Buttons/Button'
 import './cooperationType.css'
 import TransitionModal from '../CardDetails/components/TransitionModal';
+import {Axios} from "../../redux/services/ApiServices";
 
 function CooperationType(props) {
     const [data, setData] = useState()
     const [selected, setSelected] = useState("")
-    const [showModal, setShowModal] = useState({ open: false, text: "" })
+    const [showModal, setShowModal] = useState({open: false, text: ""})
     const navigate = useNavigate()
 
     const getData = async () => {
-        const res = await fetch("https://taxivoshod.ru/api/?page=terms")
-        const resData = await res.json()
-        console.log(resData);
-        setData(resData.list)
+        const res = await Axios.get("/api/?page=terms")
+        return res.data
+
     }
 
     useEffect(() => {
         getData()
+            .then(res => setData(res.list))
+            .catch(e => console.log("CooperationType", e.message))
     }, [])
 
-    const renderButtons = ({ name, id }) => {
-        console.log(name, id);
-        console.log(selected);
-        return <span onClick={() => setSelected(id)}><Button key={id} title={name} color={selected === id ? "primary" : "second"} /></span>
-    }
+    const renderButtons = ({name, id}) => (
+        <span key={uuid4()} onClick={() => setSelected(id)}>
+            <Button key={id} title={name} color={selected === id ? "primary" : "second"}/>
+        </span>
+    )
 
     const handlerBreadcrumbsClick = () => {
         navigate("/driver-search")
@@ -47,20 +50,22 @@ function CooperationType(props) {
             if (resData.success) {
                 navigate('/second-terms')
             } else {
-                setShowModal({ open: true, text: resData.message })
+                setShowModal({open: true, text: resData.message})
             }
         } catch (e) {
-            setShowModal({ open: true, text: e.message })
+            setShowModal({open: true, text: e.message})
         }
 
     }
 
     return (
         <div className="cooperationType_main">
-            {showModal?.open && <TransitionModal modal={showModal} setClose={() => { setShowModal({ open: false, message: "" }) }} />}
-            <MenuWithBar />
+            {showModal?.open && <TransitionModal modal={showModal} setClose={() => {
+                setShowModal({open: false, message: ""})
+            }}/>}
+            <MenuWithBar/>
             <div className="cooperationType_breadcrumbs">
-                <Breadcrumbs onClick={handlerBreadcrumbsClick} />
+                <Breadcrumbs onClick={handlerBreadcrumbsClick}/>
                 <h3 className={"cooperationType_h3"}>УСЛОВИЯ РАБОТЫ</h3>
             </div>
             <div className="cooperationType_content">
@@ -77,7 +82,7 @@ function CooperationType(props) {
 
             </div>
             <div onClick={handleNextButton} className="cooperationType_nextButton">
-                <Button title="ДАЛЕЕ" color={selected ? "primary" : "disable"} />
+                <Button title="ДАЛЕЕ" color={selected ? "primary" : "disable"}/>
             </div>
         </div>
     );

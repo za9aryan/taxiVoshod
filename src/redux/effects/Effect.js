@@ -13,7 +13,7 @@ import {
     addCatDamageDetailsAction,
     getCarAllInformationAction, successFalseAction,
 } from "../actions/Action";
-import { addCatDamageDetails } from "../services/ApiServices";
+import {addCatDamageDetails} from "../services/ApiServices";
 
 export const getMenuDataEffect = () => {
     return async (dispatch, getState, services) => {
@@ -32,6 +32,7 @@ export const getCarDamageEffect = () => {
         try {
             const result = await services.getCarDamage();
             dispatch(getCarDamageAction(result.data));
+
         } catch (e) {
             console.log("getCarDamageEffect", e.message);
         }
@@ -49,17 +50,17 @@ export const getCarDetailsEffect = () => {
     };
 };
 export const addCarDamageDetailsEffect = (body, deleteItem = false) => {
-  return async (dispatch, getState, services) => {
-    try {
-      const res = await addCatDamageDetails(body);
-      if (res.data.success) {
-        dispatch(getCarDamageEffect());
-      }
-      dispatch(addCatDamageDetailsAction(res.data, deleteItem));
-    } catch (e) {
-      console.log(e, "addCarDamageDetailsEffect");
-    }
-  };
+    return async (dispatch, getState, services) => {
+        try {
+            const res = await addCatDamageDetails(body);
+            if (res.data.success) {
+                dispatch(getCarDamageEffect());
+            }
+            dispatch(addCatDamageDetailsAction(res.data, deleteItem));
+        } catch (e) {
+            console.log(e, "addCarDamageDetailsEffect");
+        }
+    };
 };
 
 export const successFalse = () => {
