@@ -18,14 +18,12 @@ function ChangeUrlProvider({ children }) {
         final: '/'
     }
 
-    console.log(state);
-
-    // useEffect(() => {
-    //     console.log(location.pathname, urls[state.last_page]);
-    //     if ((location.pathname !== urls[state.last_page]) && state.last_page && location.pathname) {
-    //         navigate(urls[state.last_page])
-    //     }
-    // }, [state])
+    useEffect(() => {
+        console.log(location.pathname, urls[state.last_page]);
+        if ((location.pathname !== urls[state.last_page]) && state.last_page && location.pathname) {
+            navigate(urls[state.last_page])
+        }
+    }, [state])
 
     return (
         <div>

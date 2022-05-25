@@ -105,7 +105,6 @@ const DamageDetailsRightSideContent = ({ active, onclick, carDamage, previous })
         Object.entries(form.name).forEach(([key, value]) => fd.append(`name[${key}]`, value));
         Object.entries(form.description).forEach(([key, value]) => fd.append(`descr[${key}]`, value));
         form.images.forEach(value => fd.append(`images[${id}][]`, value.id));
-
         dispatch(addCarDamageDetailsEffect(fd));
         navigate('/car-details')
     }

@@ -18,7 +18,7 @@ const Cars = () => {
         <>
             <MenuWithBar />
             <div className={c.MainContainer}>
-                <Breadcrumbs onClick={() => handlerBreadcrumbsClick} />
+                <Breadcrumbs onClick={() => handlerBreadcrumbsClick()} />
                 <h3 className={c.H3}>ВНЕШНИЙ ОСМОТР АВТОМОБИЛЯ</h3>
                 <Main />
                 <Button />
