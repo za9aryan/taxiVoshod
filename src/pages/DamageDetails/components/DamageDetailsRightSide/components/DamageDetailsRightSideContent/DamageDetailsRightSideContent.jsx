@@ -1,20 +1,20 @@
-import React, {useEffect, useState} from 'react';
+import React, { useEffect, useState } from 'react';
 import style from "./DamageDetailsRightSideContent.module.css";
-import {Carousel} from "react-responsive-carousel";
+import { Carousel } from "react-responsive-carousel";
 import imageCompression from "browser-image-compression";
 import DamageDetailsRightSideCarouselItem
     from "./components/DamageDetailsRightSideCourselItem/DamageDetailsRightSideCourselItem";
-import {useDispatch, useSelector} from "react-redux";
-import {addCarDamageDetailsEffect} from "../../../../../../redux/effects/Effect";
-import {useUploadForm} from "../../../../../../utils/useFileUpload";
-import {useNavigate} from 'react-router-dom';
+import { useDispatch, useSelector } from "react-redux";
+import { addCarDamageDetailsEffect } from "../../../../../../redux/effects/Effect";
+import { useUploadForm } from "../../../../../../utils/useFileUpload";
+import { useNavigate } from 'react-router-dom';
 
 const imageTypeRegex = /image\/(png|jpg|jpeg)/gm;
 
 
-const DamageDetailsRightSideContent = ({active, onclick, carDamage, previous}) => {
+const DamageDetailsRightSideContent = ({ active, onclick, carDamage, previous }) => {
 
-    const {uploadForm, progress, isLoading} = useUploadForm('https://mechanic.taxivoshod.ru/api/upload.php');
+    const { uploadForm, progress, isLoading } = useUploadForm('https://mechanic.taxivoshod.ru/api/upload.php');
     const navigate = useNavigate()
     const dispatch = useDispatch();
 
@@ -22,18 +22,35 @@ const DamageDetailsRightSideContent = ({active, onclick, carDamage, previous}) =
     const [images, setImages] = useState();
     const [id, setId] = useState(null);
 
-    const [form, setForm] = useState({
-        name: {
-            [carDamage[active].id]: carDamage[active].name
-        },
-        description: {
-            [carDamage[active].id]: carDamage[active].descr
-        },
-        images: carDamage[active].images
+    const [form, setForm] = useState(() => {
+        let damages = {
+            name: {},
+            description: {},
+            images: []
+        }
+        carDamage.forEach(({ id, descr, images, name }) => {
+            if (descr.length || images.length) {
+                damages = {
+                    ...damages,
+                    name: {
+                        ...damages.name,
+                        [id]: name
+                    },
+                    description: {
+                        ...damages.description,
+                        [id]: descr
+                    }
+                }
+            }
+
+        })
+
+        return damages
+
     });
 
     const fileUpload = async (e, index) => {
-        const {files} = e.target;
+        const { files } = e.target;
         setId(carDamage[index].id);
         const validImageFiles = [];
         for (let i = 0; i < files.length; i++) {
@@ -64,7 +81,7 @@ const DamageDetailsRightSideContent = ({active, onclick, carDamage, previous}) =
                 const fileReader = new FileReader();
                 fileReaders.push(fileReader);
                 fileReader.onload = (e) => {
-                    const {result} = e.target;
+                    const { result } = e.target;
                     if (result) {
                         const tmp = [
                             ...form.images,
@@ -94,14 +111,21 @@ const DamageDetailsRightSideContent = ({active, onclick, carDamage, previous}) =
 
     useEffect(() => {
         if (images) {
-            form.images[form.images.length - 1].id = images
+            const idx = form.images.findIndex(({ images }) => images.id === active)
+            form.images[idx].idx = images
         }
-        setForm(form);
+        const changeImages = [...form.images]
+        changeImages[idx] = currentImage
+        setForm({
+            ...form,
+            images: changeImages
+        });
     }, [images])
 
     useEffect(() => {
         const changeImages = []
-        carDamage.forEach(({id, images}) =>  images.length && images.forEach(({img}) => changeImages.push({id, img})))
+        carDamage.forEach(({ id, images }, index) => images.length && images.forEach(({ img }) => changeImages.push({ id: index, img })))
+        console.log(changeImages, "changeImages");
         setForm(prevstate => ({
             ...prevstate,
             images: [
@@ -113,10 +137,11 @@ const DamageDetailsRightSideContent = ({active, onclick, carDamage, previous}) =
 
     const addDamageDetails = () => {
         const fd = new FormData;
-
+        console.log(form, "form");
         Object.entries(form.name).forEach(([key, value]) => fd.append(`name[${key}]`, value));
         Object.entries(form.description).forEach(([key, value]) => fd.append(`descr[${key}]`, value));
-        form.images.forEach(value => fd.append(`images[${id}][]`, value.id));
+        form.images.forEach((value) => fd.append(`images[${value.id + 1}][]`, value.idx));
+        // console.log(fd.getAll(`images[${3}][]`))
         dispatch(addCarDamageDetailsEffect(fd));
         navigate('/car-details')
     }
@@ -140,12 +165,12 @@ const DamageDetailsRightSideContent = ({active, onclick, carDamage, previous}) =
                         id={"file"}
                         active={active}
                         previous={previous}
-                        fileUpload={fileUpload}/>
+                        fileUpload={fileUpload} />
                 ))}
             </Carousel>
 
             <button disabled={isLoading} className={`${isLoading ? 'disabled' : 'primary'}`}
-                    style={{width: '100%', minHeight: '80px'}} onClick={addDamageDetails}>
+                style={{ width: '100%', minHeight: '80px' }} onClick={addDamageDetails}>
                 Сохранить
             </button>
         </div>
