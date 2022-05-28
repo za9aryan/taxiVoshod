@@ -18,20 +18,14 @@ const DamageDetailsRightSideContent = ({active, onclick, carDamage, previous}) =
     const navigate = useNavigate()
     const dispatch = useDispatch();
 
-    const [imageFiles, setImageFiles] = useState([]);
-
-    const [images, setImages] = useState();
-
-    const [id, setId] = useState(null);
-
     const [form, setForm] = useState(() => {
         let damages = {
             name: {},
             description: {},
             images: {}
         }
-        carDamage.forEach(({id, descr, images, name}) => {
-            if (descr.length || images.length) {
+        carDamage.forEach(({id, descr, images, name}, index) => {
+            if (descr.length) {
                 damages = {
                     ...damages,
                     name: {
@@ -41,30 +35,25 @@ const DamageDetailsRightSideContent = ({active, onclick, carDamage, previous}) =
                     description: {
                         ...damages.description,
                         [id]: descr
-                    },
-                    images: {
-                        ...damages.images,
-                        [id]: [...images.map(({id, img}) => ({id, img}))]
                     }
                 }
             }
-
+            if(images.length){
+                damages = {
+                    ...damages,
+                    name: {
+                        ...damages.name,
+                        [id]: name
+                    },
+                    images: {
+                        ...damages.images,
+                        [index]: [...images.map(({id, img}) => ({carDamageId: active, imageId: id, img}))]
+                    }
+                }
+            }
         })
         return damages
     });
-
-    /*useEffect(() => {
-        const changeImages = []
-        carDamage.forEach(({id, images}, index) => images.length &&
-            images.forEach(({img}) => changeImages.push({id: index, img})))
-        setForm(prevState => ({
-            ...prevState,
-            images: [
-                ...prevState.images,
-                ...changeImages
-            ]
-        }))
-    }, [carDamage])*/
 
     const fileValidHelper = async (files) => {
         const validImageFiles = [];
@@ -107,9 +96,10 @@ const DamageDetailsRightSideContent = ({active, onclick, carDamage, previous}) =
         }
         changeForm.images = {
             ...changeForm.images,
-            [currentCarDamageIndex]: [
+            [active]: [
                 {
-                    id: currentCarDamageImageId,
+                    carDamageId: currentCarDamageIndex,
+                    imageId: currentCarDamageImageId,
                     img: result
                 }
             ]
@@ -119,26 +109,23 @@ const DamageDetailsRightSideContent = ({active, onclick, carDamage, previous}) =
 
     const changeCurrentImage = (currentCarDamageIndex, currentCarDamageImageId, result) => {
         const changeForm = {...form}
-        changeForm.images[currentCarDamageIndex] = [
-            ...changeForm.images[currentCarDamageIndex],
-            {
-                id: currentCarDamageImageId,
-                img: result
-            }
-        ]
+        changeForm.images[active].push({
+            carDamageId: currentCarDamageIndex,
+            imageId: currentCarDamageImageId,
+            img: result
+        })
+
         return changeForm
     }
 
     const fileReaderHelper = (validFiles, index, currentCarDamageImageId) => {
-        const currentCarDamageIndex = carDamage[index].id
-        console.log(currentCarDamageIndex, "currentCarDamageIndex")
-        const currentCarDamageName = carDamage[index].name
+        const currentCarDamageIndex = carDamage[active].id
+        const currentCarDamageName = carDamage[active].name
         const fileReader = new FileReader();
         fileReader.onload = (e) => {
             const {result} = e.target
             if (result) {
-                console.log(form.images[currentCarDamageIndex], "form.images[currentCarDamageIndex]")
-                if (!!form.images[currentCarDamageIndex]) {
+                if (!!form.images[active] && !!form.name[currentCarDamageIndex]) {
                     // If There is Have That Index
                     const changeForm = changeCurrentImage(currentCarDamageIndex, currentCarDamageImageId, result)
                     setForm(changeForm)
@@ -150,30 +137,10 @@ const DamageDetailsRightSideContent = ({active, onclick, carDamage, previous}) =
             }
         }
         fileReader.readAsDataURL(validFiles);
-        /*fileReader.onload = (e) => {
-            const {result} = e.target;
-            if (result) {
-                const tmp = [
-                    ...form.images,
-                ];
-                tmp.unshift({
-                    id: active,
-                    img: result
-                })
-
-                setForm(prevState => ({
-                    ...prevState,
-                    images: tmp
-                }));
-            }
-        }*/
-
     }
 
-    console.log(form ,"fffffffffffffffffffffffffff")
 
     const fileUpload = async (e, index) => {
-        console.log(index, "99999999999999999999999999999999999")
         const {files} = e.target;
         const valid = await fileValidHelper(files)
         if (valid.length) {
@@ -184,61 +151,17 @@ const DamageDetailsRightSideContent = ({active, onclick, carDamage, previous}) =
         }
     }
 
-    /*useEffect(() => {
-        const fileReaders = [];
-        if (imageFiles.length) {
-            imageFiles.forEach((file) => {
-                const fileReader = new FileReader();
-                fileReaders.push(fileReader);
-                fileReader.onload = (e) => {
-                    const {result} = e.target;
-                    if (result) {
-                        const tmp = [
-                            ...form.images,
-                        ];
-                        tmp.unshift({
-                            id: active,
-                            img: result
-                        })
-
-                        setForm(prevState => ({
-                            ...prevState,
-                            images: tmp
-                        }));
-                    }
-                }
-                fileReader.readAsDataURL(file);
-            })
-        }
-        return () => {
-            fileReaders.forEach(fileReader => {
-                if (fileReader.readyState === 1) {
-                    fileReader.abort()
-                }
-            })
-        }
-    }, [imageFiles]);*/
-
-    /*useEffect(() => {
-        const changeImages = [...form.images]
-        if (images) {
-            const idx = form.images.findIndex(({images}) => images.id === active)
-            changeImages[idx].idx = images
-            setForm({
-                ...form,
-                images: changeImages
-            });
-        }
-    }, [images])*/
-
-
     const addDamageDetails = () => {
         const fd = new FormData;
         console.log(form, "form");
-        Object.entries(form.name).forEach(([key, value]) => fd.append(`name[${key}]`, value));
-        Object.entries(form.description).forEach(([key, value]) => fd.append(`descr[${key}]`, value));
-        form.images.forEach((value) => fd.append(`images[${value.id + 1}][]`, value.idx));
-        // console.log(fd.getAll(`images[${3}][]`))
+
+        Object.entries(form.name).forEach(([key, value]) => fd.append(`name[${key}]`, value))
+        Object.entries(form.description).forEach(([key, value]) => fd.append(`descr[${key}]`, value))
+
+        Object.values(form.images).forEach(value => {
+            value.forEach(({carDamageId, imageId}) => fd.append(`images[${carDamageId}][]`, [imageId]))
+        })
+
         dispatch(addCarDamageDetailsEffect(fd));
         navigate('/car-details')
     }
