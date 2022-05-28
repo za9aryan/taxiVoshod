@@ -136,7 +136,7 @@ const ImagesShow = ({form, setForm, progress, isLoading, active}) => {
                                                         className={style.previewImg}
                                                     >
                                                         <img
-                                                            src={img.indexOf('data:image') === 0 ? img : `https://taxivoshod.ru${img}`}
+                                                            src={img.indexOf('data:image') === 0 ? img : `https://mechanic.taxivoshod.ru${img}`}
                                                             alt=""
                                                         />
                                                         {

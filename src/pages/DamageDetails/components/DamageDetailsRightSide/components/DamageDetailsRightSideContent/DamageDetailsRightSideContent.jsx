@@ -14,7 +14,7 @@ const imageTypeRegex = /image\/(png|jpg|jpeg)/gm;
 
 const DamageDetailsRightSideContent = ({active, onclick, carDamage, previous}) => {
 
-    const {uploadForm, progress, isLoading} = useUploadForm('https://taxivoshod.ru/api/upload.php');
+    const {uploadForm, progress, isLoading} = useUploadForm('https://mechanic.taxivoshod.ru/api/upload.php');
     const navigate = useNavigate()
     const dispatch = useDispatch();
 
