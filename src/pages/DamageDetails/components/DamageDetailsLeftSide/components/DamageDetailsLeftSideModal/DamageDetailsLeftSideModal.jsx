@@ -34,7 +34,7 @@ const imageTypeRegex = /image\/(png|jpg|jpeg)/gm;
 const DamageDetailsLeftSideModal = ({open, handleClose}) => {
 
     const dispatch = useDispatch();
-    const {uploadForm, progress, isLoading} = useUploadForm('https://mechanic.taxivoshod.ru/api/upload.php');
+    const {uploadForm, progress, isLoading} = useUploadForm('https://mechanic.taxivoshod..ru/api/upload.php');
 
     const {success} = useSelector(state => state.reducer);
 

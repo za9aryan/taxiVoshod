@@ -14,7 +14,7 @@ const imageTypeRegex = /image\/(png|jpg|jpeg)/gm;
 
 const DamageDetailsRightSideContent = ({active, onclick, carDamage, previous}) => {
 
-    const {uploadForm, progress, isLoading} = useUploadForm('https://mechanic.taxivoshod.ru/api/upload.php');
+    const {uploadForm, progress, isLoading} = useUploadForm('https://mechanic.taxivoshod..ru/api/upload.php');
     const navigate = useNavigate()
     const dispatch = useDispatch();
 
@@ -38,7 +38,15 @@ const DamageDetailsRightSideContent = ({active, onclick, carDamage, previous}) =
                     }
                 }
             }
-            if(images.length){
+            if (images.length) {
+                const changeImages = []
+                images.forEach(img => {
+                    changeImages.push({
+                        carDamageId: id,
+                        imageId: img.id,
+                        img: img.img
+                    })
+                })
                 damages = {
                     ...damages,
                     name: {
@@ -47,7 +55,7 @@ const DamageDetailsRightSideContent = ({active, onclick, carDamage, previous}) =
                     },
                     images: {
                         ...damages.images,
-                        [index]: [...images.map(({id, img}) => ({carDamageId: active, imageId: id, img}))]
+                        [active]: changeImages
                     }
                 }
             }
@@ -150,10 +158,10 @@ const DamageDetailsRightSideContent = ({active, onclick, carDamage, previous}) =
             }
         }
     }
+        console.log(form, "form");
 
     const addDamageDetails = () => {
         const fd = new FormData;
-        console.log(form, "form");
 
         Object.entries(form.name).forEach(([key, value]) => fd.append(`name[${key}]`, value))
         Object.entries(form.description).forEach(([key, value]) => fd.append(`descr[${key}]`, value))

@@ -75,6 +75,7 @@ const ImagesShow = ({form, setForm, progress, isLoading, active}) => {
 
     const trash = () => {
         const image = form.images[active].filter(({imageId}) => imageId !== imageIndex)
+        console.log(image, "kalsjdhkjasdhkasdhkad")
         setForm(prevState => ({
             ...prevState,
             images: {
@@ -136,7 +137,7 @@ const ImagesShow = ({form, setForm, progress, isLoading, active}) => {
                                                         className={style.previewImg}
                                                     >
                                                         <img
-                                                            src={img.indexOf('data:image') === 0 ? img : `https://mechanic.taxivoshod.ru${img}`}
+                                                            src={img.indexOf('data:image') === 0 ? img : `https://mechanic.taxivoshod..ru${img}`}
                                                             alt=""
                                                         />
                                                         {
@@ -187,7 +188,7 @@ const ImagesShow = ({form, setForm, progress, isLoading, active}) => {
                             form.images?.[active]?.length ?
                                 form.images?.[active]?.[currentImageIdx]?.img.indexOf('data:image') !== -1 ?
                                     form.images[active]?.[currentImageIdx]?.img :
-                                    `https://mechanic.taxivoshod.ru${form.images?.[active]?.[currentImageIdx]?.img}` : ""} )`
+                                    `https://mechanic.taxivoshod..ru${form.images?.[active]?.[currentImageIdx]?.img}` : ""} )`
                     }}>
                     <Box className={modalStyle.closeIcon} onClick={handleClose}>
                         <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
