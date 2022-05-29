@@ -8,7 +8,7 @@ import CarouselItemDescription
 import CarouselItemImageUpload
     from "../../../DamageDetailsRightSide/components/DamageDetailsRightSideContent/components/DamageDetailsRightSideCourselItem/components/CarouselItemImageUpload/CarouselItemImageUpload";
 import imageCompression from "browser-image-compression";
-import {addCarDamageDetailsEffect} from "../../../../../../redux/effects/Effect";
+import {addCarDamageDetailsEffect, successFalse} from "../../../../../../redux/effects/Effect";
 import {useDispatch, useSelector} from "react-redux";
 import {useUploadForm} from "../../../../../../utils/useFileUpload";
 
@@ -61,12 +61,11 @@ const DamageDetailsLeftSideModal = ({open, handleClose}) => {
                 description: {},
                 images: {}
             })
+            dispatch(successFalse());
             handleClose();
         }
     }, [success])
 
-
-    const [imageFiles, setImageFiles] = useState([]);
     const [images, setImages] = useState();
     const [error, setError] = useState(false);
 
