@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, {useEffect, useRef, useState} from 'react';
 import {v4 as uuid4} from "uuid"
 import style from "../../../../DamageDetailsRightSideCarouselItem.module.css";
 import Modal from "@mui/material/Modal";
@@ -37,9 +37,10 @@ const ImagesShow = ({form, item, setForm, progress, isLoading, active}) => {
     const [imageModal, setImageModal] = useState(false)
     const [imageIndex, setImageIndex] = useState(null)
     const [currentImageIdx, setCurrentImageIdx] = useState()
+    const carouselRef = useRef();
 
     const checkCurrentImages = () => {
-        return !!form.images[active]?.length
+        return !!form.images[item.id]?.length
     }
 
     useEffect(() => {
@@ -47,6 +48,14 @@ const ImagesShow = ({form, item, setForm, progress, isLoading, active}) => {
             setImageModal(false)
         }
     }, [form])
+
+    useEffect(() => {
+        if (progress === 100 && !isLoading && form.images[item.id] && form.images[item.id].length >= 4) {
+            setTimeout(() => {
+                carouselRef.current.slideNext();
+            }, 300)
+        }
+    }, [isLoading])
 
     const showImage = (image, idx) => {
         setImageModal(true);
@@ -75,7 +84,6 @@ const ImagesShow = ({form, item, setForm, progress, isLoading, active}) => {
 
     const trash = () => {
         const image = form.images[item.id].filter(({imageId}) => imageId !== imageIndex)
-        console.log(image, "kalsjdhkjasdhkasdhkad")
         setForm(prevState => ({
             ...prevState,
             images: {
@@ -104,6 +112,7 @@ const ImagesShow = ({form, item, setForm, progress, isLoading, active}) => {
                         <Carousel
                             breakPoints={breakPoints}
                             showEmptySlots
+                            ref={carouselRef}
                             isRTL={false}
                             itemPadding={[0, 5]}
                             showArrows={false}
@@ -141,7 +150,7 @@ const ImagesShow = ({form, item, setForm, progress, isLoading, active}) => {
                                                             alt=""
                                                         />
                                                         {
-                                                            (idx === 0 && isLoading) &&
+                                                            (idx === value.length - 1 && isLoading) &&
                                                             <div className={style.previewImgUpload}>
                                                                 <CircularProgressbar
                                                                     value={progress}
