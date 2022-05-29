@@ -18,7 +18,7 @@ const DamageDetailsRightSideContent = ({active, onclick, carDamage, previous}) =
     const navigate = useNavigate()
     const dispatch = useDispatch();
 
-    const [form, setForm] = useState(() => {
+    const getDamage = () => {
         let damages = {
             name: {},
             description: {},
@@ -61,7 +61,13 @@ const DamageDetailsRightSideContent = ({active, onclick, carDamage, previous}) =
             }
         })
         return damages
-    });
+    }
+    
+    const [form, setForm] = useState(getDamage());
+
+    useEffect(() => {
+        setForm(getDamage());
+    }, [carDamage])
 
     const fileValidHelper = async (files) => {
         const validImageFiles = [];
