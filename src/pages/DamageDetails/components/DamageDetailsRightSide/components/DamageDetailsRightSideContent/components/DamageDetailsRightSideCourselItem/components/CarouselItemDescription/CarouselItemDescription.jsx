@@ -10,7 +10,7 @@ const CarouselItemDescription = ({ rows, placeholder, form, setForm, item }) => 
             ...prevState,
             name: {
                 ...prevState.name,
-                [item.id]: item.name
+                [item.id]: form.name ? form.name[item.id] : item.name
             },
             description: {
                 ...prevState.description,

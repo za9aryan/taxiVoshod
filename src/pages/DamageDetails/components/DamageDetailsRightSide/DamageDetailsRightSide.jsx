@@ -9,7 +9,7 @@ import DamageDetailsRightSideContent from "./components/DamageDetailsRightSideCo
 const DamageDetailsRightSide = ({active, setActive, carDamage}) => {
 
     const previous = () => {
-        if (active < 2) {
+        if (active < 1) {
             setActive(carDamage.length - 1);
         } else {
             setActive(active - 1);

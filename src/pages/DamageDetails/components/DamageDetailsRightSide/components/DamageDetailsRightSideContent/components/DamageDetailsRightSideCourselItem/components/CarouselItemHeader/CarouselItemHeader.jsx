@@ -18,8 +18,9 @@ const CarouselItemHeader = ({item, form, setForm, previous}) => {
         const fd = new FormData();
         fd.append('delete[]', id);
 
-        dispatch(addCarDamageDetailsEffect(fd, true));
         previous();
+
+        dispatch(addCarDamageDetailsEffect(fd, true));
     }
 
     return (<Stack

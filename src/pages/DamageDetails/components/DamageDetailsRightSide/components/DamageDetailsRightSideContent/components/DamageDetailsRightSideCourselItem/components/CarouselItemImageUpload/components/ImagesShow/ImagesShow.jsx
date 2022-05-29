@@ -32,7 +32,7 @@ const styles = {
     backgroundSize: 'cover'
 }
 
-const ImagesShow = ({form, setForm, progress, isLoading, active}) => {
+const ImagesShow = ({form, item, setForm, progress, isLoading, active}) => {
 
     const [imageModal, setImageModal] = useState(false)
     const [imageIndex, setImageIndex] = useState(null)
@@ -49,7 +49,6 @@ const ImagesShow = ({form, setForm, progress, isLoading, active}) => {
     }, [form])
 
     const showImage = (image, idx) => {
-        console.log(active)
         setImageModal(true);
         setImageIndex(image);
         setCurrentImageIdx(idx)
@@ -58,29 +57,30 @@ const ImagesShow = ({form, setForm, progress, isLoading, active}) => {
     const handleClose = () => setImageModal(false);
 
     const previous = () => {
-        if (imageIndex < 1) {
-            setImageIndex(form.images.length - 1);
+        if (currentImageIdx < 1) {
+            setCurrentImageIdx(form.images[item.id].length - 1);
         } else {
-            setImageIndex(imageIndex - 1);
+            setCurrentImageIdx(currentImageIdx - 1);
         }
     }
 
     const next = () => {
-        if (imageIndex > form.images.length - 2) {
-            setImageIndex(0)
+        if (currentImageIdx > form.images[item.id].length - 2) {
+            setCurrentImageIdx(0)
         } else {
-            setImageIndex(imageIndex + 1);
+            setCurrentImageIdx(currentImageIdx + 1)
+
         }
     }
 
     const trash = () => {
-        const image = form.images[active].filter(({imageId}) => imageId !== imageIndex)
+        const image = form.images[item.id].filter(({imageId}) => imageId !== imageIndex)
         console.log(image, "kalsjdhkjasdhkasdhkad")
         setForm(prevState => ({
             ...prevState,
             images: {
                 ...prevState.images,
-                [active]: image
+                [item.id]: image
             }
         }));
         handleClose()
@@ -128,7 +128,7 @@ const ImagesShow = ({form, setForm, progress, isLoading, active}) => {
                         >
                             {
                                 Object.entries(form.images).map(([key, value]) => {
-                                        if (value.length && +key === +active) {
+                                        if (value.length && +key === item.id) {
                                             return value.map(({imageId, img}, idx) => {
                                                 return (
                                                     <div
@@ -137,7 +137,7 @@ const ImagesShow = ({form, setForm, progress, isLoading, active}) => {
                                                         className={style.previewImg}
                                                     >
                                                         <img
-                                                            src={img.indexOf('data:image') === 0 ? img : `https://mechanic.taxivoshod..ru${img}`}
+                                                            src={img.indexOf('data:image') === 0 ? img : `https://mechanic.taxivoshod.ru${img}`}
                                                             alt=""
                                                         />
                                                         {
@@ -185,10 +185,10 @@ const ImagesShow = ({form, setForm, progress, isLoading, active}) => {
                     sx={styles}
                     style={{
                         backgroundImage: `url(${
-                            form.images?.[active]?.length ?
-                                form.images?.[active]?.[currentImageIdx]?.img.indexOf('data:image') !== -1 ?
-                                    form.images[active]?.[currentImageIdx]?.img :
-                                    `https://mechanic.taxivoshod..ru${form.images?.[active]?.[currentImageIdx]?.img}` : ""} )`
+                            form.images?.[item.id]?.length ?
+                                form.images?.[item.id]?.[currentImageIdx]?.img.indexOf('data:image') !== -1 ?
+                                    form.images[item.id]?.[currentImageIdx]?.img :
+                                    `https://mechanic.taxivoshod.ru${form.images?.[item.id]?.[currentImageIdx]?.img}` : ""} )`
                     }}>
                     <Box className={modalStyle.closeIcon} onClick={handleClose}>
                         <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">

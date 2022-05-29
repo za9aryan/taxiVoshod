@@ -18,7 +18,7 @@ const SearchPart = () => {
 
 
     const getData = async () => {
-        const res = await fetch("https://mechanic.taxivoshod..ru/api/?page=cars")
+        const res = await fetch("https://mechanic.taxivoshod.ru/api/?page=cars")
         const resData = await res.json()
         setData(resData.list)
         setSearchData(resData.list)
@@ -70,7 +70,7 @@ const SearchPart = () => {
         try {
             let formData = new FormData();
             formData.append('car_id', selected.id);
-            const res = await fetch("https://mechanic.taxivoshod..ru/api/?page=cars", {
+            const res = await fetch("https://mechanic.taxivoshod.ru/api/?page=cars", {
                 method: "POST",
                 body: formData
             })

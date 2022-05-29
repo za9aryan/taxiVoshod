@@ -18,7 +18,7 @@ function Equipment(props) {
     const [showModal, setShowModal] = useState({ open: false, text: "" })
 
     const getData = async () => {
-        const res = await fetch("https://mechanic.taxivoshod..ru/api/?page=equipment")
+        const res = await fetch("https://mechanic.taxivoshod.ru/api/?page=equipment")
         const resData = await res.json()
         console.log(resData);
         setData(resData.list)
@@ -86,7 +86,7 @@ function Equipment(props) {
             let formData = new FormData();
             data.forEach(el => formData.append(`equipment[${el.id}]`, el.count));
             console.log(formData);
-            const res = await fetch("https://mechanic.taxivoshod..ru/api/?page=equipment", {
+            const res = await fetch("https://mechanic.taxivoshod.ru/api/?page=equipment", {
                 method: "POST",
                 body: formData
             })

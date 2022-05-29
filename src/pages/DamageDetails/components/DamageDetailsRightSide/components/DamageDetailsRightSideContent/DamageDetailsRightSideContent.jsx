@@ -14,7 +14,7 @@ const imageTypeRegex = /image\/(png|jpg|jpeg)/gm;
 
 const DamageDetailsRightSideContent = ({active, onclick, carDamage, previous}) => {
 
-    const {uploadForm, progress, isLoading} = useUploadForm('https://mechanic.taxivoshod..ru/api/upload.php');
+    const {uploadForm, progress, isLoading} = useUploadForm('https://mechanic.taxivoshod.ru/api/upload.php');
     const navigate = useNavigate()
     const dispatch = useDispatch();
 
@@ -55,7 +55,7 @@ const DamageDetailsRightSideContent = ({active, onclick, carDamage, previous}) =
                     },
                     images: {
                         ...damages.images,
-                        [active]: changeImages
+                        [id]: changeImages
                     }
                 }
             }
@@ -104,7 +104,7 @@ const DamageDetailsRightSideContent = ({active, onclick, carDamage, previous}) =
         }
         changeForm.images = {
             ...changeForm.images,
-            [active]: [
+            [currentCarDamageIndex]: [
                 {
                     carDamageId: currentCarDamageIndex,
                     imageId: currentCarDamageImageId,
@@ -117,7 +117,7 @@ const DamageDetailsRightSideContent = ({active, onclick, carDamage, previous}) =
 
     const changeCurrentImage = (currentCarDamageIndex, currentCarDamageImageId, result) => {
         const changeForm = {...form}
-        changeForm.images[active].push({
+        changeForm.images[currentCarDamageIndex].push({
             carDamageId: currentCarDamageIndex,
             imageId: currentCarDamageImageId,
             img: result
@@ -133,7 +133,7 @@ const DamageDetailsRightSideContent = ({active, onclick, carDamage, previous}) =
         fileReader.onload = (e) => {
             const {result} = e.target
             if (result) {
-                if (!!form.images[active] && !!form.name[currentCarDamageIndex]) {
+                if (!!form.images[currentCarDamageIndex] && !!form.name[currentCarDamageIndex]) {
                     // If There is Have That Index
                     const changeForm = changeCurrentImage(currentCarDamageIndex, currentCarDamageImageId, result)
                     setForm(changeForm)

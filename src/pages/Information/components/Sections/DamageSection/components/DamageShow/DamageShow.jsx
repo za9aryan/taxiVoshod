@@ -14,7 +14,7 @@ const DamageShow = ({ property, value, images = [], link = "" }) => {
                 <div className={c.ImagesContainer}>
                     {images.map(({ img }, idx) => (
                         <div key={uuid4()} className={c.Image}>
-                            <img src={"https://mechanic.taxivoshod..ru" + img} alt={`damage${idx}`} />
+                            <img src={"https://mechanic.taxivoshod.ru" + img} alt={`damage${idx}`} />
                         </div>
                     ))}
                 </div>

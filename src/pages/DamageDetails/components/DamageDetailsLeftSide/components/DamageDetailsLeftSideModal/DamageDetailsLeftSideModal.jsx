@@ -34,14 +34,14 @@ const imageTypeRegex = /image\/(png|jpg|jpeg)/gm;
 const DamageDetailsLeftSideModal = ({open, handleClose}) => {
 
     const dispatch = useDispatch();
-    const {uploadForm, progress, isLoading} = useUploadForm('https://mechanic.taxivoshod..ru/api/upload.php');
+    const {uploadForm, progress, isLoading} = useUploadForm('https://mechanic.taxivoshod.ru/api/upload.php');
 
     const {success} = useSelector(state => state.reducer);
 
     const [form, setForm] = useState({
         name: {},
         description: {},
-        images: []
+        images: {}
     });
 
     useEffect(() => {
@@ -49,7 +49,7 @@ const DamageDetailsLeftSideModal = ({open, handleClose}) => {
             setForm({
                 name: {},
                 description: {},
-                images: []
+                images: {}
             })
         }
     }, [open])
@@ -59,7 +59,7 @@ const DamageDetailsLeftSideModal = ({open, handleClose}) => {
             setForm({
                 name: {},
                 description: {},
-                images: []
+                images: {}
             })
             handleClose();
         }
@@ -70,8 +70,7 @@ const DamageDetailsLeftSideModal = ({open, handleClose}) => {
     const [images, setImages] = useState();
     const [error, setError] = useState(false);
 
-    const fileUploadModal = async (e) => {
-        const { files } = e.target;
+    const fileValidHelper = async (files) => {
         const validImageFiles = [];
         for (let i = 0; i < files.length; i++) {
             const file = files[i];
@@ -85,52 +84,85 @@ const DamageDetailsLeftSideModal = ({open, handleClose}) => {
                 validImageFiles.push(compressedFile);
             }
         }
-        if (validImageFiles.length) {
-            setImageFiles(validImageFiles);
+        return validImageFiles
+    }
 
-            const fd = new FormData();
-            fd.append('file', files[0]);
-            const a = await uploadForm(fd);
-            setImages(a.id);
+    const uploadFormHelper = async (file) => {
+        try {
+            const formData = new FormData()
+            formData.append('file', file)
+            const res = await uploadForm(formData)
+            if (res.success) {
+                return res.id
+            } else {
+                return -1
+            }
+        } catch (e) {
+            console.log("uploadFormHelper", e.message)
+        }
 
-            return;
+    }
+
+    const createNewImage = (currentCarDamageIndex, currentCarDamageImageId, result) => {
+        const changeForm = {...form}
+        changeForm.images = {
+            ...changeForm.images,
+            [currentCarDamageIndex]: [
+                {
+                    carDamageId: currentCarDamageIndex,
+                    imageId: currentCarDamageImageId,
+                    img: result
+                }
+            ]
+        }
+        return changeForm
+    }
+
+    const changeCurrentImage = (currentCarDamageIndex, currentCarDamageImageId, result) => {
+        const changeForm = {...form}
+        changeForm.images[currentCarDamageIndex].push({
+            carDamageId: currentCarDamageIndex,
+            imageId: currentCarDamageImageId,
+            img: result
+        })
+
+        return changeForm
+    }
+
+    const fileReaderHelper = (validFiles, index, currentCarDamageImageId) => {
+        const currentCarDamageIndex = 1
+        const fileReader = new FileReader();
+        fileReader.onload = (e) => {
+            const {result} = e.target
+            if (result) {
+                if (!!form.images[currentCarDamageIndex]) {
+                    // If There is Have That Index
+                    const changeForm = changeCurrentImage(currentCarDamageIndex, currentCarDamageImageId, result)
+                    setForm(changeForm)
+                } else {
+                    // If Don`t
+                    const createNewForm = createNewImage(currentCarDamageIndex, currentCarDamageImageId, result)
+                    setForm(createNewForm)
+                }
+            }
+        }
+        fileReader.readAsDataURL(validFiles);
+    }
+
+
+    const fileUploadModal = async (e, index) => {
+        const { files } = e.target;
+        const valid = await fileValidHelper(files)
+
+        if (valid.length) {
+            const currentCarDamageImageId = await uploadFormHelper(files[0])
+            if (currentCarDamageImageId !== -1) {
+                fileReaderHelper(valid[0], index, currentCarDamageImageId)
+            }
         }
     }
 
-    useEffect(() => {
-        const fileReaders = [];
-        if (imageFiles.length) {
-            imageFiles.forEach((file) => {
-                const fileReader = new FileReader();
-                fileReaders.push(fileReader);
-                fileReader.onload = (e) => {
-                    const { result } = e.target;
-                    if (result) {
-                        const tmp = [
-                            ...form.images,
-                            {
-                                id: undefined,
-                                img: result
-                            }
-                        ];
-
-                        setForm(prevState => ({
-                            ...prevState,
-                            images: tmp
-                        }))
-                    }
-                }
-                fileReader.readAsDataURL(file);
-            })
-        };
-        return () => {
-            fileReaders.forEach(fileReader => {
-                if (fileReader.readyState === 1) {
-                    fileReader.abort()
-                }
-            })
-        }
-    }, [imageFiles]);
+    console.log(form, "form");
 
     useEffect(() => {
         if (images) {
@@ -149,7 +181,10 @@ const DamageDetailsLeftSideModal = ({open, handleClose}) => {
 
         Object.entries(form.name).forEach(([key, value]) => fd.append(`new_name[${key}]`, value));
         Object.entries(form.description).forEach(([key, value]) => fd.append(`new_descr[${key}]`, value));
-        form.images.forEach(value => fd.append(`new_images[1][]`, value.id));
+
+        Object.values(form.images).forEach(value => {
+            value.forEach(({imageId}) => fd.append(`new_images[1][]`, [imageId]))
+        })
 
         dispatch(addCarDamageDetailsEffect(fd));
     }

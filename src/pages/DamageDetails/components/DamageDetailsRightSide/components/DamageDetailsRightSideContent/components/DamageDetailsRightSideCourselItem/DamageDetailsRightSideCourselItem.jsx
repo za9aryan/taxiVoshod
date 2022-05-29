@@ -19,6 +19,7 @@ const DamageDetailsRightSideCarouselItem = ({active, item, fileUpload, form, set
                 active={active}
                 progress={progress}
                 id={id}
+                item={item}
             />
         </div>
     );

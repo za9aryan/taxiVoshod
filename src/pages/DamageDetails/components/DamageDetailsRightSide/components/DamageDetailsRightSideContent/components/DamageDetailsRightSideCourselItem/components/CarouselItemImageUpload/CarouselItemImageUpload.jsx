@@ -3,7 +3,7 @@ import {Stack} from "@mui/material";
 import ImageUpload from "./components/ImageUpload/ImageUpload";
 import ImagesShow from "./components/ImagesShow/ImagesShow";
 
-const CarouselItemImageUpload = ({form, setForm, isLoading, active, progress, fileUpload, id}) => {
+const CarouselItemImageUpload = ({form, setForm, isLoading, item, active, progress, fileUpload, id}) => {
     return (
         <Stack
             style={{marginTop: '20px', marginBottom: '10px'}}
@@ -13,7 +13,7 @@ const CarouselItemImageUpload = ({form, setForm, isLoading, active, progress, fi
         >
             <ImageUpload fileUpload={fileUpload} active={active} id={id} />
 
-            <ImagesShow form={form} setForm={setForm} progress={progress} isLoading={isLoading} active={active} />
+            <ImagesShow form={form} item={item} setForm={setForm} progress={progress} isLoading={isLoading} active={active} />
         </Stack>
     );
 };

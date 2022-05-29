@@ -41,7 +41,7 @@ function CooperationType(props) {
         try {
             let formData = new FormData();
             formData.append('term_id', selected);
-            const res = await fetch("https://mechanic.taxivoshod..ru/api/?page=terms", {
+            const res = await fetch("https://mechanic.taxivoshod.ru/api/?page=terms", {
                 method: "POST",
                 body: formData
             })
